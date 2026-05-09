@@ -1,0 +1,801 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6065807635815161148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2747288209860549357}
+  - component: {fileID: 1428839937071586731}
+  m_Layer: 0
+  m_Name: StadiumsData 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2747288209860549357
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6065807635815161148}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.752614, y: 0.8570783, z: 1.3321605}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1428839937071586731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6065807635815161148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85f7bbbb909823848b15c30999f98920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active:
+    name: demo
+    difficulty_level: 1
+    selectedSize: small
+    id: 0
+    color: {r: 0, g: 0, b: 0, a: 0}
+    unavailable: 0
+    poster: {fileID: 0}
+    button: {fileID: 0}
+    assets:
+    - size: small
+      asset: {fileID: 7454598723649077627, guid: 8be39126f37911d4c9018583395adb03, type: 3}
+      size_x: 40.5
+      size_y: 30
+      powerupsSpawners: {fileID: 0}
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    ball: {fileID: 1975457108487340, guid: ec3e8f3ed27e2244caaedaf589590a03, type: 3}
+    ambience_end_loop: {fileID: 0}
+    ambience_loop: {fileID: 0}
+    opening: {fileID: 0}
+    crowd_good: []
+    crowd_chance: []
+    crowd_bad: []
+    crowd_foul: []
+    crowd_gol: []
+    crowd_expr_vol: 0
+    kick_hard:
+    - {fileID: 8300000, guid: c5c3a04d4201bcf4fb20cd1480639e8d, type: 3}
+    - {fileID: 8300000, guid: 5e04e55550b3fc94aae41f2a6eb3990a, type: 3}
+    kick_pass:
+    - {fileID: 8300000, guid: f4fbefb63db9e4f4188eb1fa0ffc48e2, type: 3}
+    kick_balloon:
+    - {fileID: 8300000, guid: c3d5321d9d19d414fb279e1e911b0cf9, type: 3}
+    kick_soft: {fileID: 0}
+    ball_hit_character_soft: []
+    ball_hit_character_hard: []
+    kick_head:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    kick_chilena: []
+    ball_catch: {fileID: 8300000, guid: 6f2a51d4711b5734d954c25bbe4e731c, type: 3}
+    ball_gk_catch: {fileID: 8300000, guid: 2466632064d76024e81fe1b9d0b5a7d2, type: 3}
+    ball_gk_saca: {fileID: 8300000, guid: 9d4452a9b19d38542ba194bfed956737, type: 3}
+    ball_carry: []
+    pica:
+    - {fileID: 8300000, guid: 281fc6b7270d761459f817530dce3310, type: 3}
+    picaSoft: {fileID: 0}
+    palo:
+    - {fileID: 8300000, guid: 4acf3c6396c682c449d25acd076f6a9c, type: 3}
+    net: {fileID: 8300000, guid: 0a94dfc9706e87341ba71c61f232ec95, type: 3}
+    wallSoft: []
+    wall:
+    - {fileID: 8300000, guid: e4203c2537489e3478816a91ad8042de, type: 3}
+    - {fileID: 8300000, guid: 60eeed5206c9d1148b28b68de90cba73, type: 3}
+    penaltyGO: {fileID: 2744271548317523153, guid: 1c977afd1521fcb43a2e72b3f19e52c5, type: 3}
+  all:
+  - name: Tutorial
+    difficulty_level: 1
+    selectedSize: small
+    id: -1
+    color: {r: 0, g: 0, b: 0, a: 0}
+    unavailable: 1
+    poster: {fileID: 0}
+    button: {fileID: 0}
+    assets:
+    - size: small
+      asset: {fileID: 8849686315084780500, guid: e095f5f05e5f1cd45965095357188e05, type: 3}
+      size_x: 40.5
+      size_y: 30
+      powerupsSpawners: {fileID: 0}
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    - size: medium
+      asset: {fileID: 8849686315084780500, guid: ce4aff0342590fa41bc479a4b16f4d92, type: 3}
+      size_x: 60.5
+      size_y: 30
+      powerupsSpawners: {fileID: 0}
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    ball: {fileID: 1975457108487340, guid: 8a9eabc1101269c4588d2416424e2067, type: 3}
+    ambience_end_loop: {fileID: 0}
+    ambience_loop: {fileID: 8300000, guid: c72661a5f92f7674ab72655b9c55d49c, type: 3}
+    opening: {fileID: 0}
+    crowd_good:
+    - {fileID: 8300000, guid: bc25a209cbf4c7f41a23786b9b1a6688, type: 3}
+    - {fileID: 8300000, guid: b6242d7b0fdbb7d4e825dbfc26c2e941, type: 3}
+    crowd_chance:
+    - {fileID: 8300000, guid: 10a2a377089ea67408d882f72fdfa3e6, type: 3}
+    crowd_bad:
+    - {fileID: 8300000, guid: ba67dbf5db09a674a987d04cef481263, type: 3}
+    crowd_foul:
+    - {fileID: 8300000, guid: f02fa2e3c03e9e848824656288dc0622, type: 3}
+    crowd_gol:
+    - {fileID: 8300000, guid: 3a9713ec2fbeb7b40a80fa693ad8e8ce, type: 3}
+    - {fileID: 8300000, guid: 044e49f41f786d447a50b0797efdad25, type: 3}
+    crowd_expr_vol: 0.65
+    kick_hard:
+    - {fileID: 8300000, guid: b6410f62e7bbc994c930fc0eed370d12, type: 3}
+    - {fileID: 8300000, guid: ca42b0cd19847954589c10ff3eb45956, type: 3}
+    - {fileID: 8300000, guid: 1e60aa59f76ef2649a5078ad63b26fd1, type: 3}
+    kick_pass:
+    - {fileID: 8300000, guid: e2067a58bdf4cf34fa9bdc550fa9343e, type: 3}
+    kick_balloon:
+    - {fileID: 8300000, guid: e07ab2a74fbfb8e4eb3e0a46e0fb2ab8, type: 3}
+    - {fileID: 8300000, guid: 35588dc93112c90429c93d2c1413e2a8, type: 3}
+    kick_soft: {fileID: 8300000, guid: b963a30dd9fe10f49b145ebb2df07573, type: 3}
+    ball_hit_character_soft:
+    - {fileID: 8300000, guid: 1946b9cf1dfd0fb4e8f538af9c6ced74, type: 3}
+    - {fileID: 8300000, guid: 4d56974df64663a448c6f2ec52cc7feb, type: 3}
+    ball_hit_character_hard:
+    - {fileID: 8300000, guid: b176cfd048783204d83c717da74eadfd, type: 3}
+    - {fileID: 8300000, guid: 2a5569bbe9997a2478639cf9c8911e56, type: 3}
+    kick_head:
+    - {fileID: 8300000, guid: 47d673ac166766d4b887fda996b67ae2, type: 3}
+    - {fileID: 8300000, guid: 02f332127ec1e8b4e89a277fdbb2ae69, type: 3}
+    kick_chilena: []
+    ball_catch: {fileID: 8300000, guid: da0a2208303335a4b898565249034dee, type: 3}
+    ball_gk_catch: {fileID: 8300000, guid: 2466632064d76024e81fe1b9d0b5a7d2, type: 3}
+    ball_gk_saca: {fileID: 8300000, guid: 2f21bba2f3924da418257e885bf45580, type: 3}
+    ball_carry:
+    - {fileID: 8300000, guid: bd7e276b9471cdb40a1724cf143ab722, type: 3}
+    pica:
+    - {fileID: 8300000, guid: 4cef0abb1eddcb54a965da997454c9f2, type: 3}
+    - {fileID: 8300000, guid: a643658c767235f4e92c204476593130, type: 3}
+    picaSoft: {fileID: 8300000, guid: 4ee908625e9b08b44b32f3462b5ee69e, type: 3}
+    palo:
+    - {fileID: 8300000, guid: 69383b977d0c8854dae88178d4c260df, type: 3}
+    net: {fileID: 8300000, guid: 6f524b31c19ec6e4cb4fb6bd0b0a3225, type: 3}
+    wallSoft:
+    - {fileID: 8300000, guid: 60eeed5206c9d1148b28b68de90cba73, type: 3}
+    wall:
+    - {fileID: 8300000, guid: e4203c2537489e3478816a91ad8042de, type: 3}
+    - {fileID: 8300000, guid: c62ed2dc0f91e5743bad7623ef6a81aa, type: 3}
+    penaltyGO: {fileID: 2744271548317523153, guid: 1c977afd1521fcb43a2e72b3f19e52c5, type: 3}
+  - name: Fulbo $tadium
+    difficulty_level: 1
+    selectedSize: small
+    id: 0
+    color: {r: 1, g: 1, b: 0, a: 1}
+    unavailable: 0
+    poster: {fileID: 21300000, guid: a0622636bb675f246bc68417624766fd, type: 3}
+    button: {fileID: 5939679854573884478, guid: d3f28cc660f8c204091839801384cc86, type: 3}
+    assets:
+    - size: small
+      asset: {fileID: 7454598723649077627, guid: 8be39126f37911d4c9018583395adb03, type: 3}
+      size_x: 40
+      size_y: 29.8
+      powerupsSpawners: {fileID: 6085898100209711128, guid: ab3c9620f95939346ad2bc74aa6045f7, type: 3}
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    - size: medium
+      asset: {fileID: 8849686315084780500, guid: b14e9c1e3e97825449d9078ad4a295d5, type: 3}
+      size_x: 45.5
+      size_y: 29.8
+      powerupsSpawners: {fileID: 6085898100209711128, guid: a87738145f7a4db43bec3b33b730cac7, type: 3}
+      cameraSettings:
+        originalZoomSize: 5.5
+        offsetZ: 7
+    - size: large
+      asset: {fileID: 8849686315084780500, guid: 32f0add29c573a64abceb15070c74d06, type: 3}
+      size_x: 59.5
+      size_y: 39
+      powerupsSpawners: {fileID: 6085898100209711128, guid: 824458b0c2f658843be71404001a0ef3, type: 3}
+      cameraSettings:
+        originalZoomSize: 6
+        offsetZ: 6
+    ball: {fileID: 1975457108487340, guid: ec3e8f3ed27e2244caaedaf589590a03, type: 3}
+    ambience_end_loop: {fileID: 8300000, guid: e8fada0f62978b4458acabb1447eca8f, type: 3}
+    ambience_loop: {fileID: 8300000, guid: c72661a5f92f7674ab72655b9c55d49c, type: 3}
+    opening: {fileID: 8300000, guid: a9d47d500e48a5d459a959c3077f7407, type: 3}
+    crowd_good:
+    - {fileID: 8300000, guid: bc25a209cbf4c7f41a23786b9b1a6688, type: 3}
+    - {fileID: 8300000, guid: b6242d7b0fdbb7d4e825dbfc26c2e941, type: 3}
+    crowd_chance:
+    - {fileID: 8300000, guid: 10a2a377089ea67408d882f72fdfa3e6, type: 3}
+    crowd_bad:
+    - {fileID: 8300000, guid: ba67dbf5db09a674a987d04cef481263, type: 3}
+    crowd_foul:
+    - {fileID: 8300000, guid: ba67dbf5db09a674a987d04cef481263, type: 3}
+    crowd_gol:
+    - {fileID: 8300000, guid: 3a9713ec2fbeb7b40a80fa693ad8e8ce, type: 3}
+    - {fileID: 8300000, guid: 044e49f41f786d447a50b0797efdad25, type: 3}
+    crowd_expr_vol: 0.65
+    kick_hard:
+    - {fileID: 8300000, guid: b6410f62e7bbc994c930fc0eed370d12, type: 3}
+    - {fileID: 8300000, guid: ca42b0cd19847954589c10ff3eb45956, type: 3}
+    - {fileID: 8300000, guid: 1e60aa59f76ef2649a5078ad63b26fd1, type: 3}
+    kick_pass:
+    - {fileID: 8300000, guid: e2067a58bdf4cf34fa9bdc550fa9343e, type: 3}
+    kick_balloon:
+    - {fileID: 8300000, guid: e07ab2a74fbfb8e4eb3e0a46e0fb2ab8, type: 3}
+    - {fileID: 8300000, guid: 35588dc93112c90429c93d2c1413e2a8, type: 3}
+    kick_soft: {fileID: 8300000, guid: b963a30dd9fe10f49b145ebb2df07573, type: 3}
+    ball_hit_character_soft:
+    - {fileID: 8300000, guid: 1946b9cf1dfd0fb4e8f538af9c6ced74, type: 3}
+    - {fileID: 8300000, guid: 4d56974df64663a448c6f2ec52cc7feb, type: 3}
+    ball_hit_character_hard:
+    - {fileID: 8300000, guid: b176cfd048783204d83c717da74eadfd, type: 3}
+    - {fileID: 8300000, guid: 2a5569bbe9997a2478639cf9c8911e56, type: 3}
+    kick_head:
+    - {fileID: 8300000, guid: 47d673ac166766d4b887fda996b67ae2, type: 3}
+    - {fileID: 8300000, guid: 02f332127ec1e8b4e89a277fdbb2ae69, type: 3}
+    kick_chilena:
+    - {fileID: 8300000, guid: 20026b783864be7409220e6b50e33155, type: 3}
+    ball_catch: {fileID: 8300000, guid: da0a2208303335a4b898565249034dee, type: 3}
+    ball_gk_catch: {fileID: 8300000, guid: 2466632064d76024e81fe1b9d0b5a7d2, type: 3}
+    ball_gk_saca: {fileID: 8300000, guid: 2f21bba2f3924da418257e885bf45580, type: 3}
+    ball_carry:
+    - {fileID: 8300000, guid: bd7e276b9471cdb40a1724cf143ab722, type: 3}
+    pica:
+    - {fileID: 8300000, guid: 4cef0abb1eddcb54a965da997454c9f2, type: 3}
+    - {fileID: 8300000, guid: a643658c767235f4e92c204476593130, type: 3}
+    picaSoft: {fileID: 8300000, guid: 4ee908625e9b08b44b32f3462b5ee69e, type: 3}
+    palo:
+    - {fileID: 8300000, guid: 69383b977d0c8854dae88178d4c260df, type: 3}
+    net: {fileID: 8300000, guid: 6f524b31c19ec6e4cb4fb6bd0b0a3225, type: 3}
+    wallSoft:
+    - {fileID: 8300000, guid: 60eeed5206c9d1148b28b68de90cba73, type: 3}
+    wall:
+    - {fileID: 8300000, guid: e4203c2537489e3478816a91ad8042de, type: 3}
+    - {fileID: 8300000, guid: c62ed2dc0f91e5743bad7623ef6a81aa, type: 3}
+    penaltyGO: {fileID: 2744271548317523153, guid: 1c977afd1521fcb43a2e72b3f19e52c5, type: 3}
+  - name: Wasteland United
+    difficulty_level: 3
+    selectedSize: small
+    id: 1
+    color: {r: 0, g: 1, b: 0, a: 1}
+    unavailable: 0
+    poster: {fileID: 21300000, guid: f05e66c2a624f794bb7a83861ea78908, type: 3}
+    button: {fileID: 7795645379693110171, guid: a9280a5bf348d414baf2083669c13940, type: 3}
+    assets:
+    - size: small
+      asset: {fileID: 8849686315084780500, guid: 178737ecdd0de9848a77fdd98d8a4209, type: 3}
+      size_x: 40
+      size_y: 29.5
+      powerupsSpawners: {fileID: 6085898100209711128, guid: ab3c9620f95939346ad2bc74aa6045f7, type: 3}
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    - size: medium
+      asset: {fileID: 8849686315084780500, guid: 34a6845523562624d95b2fe711d563b9, type: 3}
+      size_x: 59.5
+      size_y: 29.5
+      powerupsSpawners: {fileID: 6085898100209711128, guid: 8494e0662b11e1c40be0a82eac357823, type: 3}
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    - size: large
+      asset: {fileID: 8849686315084780500, guid: f37db980ed95a3d4e98f5195dea6b2af, type: 3}
+      size_x: 67
+      size_y: 29.5
+      powerupsSpawners: {fileID: 6085898100209711128, guid: e602d244856e9bd4988d5802197c786e, type: 3}
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    ball: {fileID: 1975457108487340, guid: 49f6510aaa2d36b4f86a054075c9bd40, type: 3}
+    ambience_end_loop: {fileID: 8300000, guid: e8fada0f62978b4458acabb1447eca8f, type: 3}
+    ambience_loop: {fileID: 8300000, guid: e7e787994dcf02247a5a36289d1a92d9, type: 3}
+    opening: {fileID: 8300000, guid: cad6d8b61df69e24b90cf527910bcef4, type: 3}
+    crowd_good:
+    - {fileID: 8300000, guid: bc25a209cbf4c7f41a23786b9b1a6688, type: 3}
+    crowd_chance:
+    - {fileID: 8300000, guid: 10a2a377089ea67408d882f72fdfa3e6, type: 3}
+    crowd_bad:
+    - {fileID: 8300000, guid: f02fa2e3c03e9e848824656288dc0622, type: 3}
+    crowd_foul:
+    - {fileID: 8300000, guid: f02fa2e3c03e9e848824656288dc0622, type: 3}
+    crowd_gol:
+    - {fileID: 8300000, guid: 3a9713ec2fbeb7b40a80fa693ad8e8ce, type: 3}
+    - {fileID: 8300000, guid: 044e49f41f786d447a50b0797efdad25, type: 3}
+    crowd_expr_vol: 0.65
+    kick_hard:
+    - {fileID: 8300000, guid: b6410f62e7bbc994c930fc0eed370d12, type: 3}
+    - {fileID: 8300000, guid: ca42b0cd19847954589c10ff3eb45956, type: 3}
+    - {fileID: 8300000, guid: 1e60aa59f76ef2649a5078ad63b26fd1, type: 3}
+    kick_pass:
+    - {fileID: 8300000, guid: e2067a58bdf4cf34fa9bdc550fa9343e, type: 3}
+    kick_balloon:
+    - {fileID: 8300000, guid: e07ab2a74fbfb8e4eb3e0a46e0fb2ab8, type: 3}
+    - {fileID: 8300000, guid: 35588dc93112c90429c93d2c1413e2a8, type: 3}
+    kick_soft: {fileID: 8300000, guid: b963a30dd9fe10f49b145ebb2df07573, type: 3}
+    ball_hit_character_soft:
+    - {fileID: 8300000, guid: 1946b9cf1dfd0fb4e8f538af9c6ced74, type: 3}
+    - {fileID: 8300000, guid: 4d56974df64663a448c6f2ec52cc7feb, type: 3}
+    ball_hit_character_hard:
+    - {fileID: 8300000, guid: b176cfd048783204d83c717da74eadfd, type: 3}
+    - {fileID: 8300000, guid: 2a5569bbe9997a2478639cf9c8911e56, type: 3}
+    kick_head:
+    - {fileID: 8300000, guid: 47d673ac166766d4b887fda996b67ae2, type: 3}
+    - {fileID: 8300000, guid: 02f332127ec1e8b4e89a277fdbb2ae69, type: 3}
+    kick_chilena:
+    - {fileID: 8300000, guid: 20026b783864be7409220e6b50e33155, type: 3}
+    ball_catch: {fileID: 8300000, guid: da0a2208303335a4b898565249034dee, type: 3}
+    ball_gk_catch: {fileID: 8300000, guid: 2466632064d76024e81fe1b9d0b5a7d2, type: 3}
+    ball_gk_saca: {fileID: 8300000, guid: 2f21bba2f3924da418257e885bf45580, type: 3}
+    ball_carry:
+    - {fileID: 8300000, guid: bd7e276b9471cdb40a1724cf143ab722, type: 3}
+    pica:
+    - {fileID: 8300000, guid: 4cef0abb1eddcb54a965da997454c9f2, type: 3}
+    - {fileID: 8300000, guid: a643658c767235f4e92c204476593130, type: 3}
+    picaSoft: {fileID: 8300000, guid: 4ee908625e9b08b44b32f3462b5ee69e, type: 3}
+    palo:
+    - {fileID: 8300000, guid: 69383b977d0c8854dae88178d4c260df, type: 3}
+    net: {fileID: 8300000, guid: 6f524b31c19ec6e4cb4fb6bd0b0a3225, type: 3}
+    wallSoft:
+    - {fileID: 8300000, guid: 60eeed5206c9d1148b28b68de90cba73, type: 3}
+    wall:
+    - {fileID: 8300000, guid: e4203c2537489e3478816a91ad8042de, type: 3}
+    - {fileID: 8300000, guid: c62ed2dc0f91e5743bad7623ef6a81aa, type: 3}
+    penaltyGO: {fileID: 2744271548317523153, guid: 1c977afd1521fcb43a2e72b3f19e52c5, type: 3}
+  - name: Rio Do Jamaica Arena
+    difficulty_level: 5
+    selectedSize: small
+    id: 2
+    color: {r: 0.9843137, g: 0.42745098, b: 0.28627452, a: 1}
+    unavailable: 0
+    poster: {fileID: 21300000, guid: 27558c0f3c13deb4a8ad24eb0d92c8d6, type: 3}
+    button: {fileID: 9037956390997463141, guid: 9f2e3e4f6f3d8f040910ebbe60061344, type: 3}
+    assets:
+    - size: small
+      asset: {fileID: 8849686315084780500, guid: e837e42eb0eb37546a8babf08f306da5, type: 3}
+      size_x: 40
+      size_y: 29.5
+      powerupsSpawners: {fileID: 6085898100209711128, guid: ab3c9620f95939346ad2bc74aa6045f7, type: 3}
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    - size: medium
+      asset: {fileID: 8849686315084780500, guid: a5b5e18da861c424ca2050d8f0799ea9, type: 3}
+      size_x: 50.5
+      size_y: 32
+      powerupsSpawners: {fileID: 6085898100209711128, guid: a87738145f7a4db43bec3b33b730cac7, type: 3}
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    - size: large
+      asset: {fileID: 8849686315084780500, guid: 4e39a34ece0f64a40a9dbb54a5f6c59d, type: 3}
+      size_x: 70.5
+      size_y: 32
+      powerupsSpawners: {fileID: 6085898100209711128, guid: e602d244856e9bd4988d5802197c786e, type: 3}
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    ball: {fileID: 1975457108487340, guid: f2c88592bdcfbf248940cf986b243946, type: 3}
+    ambience_end_loop: {fileID: 8300000, guid: e8fada0f62978b4458acabb1447eca8f, type: 3}
+    ambience_loop: {fileID: 8300000, guid: 71dcb89a942b9134bbcd303bb0f43813, type: 3}
+    opening: {fileID: 8300000, guid: a00097c040b00af42ba7b1c797ac287d, type: 3}
+    crowd_good:
+    - {fileID: 8300000, guid: bc25a209cbf4c7f41a23786b9b1a6688, type: 3}
+    crowd_chance:
+    - {fileID: 8300000, guid: 10a2a377089ea67408d882f72fdfa3e6, type: 3}
+    crowd_bad:
+    - {fileID: 8300000, guid: f02fa2e3c03e9e848824656288dc0622, type: 3}
+    crowd_foul:
+    - {fileID: 8300000, guid: f02fa2e3c03e9e848824656288dc0622, type: 3}
+    crowd_gol:
+    - {fileID: 8300000, guid: 3a9713ec2fbeb7b40a80fa693ad8e8ce, type: 3}
+    - {fileID: 8300000, guid: 044e49f41f786d447a50b0797efdad25, type: 3}
+    crowd_expr_vol: 0.65
+    kick_hard:
+    - {fileID: 8300000, guid: b6410f62e7bbc994c930fc0eed370d12, type: 3}
+    - {fileID: 8300000, guid: ca42b0cd19847954589c10ff3eb45956, type: 3}
+    - {fileID: 8300000, guid: 1e60aa59f76ef2649a5078ad63b26fd1, type: 3}
+    kick_pass:
+    - {fileID: 8300000, guid: e2067a58bdf4cf34fa9bdc550fa9343e, type: 3}
+    kick_balloon:
+    - {fileID: 8300000, guid: e07ab2a74fbfb8e4eb3e0a46e0fb2ab8, type: 3}
+    - {fileID: 8300000, guid: 35588dc93112c90429c93d2c1413e2a8, type: 3}
+    kick_soft: {fileID: 8300000, guid: b963a30dd9fe10f49b145ebb2df07573, type: 3}
+    ball_hit_character_soft:
+    - {fileID: 8300000, guid: 1946b9cf1dfd0fb4e8f538af9c6ced74, type: 3}
+    - {fileID: 8300000, guid: 4d56974df64663a448c6f2ec52cc7feb, type: 3}
+    ball_hit_character_hard:
+    - {fileID: 8300000, guid: b176cfd048783204d83c717da74eadfd, type: 3}
+    - {fileID: 8300000, guid: 2a5569bbe9997a2478639cf9c8911e56, type: 3}
+    kick_head:
+    - {fileID: 8300000, guid: 47d673ac166766d4b887fda996b67ae2, type: 3}
+    - {fileID: 8300000, guid: 02f332127ec1e8b4e89a277fdbb2ae69, type: 3}
+    kick_chilena:
+    - {fileID: 8300000, guid: 20026b783864be7409220e6b50e33155, type: 3}
+    ball_catch: {fileID: 8300000, guid: da0a2208303335a4b898565249034dee, type: 3}
+    ball_gk_catch: {fileID: 8300000, guid: 2466632064d76024e81fe1b9d0b5a7d2, type: 3}
+    ball_gk_saca: {fileID: 8300000, guid: 2f21bba2f3924da418257e885bf45580, type: 3}
+    ball_carry:
+    - {fileID: 8300000, guid: bd7e276b9471cdb40a1724cf143ab722, type: 3}
+    pica:
+    - {fileID: 8300000, guid: 4cef0abb1eddcb54a965da997454c9f2, type: 3}
+    - {fileID: 8300000, guid: a643658c767235f4e92c204476593130, type: 3}
+    picaSoft: {fileID: 8300000, guid: 4ee908625e9b08b44b32f3462b5ee69e, type: 3}
+    palo:
+    - {fileID: 8300000, guid: 75f1adcf2e304254c89c3f37866b47b3, type: 3}
+    net: {fileID: 8300000, guid: 6f524b31c19ec6e4cb4fb6bd0b0a3225, type: 3}
+    wallSoft:
+    - {fileID: 8300000, guid: 60eeed5206c9d1148b28b68de90cba73, type: 3}
+    wall:
+    - {fileID: 8300000, guid: e4203c2537489e3478816a91ad8042de, type: 3}
+    - {fileID: 8300000, guid: c62ed2dc0f91e5743bad7623ef6a81aa, type: 3}
+    penaltyGO: {fileID: 2744271548317523153, guid: 1c977afd1521fcb43a2e72b3f19e52c5, type: 3}
+  - name: Maximum Security FC
+    difficulty_level: 2
+    selectedSize: small
+    id: 3
+    color: {r: 0.36862746, g: 0.6784314, b: 0.87843144, a: 1}
+    unavailable: 1
+    poster: {fileID: 21300000, guid: 985bb34dd25db144c87d84023fd806b3, type: 3}
+    button: {fileID: 5939679854573884478, guid: fec14f0814e752744b4beef8f44fbe24, type: 3}
+    assets:
+    - size: small
+      asset: {fileID: 7454598723649077627, guid: cdc5a2c75b064474d811a10d72942225, type: 3}
+      size_x: 40.5
+      size_y: 20
+      powerupsSpawners: {fileID: 0}
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    - size: medium
+      asset: {fileID: 8849686315084780500, guid: 55ed98361e822da47aa0ac3c2e765994, type: 3}
+      size_x: 50.5
+      size_y: 30
+      powerupsSpawners: {fileID: 0}
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    - size: large
+      asset: {fileID: 8849686315084780500, guid: 6dc98363e2d965246a62f9fb97453554, type: 3}
+      size_x: 60.5
+      size_y: 30
+      powerupsSpawners: {fileID: 0}
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    ball: {fileID: 1975457108487340, guid: 2f175ea4f5cb2cf4fa361d845f483d81, type: 3}
+    ambience_end_loop: {fileID: 8300000, guid: e8fada0f62978b4458acabb1447eca8f, type: 3}
+    ambience_loop: {fileID: 8300000, guid: c72661a5f92f7674ab72655b9c55d49c, type: 3}
+    opening: {fileID: 8300000, guid: a9d47d500e48a5d459a959c3077f7407, type: 3}
+    crowd_good:
+    - {fileID: 8300000, guid: bc25a209cbf4c7f41a23786b9b1a6688, type: 3}
+    crowd_chance:
+    - {fileID: 8300000, guid: 10a2a377089ea67408d882f72fdfa3e6, type: 3}
+    crowd_bad:
+    - {fileID: 8300000, guid: ba67dbf5db09a674a987d04cef481263, type: 3}
+    crowd_foul:
+    - {fileID: 8300000, guid: f02fa2e3c03e9e848824656288dc0622, type: 3}
+    crowd_gol:
+    - {fileID: 8300000, guid: 3a9713ec2fbeb7b40a80fa693ad8e8ce, type: 3}
+    - {fileID: 8300000, guid: 044e49f41f786d447a50b0797efdad25, type: 3}
+    crowd_expr_vol: 0.65
+    kick_hard:
+    - {fileID: 8300000, guid: b6410f62e7bbc994c930fc0eed370d12, type: 3}
+    - {fileID: 8300000, guid: ca42b0cd19847954589c10ff3eb45956, type: 3}
+    - {fileID: 8300000, guid: 1e60aa59f76ef2649a5078ad63b26fd1, type: 3}
+    kick_pass:
+    - {fileID: 8300000, guid: e2067a58bdf4cf34fa9bdc550fa9343e, type: 3}
+    kick_balloon:
+    - {fileID: 8300000, guid: e07ab2a74fbfb8e4eb3e0a46e0fb2ab8, type: 3}
+    - {fileID: 8300000, guid: 35588dc93112c90429c93d2c1413e2a8, type: 3}
+    kick_soft: {fileID: 8300000, guid: b963a30dd9fe10f49b145ebb2df07573, type: 3}
+    ball_hit_character_soft:
+    - {fileID: 8300000, guid: 1946b9cf1dfd0fb4e8f538af9c6ced74, type: 3}
+    - {fileID: 8300000, guid: 4d56974df64663a448c6f2ec52cc7feb, type: 3}
+    ball_hit_character_hard:
+    - {fileID: 8300000, guid: b176cfd048783204d83c717da74eadfd, type: 3}
+    - {fileID: 8300000, guid: 2a5569bbe9997a2478639cf9c8911e56, type: 3}
+    kick_head:
+    - {fileID: 8300000, guid: 47d673ac166766d4b887fda996b67ae2, type: 3}
+    - {fileID: 8300000, guid: 02f332127ec1e8b4e89a277fdbb2ae69, type: 3}
+    kick_chilena:
+    - {fileID: 8300000, guid: 20026b783864be7409220e6b50e33155, type: 3}
+    ball_catch: {fileID: 8300000, guid: da0a2208303335a4b898565249034dee, type: 3}
+    ball_gk_catch: {fileID: 8300000, guid: 2466632064d76024e81fe1b9d0b5a7d2, type: 3}
+    ball_gk_saca: {fileID: 8300000, guid: 2f21bba2f3924da418257e885bf45580, type: 3}
+    ball_carry:
+    - {fileID: 8300000, guid: bd7e276b9471cdb40a1724cf143ab722, type: 3}
+    pica:
+    - {fileID: 8300000, guid: 4cef0abb1eddcb54a965da997454c9f2, type: 3}
+    - {fileID: 8300000, guid: a643658c767235f4e92c204476593130, type: 3}
+    picaSoft: {fileID: 8300000, guid: 4ee908625e9b08b44b32f3462b5ee69e, type: 3}
+    palo:
+    - {fileID: 8300000, guid: 69383b977d0c8854dae88178d4c260df, type: 3}
+    net: {fileID: 8300000, guid: 6f524b31c19ec6e4cb4fb6bd0b0a3225, type: 3}
+    wallSoft:
+    - {fileID: 8300000, guid: 60eeed5206c9d1148b28b68de90cba73, type: 3}
+    wall:
+    - {fileID: 8300000, guid: e4203c2537489e3478816a91ad8042de, type: 3}
+    - {fileID: 8300000, guid: c62ed2dc0f91e5743bad7623ef6a81aa, type: 3}
+    penaltyGO: {fileID: 2744271548317523153, guid: 1c977afd1521fcb43a2e72b3f19e52c5, type: 3}
+  - name: Lunar Arena
+    difficulty_level: 4
+    selectedSize: small
+    id: 4
+    color: {r: 1, g: 0.48235294, b: 0.6745098, a: 1}
+    unavailable: 1
+    poster: {fileID: 0}
+    button: {fileID: 5939679854573884478, guid: f71d414f35ea5c0419e399b30f4c32ff, type: 3}
+    assets:
+    - size: small
+      asset: {fileID: 7454598723649077627, guid: cdc5a2c75b064474d811a10d72942225, type: 3}
+      size_x: 40.5
+      size_y: 20
+      powerupsSpawners: {fileID: 0}
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    - size: medium
+      asset: {fileID: 8849686315084780500, guid: 55ed98361e822da47aa0ac3c2e765994, type: 3}
+      size_x: 60
+      size_y: 30
+      powerupsSpawners: {fileID: 0}
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    - size: large
+      asset: {fileID: 8849686315084780500, guid: 6dc98363e2d965246a62f9fb97453554, type: 3}
+      size_x: 60.5
+      size_y: 30
+      powerupsSpawners: {fileID: 0}
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    ball: {fileID: 1975457108487340, guid: 08a8f349a35d25a4d899282f409c9710, type: 3}
+    ambience_end_loop: {fileID: 8300000, guid: e8fada0f62978b4458acabb1447eca8f, type: 3}
+    ambience_loop: {fileID: 8300000, guid: c72661a5f92f7674ab72655b9c55d49c, type: 3}
+    opening: {fileID: 8300000, guid: cad6d8b61df69e24b90cf527910bcef4, type: 3}
+    crowd_good:
+    - {fileID: 8300000, guid: bc25a209cbf4c7f41a23786b9b1a6688, type: 3}
+    crowd_chance:
+    - {fileID: 8300000, guid: 10a2a377089ea67408d882f72fdfa3e6, type: 3}
+    crowd_bad:
+    - {fileID: 8300000, guid: ba67dbf5db09a674a987d04cef481263, type: 3}
+    crowd_foul:
+    - {fileID: 8300000, guid: f02fa2e3c03e9e848824656288dc0622, type: 3}
+    crowd_gol:
+    - {fileID: 8300000, guid: 044e49f41f786d447a50b0797efdad25, type: 3}
+    - {fileID: 8300000, guid: 3a9713ec2fbeb7b40a80fa693ad8e8ce, type: 3}
+    crowd_expr_vol: 0.65
+    kick_hard:
+    - {fileID: 8300000, guid: b6410f62e7bbc994c930fc0eed370d12, type: 3}
+    - {fileID: 8300000, guid: ca42b0cd19847954589c10ff3eb45956, type: 3}
+    - {fileID: 8300000, guid: 1e60aa59f76ef2649a5078ad63b26fd1, type: 3}
+    kick_pass:
+    - {fileID: 8300000, guid: e2067a58bdf4cf34fa9bdc550fa9343e, type: 3}
+    kick_balloon:
+    - {fileID: 8300000, guid: e07ab2a74fbfb8e4eb3e0a46e0fb2ab8, type: 3}
+    - {fileID: 8300000, guid: 35588dc93112c90429c93d2c1413e2a8, type: 3}
+    kick_soft: {fileID: 8300000, guid: b963a30dd9fe10f49b145ebb2df07573, type: 3}
+    ball_hit_character_soft:
+    - {fileID: 8300000, guid: 1946b9cf1dfd0fb4e8f538af9c6ced74, type: 3}
+    - {fileID: 8300000, guid: 4d56974df64663a448c6f2ec52cc7feb, type: 3}
+    ball_hit_character_hard:
+    - {fileID: 8300000, guid: b176cfd048783204d83c717da74eadfd, type: 3}
+    - {fileID: 8300000, guid: 2a5569bbe9997a2478639cf9c8911e56, type: 3}
+    kick_head:
+    - {fileID: 8300000, guid: 47d673ac166766d4b887fda996b67ae2, type: 3}
+    - {fileID: 8300000, guid: 02f332127ec1e8b4e89a277fdbb2ae69, type: 3}
+    kick_chilena:
+    - {fileID: 8300000, guid: 20026b783864be7409220e6b50e33155, type: 3}
+    ball_catch: {fileID: 8300000, guid: da0a2208303335a4b898565249034dee, type: 3}
+    ball_gk_catch: {fileID: 8300000, guid: 2466632064d76024e81fe1b9d0b5a7d2, type: 3}
+    ball_gk_saca: {fileID: 8300000, guid: 2f21bba2f3924da418257e885bf45580, type: 3}
+    ball_carry:
+    - {fileID: 8300000, guid: bd7e276b9471cdb40a1724cf143ab722, type: 3}
+    pica:
+    - {fileID: 8300000, guid: 4cef0abb1eddcb54a965da997454c9f2, type: 3}
+    - {fileID: 8300000, guid: a643658c767235f4e92c204476593130, type: 3}
+    picaSoft: {fileID: 8300000, guid: 4ee908625e9b08b44b32f3462b5ee69e, type: 3}
+    palo:
+    - {fileID: 8300000, guid: 69383b977d0c8854dae88178d4c260df, type: 3}
+    net: {fileID: 8300000, guid: 6f524b31c19ec6e4cb4fb6bd0b0a3225, type: 3}
+    wallSoft:
+    - {fileID: 8300000, guid: 60eeed5206c9d1148b28b68de90cba73, type: 3}
+    wall:
+    - {fileID: 8300000, guid: e4203c2537489e3478816a91ad8042de, type: 3}
+    - {fileID: 8300000, guid: c62ed2dc0f91e5743bad7623ef6a81aa, type: 3}
+    penaltyGO: {fileID: 2744271548317523153, guid: 1c977afd1521fcb43a2e72b3f19e52c5, type: 3}
+  - name: El Barrio Futbol Club
+    difficulty_level: 3
+    selectedSize: small
+    id: 5
+    color: {r: 0, g: 0.6509804, b: 0.31764707, a: 1}
+    unavailable: 1
+    poster: {fileID: 21300000, guid: cea58de27d336864b89d3d218a662d2b, type: 3}
+    button: {fileID: 5939679854573884478, guid: 877fe35f4923cca40b83a4caa4f002e8, type: 3}
+    assets:
+    - size: small
+      asset: {fileID: 7454598723649077627, guid: cdc5a2c75b064474d811a10d72942225, type: 3}
+      size_x: 40.5
+      size_y: 20
+      powerupsSpawners: {fileID: 0}
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    - size: medium
+      asset: {fileID: 8849686315084780500, guid: 55ed98361e822da47aa0ac3c2e765994, type: 3}
+      size_x: 60.5
+      size_y: 30
+      powerupsSpawners: {fileID: 0}
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    - size: large
+      asset: {fileID: 8849686315084780500, guid: 6dc98363e2d965246a62f9fb97453554, type: 3}
+      size_x: 60.5
+      size_y: 30
+      powerupsSpawners: {fileID: 0}
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    ball: {fileID: 1975457108487340, guid: cbcd3b3cbb1d17f48bf8f38b9b7e3004, type: 3}
+    ambience_end_loop: {fileID: 8300000, guid: e8fada0f62978b4458acabb1447eca8f, type: 3}
+    ambience_loop: {fileID: 8300000, guid: c72661a5f92f7674ab72655b9c55d49c, type: 3}
+    opening: {fileID: 8300000, guid: a00097c040b00af42ba7b1c797ac287d, type: 3}
+    crowd_good:
+    - {fileID: 8300000, guid: bc25a209cbf4c7f41a23786b9b1a6688, type: 3}
+    crowd_chance:
+    - {fileID: 8300000, guid: 10a2a377089ea67408d882f72fdfa3e6, type: 3}
+    crowd_bad:
+    - {fileID: 8300000, guid: ba67dbf5db09a674a987d04cef481263, type: 3}
+    crowd_foul:
+    - {fileID: 8300000, guid: f02fa2e3c03e9e848824656288dc0622, type: 3}
+    crowd_gol:
+    - {fileID: 8300000, guid: 3a9713ec2fbeb7b40a80fa693ad8e8ce, type: 3}
+    - {fileID: 8300000, guid: 044e49f41f786d447a50b0797efdad25, type: 3}
+    crowd_expr_vol: 0.65
+    kick_hard:
+    - {fileID: 8300000, guid: b6410f62e7bbc994c930fc0eed370d12, type: 3}
+    - {fileID: 8300000, guid: ca42b0cd19847954589c10ff3eb45956, type: 3}
+    - {fileID: 8300000, guid: 1e60aa59f76ef2649a5078ad63b26fd1, type: 3}
+    kick_pass:
+    - {fileID: 8300000, guid: e2067a58bdf4cf34fa9bdc550fa9343e, type: 3}
+    kick_balloon:
+    - {fileID: 8300000, guid: e07ab2a74fbfb8e4eb3e0a46e0fb2ab8, type: 3}
+    - {fileID: 8300000, guid: 35588dc93112c90429c93d2c1413e2a8, type: 3}
+    kick_soft: {fileID: 8300000, guid: b963a30dd9fe10f49b145ebb2df07573, type: 3}
+    ball_hit_character_soft:
+    - {fileID: 8300000, guid: 1946b9cf1dfd0fb4e8f538af9c6ced74, type: 3}
+    - {fileID: 8300000, guid: 4d56974df64663a448c6f2ec52cc7feb, type: 3}
+    ball_hit_character_hard:
+    - {fileID: 8300000, guid: b176cfd048783204d83c717da74eadfd, type: 3}
+    - {fileID: 8300000, guid: 2a5569bbe9997a2478639cf9c8911e56, type: 3}
+    kick_head:
+    - {fileID: 8300000, guid: 47d673ac166766d4b887fda996b67ae2, type: 3}
+    - {fileID: 8300000, guid: 02f332127ec1e8b4e89a277fdbb2ae69, type: 3}
+    kick_chilena:
+    - {fileID: 8300000, guid: 20026b783864be7409220e6b50e33155, type: 3}
+    ball_catch: {fileID: 8300000, guid: da0a2208303335a4b898565249034dee, type: 3}
+    ball_gk_catch: {fileID: 8300000, guid: 2466632064d76024e81fe1b9d0b5a7d2, type: 3}
+    ball_gk_saca: {fileID: 8300000, guid: 2f21bba2f3924da418257e885bf45580, type: 3}
+    ball_carry:
+    - {fileID: 8300000, guid: bd7e276b9471cdb40a1724cf143ab722, type: 3}
+    pica:
+    - {fileID: 8300000, guid: 4cef0abb1eddcb54a965da997454c9f2, type: 3}
+    - {fileID: 8300000, guid: a643658c767235f4e92c204476593130, type: 3}
+    picaSoft: {fileID: 8300000, guid: 4ee908625e9b08b44b32f3462b5ee69e, type: 3}
+    palo:
+    - {fileID: 8300000, guid: 69383b977d0c8854dae88178d4c260df, type: 3}
+    net: {fileID: 8300000, guid: 6f524b31c19ec6e4cb4fb6bd0b0a3225, type: 3}
+    wallSoft:
+    - {fileID: 8300000, guid: 60eeed5206c9d1148b28b68de90cba73, type: 3}
+    wall:
+    - {fileID: 8300000, guid: e4203c2537489e3478816a91ad8042de, type: 3}
+    - {fileID: 8300000, guid: c62ed2dc0f91e5743bad7623ef6a81aa, type: 3}
+    penaltyGO: {fileID: 2744271548317523153, guid: 1c977afd1521fcb43a2e72b3f19e52c5, type: 3}
+  - name: Boreal Stadium
+    difficulty_level: 5
+    selectedSize: small
+    id: 6
+    color: {r: 0.9803922, g: 0.9803922, b: 0.9803922, a: 1}
+    unavailable: 1
+    poster: {fileID: 21300000, guid: cea58de27d336864b89d3d218a662d2b, type: 3}
+    button: {fileID: 5939679854573884478, guid: 83c3a247da60c4c42a81fb5396ad6caf, type: 3}
+    assets:
+    - size: small
+      asset: {fileID: 7454598723649077627, guid: cdc5a2c75b064474d811a10d72942225, type: 3}
+      size_x: 40.5
+      size_y: 20
+      powerupsSpawners: {fileID: 0}
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    - size: medium
+      asset: {fileID: 8849686315084780500, guid: 55ed98361e822da47aa0ac3c2e765994, type: 3}
+      size_x: 60.5
+      size_y: 30
+      powerupsSpawners: {fileID: 0}
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    - size: large
+      asset: {fileID: 8849686315084780500, guid: 6dc98363e2d965246a62f9fb97453554, type: 3}
+      size_x: 60.5
+      size_y: 30
+      powerupsSpawners: {fileID: 0}
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    ball: {fileID: 1975457108487340, guid: 08a8f349a35d25a4d899282f409c9710, type: 3}
+    ambience_end_loop: {fileID: 8300000, guid: e8fada0f62978b4458acabb1447eca8f, type: 3}
+    ambience_loop: {fileID: 8300000, guid: c72661a5f92f7674ab72655b9c55d49c, type: 3}
+    opening: {fileID: 8300000, guid: a00097c040b00af42ba7b1c797ac287d, type: 3}
+    crowd_good:
+    - {fileID: 8300000, guid: bc25a209cbf4c7f41a23786b9b1a6688, type: 3}
+    crowd_chance:
+    - {fileID: 8300000, guid: 10a2a377089ea67408d882f72fdfa3e6, type: 3}
+    crowd_bad:
+    - {fileID: 8300000, guid: ba67dbf5db09a674a987d04cef481263, type: 3}
+    crowd_foul:
+    - {fileID: 8300000, guid: f02fa2e3c03e9e848824656288dc0622, type: 3}
+    crowd_gol:
+    - {fileID: 8300000, guid: 3a9713ec2fbeb7b40a80fa693ad8e8ce, type: 3}
+    - {fileID: 8300000, guid: 044e49f41f786d447a50b0797efdad25, type: 3}
+    crowd_expr_vol: 0.65
+    kick_hard:
+    - {fileID: 8300000, guid: b6410f62e7bbc994c930fc0eed370d12, type: 3}
+    - {fileID: 8300000, guid: ca42b0cd19847954589c10ff3eb45956, type: 3}
+    - {fileID: 8300000, guid: 1e60aa59f76ef2649a5078ad63b26fd1, type: 3}
+    kick_pass:
+    - {fileID: 8300000, guid: e2067a58bdf4cf34fa9bdc550fa9343e, type: 3}
+    kick_balloon:
+    - {fileID: 8300000, guid: e07ab2a74fbfb8e4eb3e0a46e0fb2ab8, type: 3}
+    - {fileID: 8300000, guid: 35588dc93112c90429c93d2c1413e2a8, type: 3}
+    kick_soft: {fileID: 8300000, guid: b963a30dd9fe10f49b145ebb2df07573, type: 3}
+    ball_hit_character_soft:
+    - {fileID: 8300000, guid: 1946b9cf1dfd0fb4e8f538af9c6ced74, type: 3}
+    - {fileID: 8300000, guid: 4d56974df64663a448c6f2ec52cc7feb, type: 3}
+    ball_hit_character_hard:
+    - {fileID: 8300000, guid: b176cfd048783204d83c717da74eadfd, type: 3}
+    - {fileID: 8300000, guid: 2a5569bbe9997a2478639cf9c8911e56, type: 3}
+    kick_head:
+    - {fileID: 8300000, guid: 47d673ac166766d4b887fda996b67ae2, type: 3}
+    - {fileID: 8300000, guid: 02f332127ec1e8b4e89a277fdbb2ae69, type: 3}
+    kick_chilena:
+    - {fileID: 8300000, guid: 20026b783864be7409220e6b50e33155, type: 3}
+    ball_catch: {fileID: 8300000, guid: da0a2208303335a4b898565249034dee, type: 3}
+    ball_gk_catch: {fileID: 8300000, guid: 2466632064d76024e81fe1b9d0b5a7d2, type: 3}
+    ball_gk_saca: {fileID: 8300000, guid: 2f21bba2f3924da418257e885bf45580, type: 3}
+    ball_carry:
+    - {fileID: 8300000, guid: bd7e276b9471cdb40a1724cf143ab722, type: 3}
+    pica:
+    - {fileID: 8300000, guid: 4cef0abb1eddcb54a965da997454c9f2, type: 3}
+    - {fileID: 8300000, guid: a643658c767235f4e92c204476593130, type: 3}
+    picaSoft: {fileID: 8300000, guid: 4ee908625e9b08b44b32f3462b5ee69e, type: 3}
+    palo:
+    - {fileID: 8300000, guid: 69383b977d0c8854dae88178d4c260df, type: 3}
+    net: {fileID: 8300000, guid: 6f524b31c19ec6e4cb4fb6bd0b0a3225, type: 3}
+    wallSoft:
+    - {fileID: 8300000, guid: 60eeed5206c9d1148b28b68de90cba73, type: 3}
+    wall:
+    - {fileID: 8300000, guid: e4203c2537489e3478816a91ad8042de, type: 3}
+    - {fileID: 8300000, guid: c62ed2dc0f91e5743bad7623ef6a81aa, type: 3}
+    penaltyGO: {fileID: 2744271548317523153, guid: 1c977afd1521fcb43a2e72b3f19e52c5, type: 3}

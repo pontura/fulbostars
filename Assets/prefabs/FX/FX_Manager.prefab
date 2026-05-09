@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &476996661315792101
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 476996661315792100}
+  - component: {fileID: 3547710524790432558}
+  m_Layer: 0
+  m_Name: FX_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &476996661315792100
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476996661315792101}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3547710524790432558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476996661315792101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 314463e6d0fa2f54c8c7dd91e0530792, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  all:
+  - type: 0
+    asset: {fileID: 4701380167200156561, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+  - type: 2
+    asset: {fileID: 7331889148927066837, guid: 8d05cae5214cc984c9b60aa74911e99a, type: 3}
+  - type: 3
+    asset: {fileID: 7331889148927066837, guid: a3c736d886ce37a41a84c7208466c3ea, type: 3}
+  - type: 4
+    asset: {fileID: 5136434104011933038, guid: f6b5e60464510324f994a6e67c27805d, type: 3}
+  - type: 5
+    asset: {fileID: 7731768628479770338, guid: ec852d21f5de802438dfe3c046ef21b7, type: 3}
+  - type: 6
+    asset: {fileID: 5136434104011933038, guid: f6b5e60464510324f994a6e67c27805d, type: 3}
+  - type: 7
+    asset: {fileID: 7331889148927066837, guid: aad4ad41f5bc4364ab975cb03917a510, type: 3}
+  - type: 8
+    asset: {fileID: 8000518602025453615, guid: cc31d0845f7eea8439645b12f1d4c3bd, type: 3}
+  container: {fileID: 476996661315792100}

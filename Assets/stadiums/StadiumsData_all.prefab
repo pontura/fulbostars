@@ -1,0 +1,538 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2076156035935513040
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7980865693027282433}
+  - component: {fileID: 6572349825603234119}
+  m_Layer: 0
+  m_Name: StadiumsData_all
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7980865693027282433
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076156035935513040}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.752614, y: 0.8570783, z: 1.3321605}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6572349825603234119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076156035935513040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85f7bbbb909823848b15c30999f98920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isStadiumActive: 0
+  active:
+    name: demo
+    selectedSize: small
+    id: 0
+    assets:
+    - size: small
+      asset: {fileID: 7454598723649077627, guid: 8be39126f37911d4c9018583395adb03,
+        type: 3}
+      size_x: 40.5
+      size_y: 30
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    ball: {fileID: 1975457108487340, guid: ec3e8f3ed27e2244caaedaf589590a03, type: 3}
+    ambience_loop: {fileID: 0}
+    ambience_loop_vol: 0
+    crowd_loop: {fileID: 0}
+    crowd_loop_vol: 0
+    crowd_good: {fileID: 0}
+    crowd_bad: {fileID: 0}
+    crowd_gol: {fileID: 0}
+    crowd_expr_vol: 0
+    kick_hard:
+    - {fileID: 8300000, guid: c5c3a04d4201bcf4fb20cd1480639e8d, type: 3}
+    - {fileID: 8300000, guid: 5e04e55550b3fc94aae41f2a6eb3990a, type: 3}
+    kick_pass:
+    - {fileID: 8300000, guid: f4fbefb63db9e4f4188eb1fa0ffc48e2, type: 3}
+    kick_balloon:
+    - {fileID: 8300000, guid: c3d5321d9d19d414fb279e1e911b0cf9, type: 3}
+    ball_hit_character:
+    - {fileID: 8300000, guid: e6016145a93bfbd4c93966875ea86c03, type: 3}
+    kick_head: {fileID: 8300000, guid: 7f0d39c236a102649b353cf3af577cc0, type: 3}
+    ball_catch: {fileID: 8300000, guid: 6f2a51d4711b5734d954c25bbe4e731c, type: 3}
+    ball_gk_catch: {fileID: 8300000, guid: 2466632064d76024e81fe1b9d0b5a7d2, type: 3}
+    ball_gk_saca: {fileID: 8300000, guid: 9d4452a9b19d38542ba194bfed956737, type: 3}
+    pica:
+    - {fileID: 8300000, guid: 281fc6b7270d761459f817530dce3310, type: 3}
+    palo:
+    - {fileID: 8300000, guid: 4acf3c6396c682c449d25acd076f6a9c, type: 3}
+    net: {fileID: 8300000, guid: 0a94dfc9706e87341ba71c61f232ec95, type: 3}
+    wall:
+    - {fileID: 8300000, guid: e4203c2537489e3478816a91ad8042de, type: 3}
+    - {fileID: 8300000, guid: 60eeed5206c9d1148b28b68de90cba73, type: 3}
+    penaltyGO: {fileID: 2744271548317523153, guid: 1c977afd1521fcb43a2e72b3f19e52c5,
+      type: 3}
+  all:
+  - name: Tutorial
+    selectedSize: small
+    id: -1
+    assets:
+    - size: small
+      asset: {fileID: 8849686315084780500, guid: e095f5f05e5f1cd45965095357188e05,
+        type: 3}
+      size_x: 40.5
+      size_y: 30
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    - size: medium
+      asset: {fileID: 8849686315084780500, guid: ce4aff0342590fa41bc479a4b16f4d92,
+        type: 3}
+      size_x: 60.5
+      size_y: 30
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    ball: {fileID: 1975457108487340, guid: 8a9eabc1101269c4588d2416424e2067, type: 3}
+    ambience_loop: {fileID: 8300000, guid: 33daa1a0100d8f4448a65bf0fe074e50, type: 3}
+    ambience_loop_vol: 0.25
+    crowd_loop: {fileID: 8300000, guid: 4c1db7191132d844786be3710dd3bb93, type: 3}
+    crowd_loop_vol: 0.5
+    crowd_good: {fileID: 8300000, guid: a115dcf32c20cd34cad123c3148702d0, type: 3}
+    crowd_bad: {fileID: 8300000, guid: 3812792d52d048f44a8e036f23e45bc6, type: 3}
+    crowd_gol: {fileID: 8300000, guid: 2ee0d60b012022e4cb4cb8dd96f40659, type: 3}
+    crowd_expr_vol: 0.65
+    kick_hard:
+    - {fileID: 8300000, guid: c5c3a04d4201bcf4fb20cd1480639e8d, type: 3}
+    - {fileID: 8300000, guid: 5e04e55550b3fc94aae41f2a6eb3990a, type: 3}
+    kick_pass:
+    - {fileID: 8300000, guid: f4fbefb63db9e4f4188eb1fa0ffc48e2, type: 3}
+    kick_balloon:
+    - {fileID: 8300000, guid: c3d5321d9d19d414fb279e1e911b0cf9, type: 3}
+    ball_hit_character:
+    - {fileID: 8300000, guid: 6f2a51d4711b5734d954c25bbe4e731c, type: 3}
+    kick_head: {fileID: 8300000, guid: c5c3a04d4201bcf4fb20cd1480639e8d, type: 3}
+    ball_catch: {fileID: 8300000, guid: 6f2a51d4711b5734d954c25bbe4e731c, type: 3}
+    ball_gk_catch: {fileID: 8300000, guid: 2466632064d76024e81fe1b9d0b5a7d2, type: 3}
+    ball_gk_saca: {fileID: 8300000, guid: 9d4452a9b19d38542ba194bfed956737, type: 3}
+    pica:
+    - {fileID: 8300000, guid: 6f2a51d4711b5734d954c25bbe4e731c, type: 3}
+    palo:
+    - {fileID: 8300000, guid: 4acf3c6396c682c449d25acd076f6a9c, type: 3}
+    net: {fileID: 8300000, guid: 0a94dfc9706e87341ba71c61f232ec95, type: 3}
+    wall:
+    - {fileID: 8300000, guid: e4203c2537489e3478816a91ad8042de, type: 3}
+    - {fileID: 8300000, guid: c3d5321d9d19d414fb279e1e911b0cf9, type: 3}
+    penaltyGO: {fileID: 2744271548317523153, guid: 1c977afd1521fcb43a2e72b3f19e52c5,
+      type: 3}
+  - name: Fulbo $tadium
+    selectedSize: small
+    id: 0
+    assets:
+    - size: small
+      asset: {fileID: 7454598723649077627, guid: 8be39126f37911d4c9018583395adb03,
+        type: 3}
+      size_x: 40.5
+      size_y: 30
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    - size: medium
+      asset: {fileID: 8849686315084780500, guid: b14e9c1e3e97825449d9078ad4a295d5,
+        type: 3}
+      size_x: 60.5
+      size_y: 30
+      cameraSettings:
+        originalZoomSize: 6
+        offsetZ: 6
+    - size: large
+      asset: {fileID: 8849686315084780500, guid: 32f0add29c573a64abceb15070c74d06,
+        type: 3}
+      size_x: 80.5
+      size_y: 40
+      cameraSettings:
+        originalZoomSize: 7
+        offsetZ: 2
+    ball: {fileID: 1975457108487340, guid: ec3e8f3ed27e2244caaedaf589590a03, type: 3}
+    ambience_loop: {fileID: 8300000, guid: 33daa1a0100d8f4448a65bf0fe074e50, type: 3}
+    ambience_loop_vol: 0.25
+    crowd_loop: {fileID: 8300000, guid: 4c1db7191132d844786be3710dd3bb93, type: 3}
+    crowd_loop_vol: 0.5
+    crowd_good: {fileID: 8300000, guid: a115dcf32c20cd34cad123c3148702d0, type: 3}
+    crowd_bad: {fileID: 8300000, guid: 3812792d52d048f44a8e036f23e45bc6, type: 3}
+    crowd_gol: {fileID: 8300000, guid: 2ee0d60b012022e4cb4cb8dd96f40659, type: 3}
+    crowd_expr_vol: 0.65
+    kick_hard:
+    - {fileID: 8300000, guid: c5c3a04d4201bcf4fb20cd1480639e8d, type: 3}
+    - {fileID: 8300000, guid: 5e04e55550b3fc94aae41f2a6eb3990a, type: 3}
+    kick_pass:
+    - {fileID: 8300000, guid: f4fbefb63db9e4f4188eb1fa0ffc48e2, type: 3}
+    kick_balloon:
+    - {fileID: 8300000, guid: c3d5321d9d19d414fb279e1e911b0cf9, type: 3}
+    ball_hit_character:
+    - {fileID: 8300000, guid: e6016145a93bfbd4c93966875ea86c03, type: 3}
+    kick_head: {fileID: 8300000, guid: 7f0d39c236a102649b353cf3af577cc0, type: 3}
+    ball_catch: {fileID: 8300000, guid: 6f2a51d4711b5734d954c25bbe4e731c, type: 3}
+    ball_gk_catch: {fileID: 8300000, guid: 2466632064d76024e81fe1b9d0b5a7d2, type: 3}
+    ball_gk_saca: {fileID: 8300000, guid: 9d4452a9b19d38542ba194bfed956737, type: 3}
+    pica:
+    - {fileID: 8300000, guid: 281fc6b7270d761459f817530dce3310, type: 3}
+    palo:
+    - {fileID: 8300000, guid: 4acf3c6396c682c449d25acd076f6a9c, type: 3}
+    net: {fileID: 8300000, guid: 0a94dfc9706e87341ba71c61f232ec95, type: 3}
+    wall:
+    - {fileID: 8300000, guid: e4203c2537489e3478816a91ad8042de, type: 3}
+    - {fileID: 8300000, guid: c3d5321d9d19d414fb279e1e911b0cf9, type: 3}
+    penaltyGO: {fileID: 2744271548317523153, guid: 1c977afd1521fcb43a2e72b3f19e52c5,
+      type: 3}
+  - name: El Barrio Futbol Club
+    selectedSize: small
+    id: 1
+    assets:
+    - size: small
+      asset: {fileID: 8849686315084780500, guid: 400dde6feb2652f45854ad41adc31c3b,
+        type: 3}
+      size_x: 40.5
+      size_y: 20
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    - size: medium
+      asset: {fileID: 8849686315084780500, guid: 160f87fbe2b4d1946886c8edfdd79b3d,
+        type: 3}
+      size_x: 60.5
+      size_y: 30
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    - size: large
+      asset: {fileID: 8849686315084780500, guid: cf7d56d727520804da1f30bd59b77644,
+        type: 3}
+      size_x: 60.5
+      size_y: 30
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    ball: {fileID: 1975457108487340, guid: cbcd3b3cbb1d17f48bf8f38b9b7e3004, type: 3}
+    ambience_loop: {fileID: 8300000, guid: 33daa1a0100d8f4448a65bf0fe074e50, type: 3}
+    ambience_loop_vol: 0.25
+    crowd_loop: {fileID: 8300000, guid: 4c1db7191132d844786be3710dd3bb93, type: 3}
+    crowd_loop_vol: 0.5
+    crowd_good: {fileID: 8300000, guid: a115dcf32c20cd34cad123c3148702d0, type: 3}
+    crowd_bad: {fileID: 8300000, guid: 3812792d52d048f44a8e036f23e45bc6, type: 3}
+    crowd_gol: {fileID: 8300000, guid: 2ee0d60b012022e4cb4cb8dd96f40659, type: 3}
+    crowd_expr_vol: 0.65
+    kick_hard:
+    - {fileID: 8300000, guid: c5c3a04d4201bcf4fb20cd1480639e8d, type: 3}
+    - {fileID: 8300000, guid: 5e04e55550b3fc94aae41f2a6eb3990a, type: 3}
+    kick_pass:
+    - {fileID: 8300000, guid: f4fbefb63db9e4f4188eb1fa0ffc48e2, type: 3}
+    kick_balloon:
+    - {fileID: 8300000, guid: c3d5321d9d19d414fb279e1e911b0cf9, type: 3}
+    ball_hit_character:
+    - {fileID: 8300000, guid: 6f2a51d4711b5734d954c25bbe4e731c, type: 3}
+    kick_head: {fileID: 8300000, guid: c5c3a04d4201bcf4fb20cd1480639e8d, type: 3}
+    ball_catch: {fileID: 8300000, guid: 6f2a51d4711b5734d954c25bbe4e731c, type: 3}
+    ball_gk_catch: {fileID: 8300000, guid: 2466632064d76024e81fe1b9d0b5a7d2, type: 3}
+    ball_gk_saca: {fileID: 8300000, guid: 9d4452a9b19d38542ba194bfed956737, type: 3}
+    pica:
+    - {fileID: 8300000, guid: 6f2a51d4711b5734d954c25bbe4e731c, type: 3}
+    palo:
+    - {fileID: 8300000, guid: 4acf3c6396c682c449d25acd076f6a9c, type: 3}
+    net: {fileID: 8300000, guid: 0a94dfc9706e87341ba71c61f232ec95, type: 3}
+    wall:
+    - {fileID: 8300000, guid: e4203c2537489e3478816a91ad8042de, type: 3}
+    - {fileID: 8300000, guid: c3d5321d9d19d414fb279e1e911b0cf9, type: 3}
+    penaltyGO: {fileID: 2744271548317523153, guid: 1c977afd1521fcb43a2e72b3f19e52c5,
+      type: 3}
+  - name: Maximum Security FC
+    selectedSize: small
+    id: 2
+    assets:
+    - size: small
+      asset: {fileID: 8849686315084780500, guid: 721be1f912c6a3a4fa1a05d8ce5abad0,
+        type: 3}
+      size_x: 40.5
+      size_y: 20
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    - size: medium
+      asset: {fileID: 8849686315084780500, guid: 47f2fe58b0d93f847bbc4dd4bafeec86,
+        type: 3}
+      size_x: 50.5
+      size_y: 30
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    - size: large
+      asset: {fileID: 8849686315084780500, guid: 45ff8c27de7b2084fa631d3268206345,
+        type: 3}
+      size_x: 60.5
+      size_y: 30
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    ball: {fileID: 1975457108487340, guid: 2f175ea4f5cb2cf4fa361d845f483d81, type: 3}
+    ambience_loop: {fileID: 8300000, guid: 8121b70509a99dd4e8b4a212a9635ebf, type: 3}
+    ambience_loop_vol: 0.25
+    crowd_loop: {fileID: 8300000, guid: 4c1db7191132d844786be3710dd3bb93, type: 3}
+    crowd_loop_vol: 0.5
+    crowd_good: {fileID: 8300000, guid: a115dcf32c20cd34cad123c3148702d0, type: 3}
+    crowd_bad: {fileID: 8300000, guid: 3812792d52d048f44a8e036f23e45bc6, type: 3}
+    crowd_gol: {fileID: 8300000, guid: 2ee0d60b012022e4cb4cb8dd96f40659, type: 3}
+    crowd_expr_vol: 0.65
+    kick_hard:
+    - {fileID: 8300000, guid: c5c3a04d4201bcf4fb20cd1480639e8d, type: 3}
+    - {fileID: 8300000, guid: 5e04e55550b3fc94aae41f2a6eb3990a, type: 3}
+    kick_pass:
+    - {fileID: 8300000, guid: f4fbefb63db9e4f4188eb1fa0ffc48e2, type: 3}
+    kick_balloon:
+    - {fileID: 8300000, guid: c3d5321d9d19d414fb279e1e911b0cf9, type: 3}
+    ball_hit_character:
+    - {fileID: 8300000, guid: e6016145a93bfbd4c93966875ea86c03, type: 3}
+    kick_head: {fileID: 8300000, guid: c5c3a04d4201bcf4fb20cd1480639e8d, type: 3}
+    ball_catch: {fileID: 8300000, guid: 6f2a51d4711b5734d954c25bbe4e731c, type: 3}
+    ball_gk_catch: {fileID: 8300000, guid: 2466632064d76024e81fe1b9d0b5a7d2, type: 3}
+    ball_gk_saca: {fileID: 8300000, guid: 9d4452a9b19d38542ba194bfed956737, type: 3}
+    pica:
+    - {fileID: 8300000, guid: 6f2a51d4711b5734d954c25bbe4e731c, type: 3}
+    palo:
+    - {fileID: 8300000, guid: 4acf3c6396c682c449d25acd076f6a9c, type: 3}
+    net: {fileID: 8300000, guid: 0a94dfc9706e87341ba71c61f232ec95, type: 3}
+    wall:
+    - {fileID: 8300000, guid: e4203c2537489e3478816a91ad8042de, type: 3}
+    - {fileID: 8300000, guid: c3d5321d9d19d414fb279e1e911b0cf9, type: 3}
+    penaltyGO: {fileID: 2744271548317523153, guid: 1c977afd1521fcb43a2e72b3f19e52c5,
+      type: 3}
+  - name: Rio Do Jamaica Arena
+    selectedSize: small
+    id: 3
+    assets:
+    - size: small
+      asset: {fileID: 8849686315084780500, guid: e837e42eb0eb37546a8babf08f306da5,
+        type: 3}
+      size_x: 40.5
+      size_y: 30
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    - size: medium
+      asset: {fileID: 8849686315084780500, guid: a5b5e18da861c424ca2050d8f0799ea9,
+        type: 3}
+      size_x: 60.5
+      size_y: 30
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    - size: large
+      asset: {fileID: 8849686315084780500, guid: 4e39a34ece0f64a40a9dbb54a5f6c59d,
+        type: 3}
+      size_x: 80.5
+      size_y: 30
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    ball: {fileID: 1975457108487340, guid: f2c88592bdcfbf248940cf986b243946, type: 3}
+    ambience_loop: {fileID: 8300000, guid: 33daa1a0100d8f4448a65bf0fe074e50, type: 3}
+    ambience_loop_vol: 0.25
+    crowd_loop: {fileID: 8300000, guid: 4c1db7191132d844786be3710dd3bb93, type: 3}
+    crowd_loop_vol: 0.25
+    crowd_good: {fileID: 8300000, guid: a115dcf32c20cd34cad123c3148702d0, type: 3}
+    crowd_bad: {fileID: 8300000, guid: 3812792d52d048f44a8e036f23e45bc6, type: 3}
+    crowd_gol: {fileID: 8300000, guid: 2ee0d60b012022e4cb4cb8dd96f40659, type: 3}
+    crowd_expr_vol: 0.35
+    kick_hard:
+    - {fileID: 8300000, guid: c5c3a04d4201bcf4fb20cd1480639e8d, type: 3}
+    - {fileID: 8300000, guid: 5e04e55550b3fc94aae41f2a6eb3990a, type: 3}
+    kick_pass:
+    - {fileID: 8300000, guid: f4fbefb63db9e4f4188eb1fa0ffc48e2, type: 3}
+    kick_balloon:
+    - {fileID: 8300000, guid: c3d5321d9d19d414fb279e1e911b0cf9, type: 3}
+    ball_hit_character:
+    - {fileID: 8300000, guid: e6016145a93bfbd4c93966875ea86c03, type: 3}
+    kick_head: {fileID: 8300000, guid: c5c3a04d4201bcf4fb20cd1480639e8d, type: 3}
+    ball_catch: {fileID: 8300000, guid: 6f2a51d4711b5734d954c25bbe4e731c, type: 3}
+    ball_gk_catch: {fileID: 8300000, guid: 2466632064d76024e81fe1b9d0b5a7d2, type: 3}
+    ball_gk_saca: {fileID: 8300000, guid: 9d4452a9b19d38542ba194bfed956737, type: 3}
+    pica:
+    - {fileID: 8300000, guid: 6f2a51d4711b5734d954c25bbe4e731c, type: 3}
+    palo:
+    - {fileID: 8300000, guid: 4acf3c6396c682c449d25acd076f6a9c, type: 3}
+    net: {fileID: 8300000, guid: 0a94dfc9706e87341ba71c61f232ec95, type: 3}
+    wall:
+    - {fileID: 8300000, guid: e4203c2537489e3478816a91ad8042de, type: 3}
+    - {fileID: 8300000, guid: c3d5321d9d19d414fb279e1e911b0cf9, type: 3}
+    penaltyGO: {fileID: 2744271548317523153, guid: 1c977afd1521fcb43a2e72b3f19e52c5,
+      type: 3}
+  - name: Berlin Wall Cup 89
+    selectedSize: small
+    id: 4
+    assets:
+    - size: small
+      asset: {fileID: 8849686315084780500, guid: 64f9c2b686482f240b2da34d176fda4e,
+        type: 3}
+      size_x: 40.5
+      size_y: 20
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    - size: medium
+      asset: {fileID: 3192754784712336780, guid: b9c3efc9123c53c44a2e84725e175e32,
+        type: 3}
+      size_x: 51
+      size_y: 30
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    - size: large
+      asset: {fileID: 8849686315084780500, guid: 09489b7a68fa42f448918151f4dabe39,
+        type: 3}
+      size_x: 60.5
+      size_y: 30
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    ball: {fileID: 1975457108487340, guid: 08a8f349a35d25a4d899282f409c9710, type: 3}
+    ambience_loop: {fileID: 8300000, guid: eae6e282732bec0409706ce1a0ba6b6a, type: 3}
+    ambience_loop_vol: 0.2
+    crowd_loop: {fileID: 8300000, guid: 5508df6565b756b4ba26b77ced9452ee, type: 3}
+    crowd_loop_vol: 0.5
+    crowd_good: {fileID: 8300000, guid: 115936c78c76bb64e8d5f912c25c9073, type: 3}
+    crowd_bad: {fileID: 8300000, guid: 63c32fc044c96c840a669ff96bbe7fb6, type: 3}
+    crowd_gol: {fileID: 8300000, guid: c406b1d76e8e0594dacd7bc824b27dba, type: 3}
+    crowd_expr_vol: 0.65
+    kick_hard:
+    - {fileID: 8300000, guid: c5c3a04d4201bcf4fb20cd1480639e8d, type: 3}
+    - {fileID: 8300000, guid: 5e04e55550b3fc94aae41f2a6eb3990a, type: 3}
+    kick_pass:
+    - {fileID: 8300000, guid: f4fbefb63db9e4f4188eb1fa0ffc48e2, type: 3}
+    kick_balloon:
+    - {fileID: 8300000, guid: c3d5321d9d19d414fb279e1e911b0cf9, type: 3}
+    ball_hit_character:
+    - {fileID: 8300000, guid: e6016145a93bfbd4c93966875ea86c03, type: 3}
+    kick_head: {fileID: 8300000, guid: 7f0d39c236a102649b353cf3af577cc0, type: 3}
+    ball_catch: {fileID: 8300000, guid: 6f2a51d4711b5734d954c25bbe4e731c, type: 3}
+    ball_gk_catch: {fileID: 8300000, guid: 2466632064d76024e81fe1b9d0b5a7d2, type: 3}
+    ball_gk_saca: {fileID: 8300000, guid: 9d4452a9b19d38542ba194bfed956737, type: 3}
+    pica:
+    - {fileID: 8300000, guid: 281fc6b7270d761459f817530dce3310, type: 3}
+    palo:
+    - {fileID: 8300000, guid: 4acf3c6396c682c449d25acd076f6a9c, type: 3}
+    net: {fileID: 8300000, guid: 0a94dfc9706e87341ba71c61f232ec95, type: 3}
+    wall:
+    - {fileID: 8300000, guid: e4203c2537489e3478816a91ad8042de, type: 3}
+    - {fileID: 8300000, guid: 60eeed5206c9d1148b28b68de90cba73, type: 3}
+    penaltyGO: {fileID: 2744271548317523153, guid: 1c977afd1521fcb43a2e72b3f19e52c5,
+      type: 3}
+  - name: Hielo
+    selectedSize: medium
+    id: 5
+    assets:
+    - size: medium
+      asset: {fileID: 8849686315084780500, guid: c8ec9ddb3a44f234a84a68435242be74,
+        type: 3}
+      size_x: 60.5
+      size_y: 30
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    ball: {fileID: 1975457108487340, guid: 8a9eabc1101269c4588d2416424e2067, type: 3}
+    ambience_loop: {fileID: 0}
+    ambience_loop_vol: 0.25
+    crowd_loop: {fileID: 8300000, guid: 4c1db7191132d844786be3710dd3bb93, type: 3}
+    crowd_loop_vol: 0.5
+    crowd_good: {fileID: 8300000, guid: a115dcf32c20cd34cad123c3148702d0, type: 3}
+    crowd_bad: {fileID: 8300000, guid: 3812792d52d048f44a8e036f23e45bc6, type: 3}
+    crowd_gol: {fileID: 8300000, guid: 2ee0d60b012022e4cb4cb8dd96f40659, type: 3}
+    crowd_expr_vol: 0.65
+    kick_hard:
+    - {fileID: 8300000, guid: c5c3a04d4201bcf4fb20cd1480639e8d, type: 3}
+    - {fileID: 8300000, guid: 5e04e55550b3fc94aae41f2a6eb3990a, type: 3}
+    kick_pass:
+    - {fileID: 8300000, guid: f4fbefb63db9e4f4188eb1fa0ffc48e2, type: 3}
+    kick_balloon:
+    - {fileID: 8300000, guid: c3d5321d9d19d414fb279e1e911b0cf9, type: 3}
+    ball_hit_character:
+    - {fileID: 8300000, guid: e6016145a93bfbd4c93966875ea86c03, type: 3}
+    kick_head: {fileID: 0}
+    ball_catch: {fileID: 8300000, guid: 6f2a51d4711b5734d954c25bbe4e731c, type: 3}
+    ball_gk_catch: {fileID: 8300000, guid: 2466632064d76024e81fe1b9d0b5a7d2, type: 3}
+    ball_gk_saca: {fileID: 8300000, guid: e6016145a93bfbd4c93966875ea86c03, type: 3}
+    pica:
+    - {fileID: 8300000, guid: 281fc6b7270d761459f817530dce3310, type: 3}
+    palo:
+    - {fileID: 8300000, guid: 4acf3c6396c682c449d25acd076f6a9c, type: 3}
+    net: {fileID: 8300000, guid: 0a94dfc9706e87341ba71c61f232ec95, type: 3}
+    wall:
+    - {fileID: 8300000, guid: e4203c2537489e3478816a91ad8042de, type: 3}
+    - {fileID: 8300000, guid: 60eeed5206c9d1148b28b68de90cba73, type: 3}
+    penaltyGO: {fileID: 0}
+  - name: Terror
+    selectedSize: medium
+    id: 6
+    assets:
+    - size: medium
+      asset: {fileID: 8849686315084780500, guid: 34a6845523562624d95b2fe711d563b9,
+        type: 3}
+      size_x: 60.5
+      size_y: 30
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    - size: large
+      asset: {fileID: 8849686315084780500, guid: f37db980ed95a3d4e98f5195dea6b2af,
+        type: 3}
+      size_x: 80.5
+      size_y: 30
+      cameraSettings:
+        originalZoomSize: 5
+        offsetZ: 9
+    ball: {fileID: 1975457108487340, guid: 8a9eabc1101269c4588d2416424e2067, type: 3}
+    ambience_loop: {fileID: 0}
+    ambience_loop_vol: 0.25
+    crowd_loop: {fileID: 8300000, guid: 4c1db7191132d844786be3710dd3bb93, type: 3}
+    crowd_loop_vol: 0.5
+    crowd_good: {fileID: 8300000, guid: a115dcf32c20cd34cad123c3148702d0, type: 3}
+    crowd_bad: {fileID: 8300000, guid: 3812792d52d048f44a8e036f23e45bc6, type: 3}
+    crowd_gol: {fileID: 8300000, guid: 2ee0d60b012022e4cb4cb8dd96f40659, type: 3}
+    crowd_expr_vol: 0.65
+    kick_hard:
+    - {fileID: 8300000, guid: c5c3a04d4201bcf4fb20cd1480639e8d, type: 3}
+    - {fileID: 8300000, guid: 5e04e55550b3fc94aae41f2a6eb3990a, type: 3}
+    kick_pass:
+    - {fileID: 8300000, guid: f4fbefb63db9e4f4188eb1fa0ffc48e2, type: 3}
+    kick_balloon:
+    - {fileID: 8300000, guid: c3d5321d9d19d414fb279e1e911b0cf9, type: 3}
+    ball_hit_character:
+    - {fileID: 8300000, guid: e6016145a93bfbd4c93966875ea86c03, type: 3}
+    kick_head: {fileID: 8300000, guid: 7f0d39c236a102649b353cf3af577cc0, type: 3}
+    ball_catch: {fileID: 8300000, guid: 6f2a51d4711b5734d954c25bbe4e731c, type: 3}
+    ball_gk_catch: {fileID: 8300000, guid: 2466632064d76024e81fe1b9d0b5a7d2, type: 3}
+    ball_gk_saca: {fileID: 8300000, guid: 9d4452a9b19d38542ba194bfed956737, type: 3}
+    pica:
+    - {fileID: 8300000, guid: 281fc6b7270d761459f817530dce3310, type: 3}
+    palo:
+    - {fileID: 8300000, guid: 4acf3c6396c682c449d25acd076f6a9c, type: 3}
+    net: {fileID: 8300000, guid: 0a94dfc9706e87341ba71c61f232ec95, type: 3}
+    wall:
+    - {fileID: 8300000, guid: e4203c2537489e3478816a91ad8042de, type: 3}
+    - {fileID: 8300000, guid: 60eeed5206c9d1148b28b68de90cba73, type: 3}
+    penaltyGO: {fileID: 0}
