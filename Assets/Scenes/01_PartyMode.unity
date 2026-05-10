@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3673,7 +3672,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 300.00003}
+  m_AnchoredPosition: {x: 0, y: 299.99982}
   m_SizeDelta: {x: 587.3, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &653731580
@@ -7638,8 +7637,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1205050234}
   m_HandleRect: {fileID: 1205050233}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.42857143
+  m_Value: 1.0000001
+  m_Size: 0.4285671
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -9663,7 +9662,7 @@ MonoBehaviour:
   url_gameplay: https://docs.google.com/spreadsheets/d/e/2PACX-1vR_IX7b2VUn8q2_yvC3lD2JpNxZZiObI31lFeyX2OV-eqc3OYlrQ9U_ffo1kiKeHgvtpVi0v5hvQ54s/pub?gid=0&single=true&output=tsv
   totalPlayersAvailable: 4
   content: []
-  settingsDataFile: {fileID: 4900000, guid: 991a6f460b0b20246bcf7c95af6b8885, type: 3}
+  settingsDataFile: {fileID: 4900000, guid: e4ff4857e4c1beb4f8d3a13466a2c0b0, type: 3}
   colorStyles:
   - stringID: rojo
     color: {r: 1, g: 0, b: 0, a: 1}
@@ -93588,7 +93587,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: LS
 --- !u!114 &2854359679077658186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199951,6 +199950,7 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+  m_ScrollDeltaPerTick: 6
 --- !u!1 &6499140079724703178
 GameObject:
   m_ObjectHideFlags: 0
@@ -248476,7 +248476,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Move
 --- !u!222 &8266490211229701881
 CanvasRenderer:
   m_ObjectHideFlags: 0
