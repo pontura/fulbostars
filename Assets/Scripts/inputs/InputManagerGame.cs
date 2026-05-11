@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using Fulbo.Game;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 using UnityEngine.InputSystem;
-using Fulbo.Game;
+using static Fulbo.Input.InputManagerGame;
 
 namespace Fulbo.Input
 {
@@ -67,24 +68,47 @@ namespace Fulbo.Input
         {
 
         }
-        public void Update()
+        void Single()
         {
-            if (totalPlayersAvailable <= 0) return;
-            if (game.state != GameManager.states.PLAYING)
-            {
-                _x = 0; _y = 0;
-                return;
-            }
-
-
             PlayerInput playerInput;
-#if UNITY_STANDALONE || UNITY_WEBGL
+            int playerID = 1;
+            playerInput = GetInputByPlayer(playerID - 1);
+            Vector2 movement = InputManager.Instance.GetMovement(playerID);
+            _x = movement.x;
+            _y = movement.y;
+            print(_x);
+            if (charactersManager != null)
+            {
+
+                float offset = 0.6f;
+                if (_x < -offset) _x = -1; else if (_x > offset) _x = 1; else if (_x < 0.1f && _x > -0.1f) _x = 0;
+                if (_y < -offset) _y = -1; else if (_y > offset) _y = 1; else if (_y < 0.1f && _y > -0.1f) _y = 0;
+                charactersManager.SetPosition(1, _x, _y);
+            }
+            if (playerInput.lastButtonIDPressed == 3 && timerButton3Down + delayForLujito < Time.time)
+            {
+                //if (game.powerupsManager != null && game.powerupsManager.IsCharging()) return;
+                playerInput.lastButtonIDPressed = 0;
+                charactersManager.Lujito(1);
+            }
+        }
+        int GetControlID(int playerID)
+        {
+            if (Data.Instance.mode == Data.modes.STORYMODE)
+                return 1;
+            else
+                return playerID;
+        }
+        void Multi()
+        {
+            PlayerInput playerInput;
             int playerID = 1;
             foreach (int plays in Data.Instance.matchData.players)
             {
-                playerInput = GetInputByPlayer(playerID-1);
-                if (plays > 0)
-                {
+
+                playerInput = GetInputByPlayer(playerID - 1);
+                //if (plays > 0)
+                //{
                     Vector2 movement = InputManager.Instance.GetMovement(playerID);
                     _x = movement.x;
                     _y = movement.y;
@@ -95,17 +119,34 @@ namespace Fulbo.Input
                         float offset = 0.6f;
                         if (_x < -offset) _x = -1; else if (_x > offset) _x = 1; else if (_x < 0.1f && _x > -0.1f) _x = 0;
                         if (_y < -offset) _y = -1; else if (_y > offset) _y = 1; else if (_y < 0.1f && _y > -0.1f) _y = 0;
-                        charactersManager.SetPosition(playerID, _x, _y);
-                    }
+                    // charactersManager.SetPosition(playerID, _x, _y);
+                    charactersManager.SetPosition(GetControlID(playerID), _x, _y);
+                }
                     if (playerInput.lastButtonIDPressed == 3 && timerButton3Down + delayForLujito < Time.time)
                     {
                         //if (game.powerupsManager != null && game.powerupsManager.IsCharging()) return;
                         playerInput.lastButtonIDPressed = 0;
-                        charactersManager.Lujito(playerID);
-                    }
+                    // charactersManager.Lujito(playerID);
+                    charactersManager.Lujito(GetControlID(playerID));
                 }
+               // }
                 playerID++;
             }
+        }
+        public void Update()
+        {
+            if (totalPlayersAvailable <= 0) return;
+            if (game.state != GameManager.states.PLAYING)
+            {
+                _x = 0; _y = 0;
+                return;
+            }
+
+#if UNITY_STANDALONE || UNITY_WEBGL
+            if (Data.Instance.mode == Data.modes.STORYMODE)
+                Single();
+             else Multi();
+
 #else
             playerInput = GetInputByPlayer(0);
             if (playerInput.lastButtonIDPressed == 3 && timerButton3Down + delayForLujito < Time.time)
@@ -163,6 +204,7 @@ namespace Fulbo.Input
         float timerButton3Down;
         void GetButtonDown(int buttonID, int playerID)
         {
+           
             if (game.isTutorial || game.isOnboardingGame)
             {
                 if (buttonID == 1 && !canPressButton1) return;
@@ -180,18 +222,18 @@ namespace Fulbo.Input
             if ((lastButtonPressedID == 2 && buttonID == 1) || (lastButtonPressedID == 1 && buttonID == 2))
             {
                 playerInput.lastButtonIDPressed = 0;
-                charactersManager.Lujito(playerID);
+                charactersManager.Lujito(GetControlID(playerID));
             }
             else if (charactersManager != null)
-                charactersManager.ButtonPressed(buttonID, playerID);
+                charactersManager.ButtonPressed(buttonID, GetControlID(playerID));
             else
-                Events.OnButtonClick(buttonID, playerID);
+                Events.OnButtonClick(buttonID, GetControlID(playerID));
 
             playerInput.lastButtonIDPressed = buttonID;
         }
         void GetButtonUp(int buttonID, int playerID)
-        {           
-
+        {
+         
             PlayerInput playerInput = GetInputByPlayer(playerID - 1);
 
             if (playerInput.lastButtonIDPressed == 0) return;
@@ -199,9 +241,9 @@ namespace Fulbo.Input
             playerInput.lastButtonIDPressed = 0;
 
             if (charactersManager != null)
-                charactersManager.ButtonUp(buttonID, playerID);
+                charactersManager.ButtonUp(buttonID, GetControlID(playerID));
             else
-                Events.OnButtonClick(buttonID, playerID);
+                Events.OnButtonClick(buttonID, GetControlID(playerID));
         }
         PlayerInput GetInputByPlayer(int playerID)
         {

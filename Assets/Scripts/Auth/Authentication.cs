@@ -196,6 +196,11 @@ namespace Fulbo.Auth {
         }
         void OnLoadedUserData() // se llama al abrir la app:
         {
+            //to-do
+            registerScreen.OnUserDataLoaded();
+            return;
+
+
             print("initial_opening " + initial_opening);
             if (DB.DBManager.Instance.DbUserData != null
                 && DB.DBManager.Instance.DbUserData.data != null

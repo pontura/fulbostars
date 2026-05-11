@@ -408,10 +408,11 @@ namespace Fulbo.DB
                 DBManager.HASH_SALT2 +
                 DBManager.Instance.DbUserData.data.id;
 
-            GData tData = new GData();
-            tData.game_data = JsonUtility.ToJson(DB.DBManager.Instance.DbUserData.data.gameData);            
-            tData.hash = Utils.SHA(hashText);
-            string json = JsonUtility.ToJson(tData);
+            //  GData tData = new GData();
+            // tData.game_data = JsonUtility.ToJson(DB.DBManager.Instance.DbUserData.data.gameData);
+            string json = JsonUtility.ToJson(DB.DBManager.Instance.DbUserData.data.gameData);
+            //  tData.hash = Utils.SHA(hashText);
+            // string json = JsonUtility.ToJson(tData);
             //  DBManager.Instance.Request(url, json, OnSuccessDone, "PUT", Data.Instance.texts.Get("http_updating_user"));
             DBManager.Instance.Request(url, json, OnSuccess, "PUT", Data.Instance.texts.Get("http_updating_user"));
         }

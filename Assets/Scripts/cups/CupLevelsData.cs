@@ -156,13 +156,14 @@ namespace Fulbo
 
         void Start()
         {
-            if (Data.Instance.mode == Data.modes.PARTYMODE)
-            { 
-                OnLoaded(yutokun.CSVParser.LoadFromString(file_in_server.text));
-                OnLoadedCharacters(yutokun.CSVParser.LoadFromString(file_for_multi_characters.text));
-            }
-            else
-                LoadData(null);
+            print(Data.Instance);
+            //if (Data.Instance.mode == Data.modes.PARTYMODE)
+            //{ 
+            //    OnLoaded(yutokun.CSVParser.LoadFromString(file_in_server.text));
+            //OnLoadedCharacters(yutokun.CSVParser.LoadFromString(file_for_multi_characters.text));
+            //}
+            //else
+            LoadData(null);
         }
         public void Init()
         {
@@ -193,14 +194,14 @@ namespace Fulbo
         public override void OnLoaded(List<List<string>> d)
         {
             this.content = new List<LevelData>();
-            if (Data.Instance.mode == Data.modes.PARTYMODE)
-            {
-                OnDataLoadedMultiplayer(content, d);
-            }
-            else
-            {
+            //if (Data.Instance.mode == Data.modes.PARTYMODE)
+            //{
+            //    OnDataLoadedMultiplayer(content, d);
+            //}
+            //else
+            //{
                 OnDataLoaded(content, d);
-            }
+           // }
             if (OnDone != null)
                 OnDone();
         }
@@ -289,7 +290,10 @@ namespace Fulbo
                             else if (colID == 14 && value != "")
                                 contentLine.clubData.name_abr = value;
                             else if (colID == 15 && value != "")
+                            {
+                                print("VALUE" + value);
                                 contentLine.clubData.clubColor1 = Data.Instance.settings.GetColorIndexFor(value);
+                            }
                             else if (colID == 16 && value != "")
                                 contentLine.clubData.clubColor2 = Data.Instance.settings.GetColorIndexFor(value);
                             else if (colID == 17 && value != "")
@@ -422,17 +426,23 @@ namespace Fulbo
                                 contentLine.clubData.clubColor3 = Data.Instance.settings.GetColorIndexFor(value);
                             else if (colID == 6 && value != "")
                                 contentLine.clubData.clubColor4 = Data.Instance.settings.GetColorIndexFor(value);
-                            else if (colID == 7 && value != "")
-                                contentLine.pinballID = int.Parse(value);
-                            else if (colID == 8 && value != "")
-                                contentLine.clubData.designID = int.Parse(value);
-                            else if (colID == 9 && value != "")
-                                contentLine.clubData.shieldDesignID = int.Parse(value);
-                            else if (colID == 10 && value != "")
-                            {
-                                contentLine.logoID = int.Parse(value);
-                                contentLine.clubData.logo = contentLine.logoID;
-                            }
+                            //else if (colID == 7 && value != "")
+                            //{
+                            //    contentLine.pinballID = int.Parse(value);
+                            //}
+                            //else if (colID == 8 && value != "")
+                            //{
+                            //    contentLine.clubData.designID = int.Parse(value);
+                            //}
+                            //else if (colID == 9 && value != "")
+                            //{
+                            //    contentLine.clubData.shieldDesignID = int.Parse(value);
+                            //}
+                            //else if (colID == 10 && value != "")
+                            //{
+                            //    contentLine.logoID = int.Parse(value);
+                            //    contentLine.clubData.logo = contentLine.logoID;
+                            //}
                         }
                     }
                     colID++;

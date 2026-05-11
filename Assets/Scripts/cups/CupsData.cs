@@ -84,13 +84,8 @@ namespace Fulbo
 
         void Awake()
         {
-            if (mInstance != null)
-                Destroy(gameObject);
-            else
-            {
-                mInstance = this;
-                DontDestroyOnLoad(gameObject);
-            }
+            mInstance = this;
+            DontDestroyOnLoad(gameObject);
         }
         Action OnDone;
 

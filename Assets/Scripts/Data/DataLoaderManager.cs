@@ -26,6 +26,7 @@ namespace Fulbo
 
         void LoadSettings()
         {
+            print("____________________LoadSettings");
             Events.OnLoading("Settings");
             Data.Instance.settings.LoadData(SettingsLoaded);
             Data.Instance.settings.mainSettings.music_on = PlayerPrefs.GetInt("music", 1) == 1;

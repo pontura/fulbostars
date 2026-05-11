@@ -372,37 +372,33 @@ public class RegisterScreen : MonoBehaviour {
 
     void InitApp()
     {
-        if (DBManager.Instance.DbUserData.data.gameData != null && !Fulbo.Onboarding.OnBoardingManager.IsBoardingComplete())
-        {
+        //to-do
+        //if (DBManager.Instance.DbUserData.data.gameData != null && !Fulbo.Onboarding.OnBoardingManager.IsBoardingComplete())
+        //{
+        DBManager.Instance.DbUserData.state = DBUserData.userStates.FIRST_TIME;
+        DBManager.Instance.DbUserData.data.SetInitialCharacters();
+
+//            if (DBManager.Instance.DbUserData.data.gameData.tutorialStep == 0) {
+//#if UNITY_EDITOR
+//                SaveUserName(DBManager.Instance.user.ToString(), OnUsernameSaved);
+//#else
+//            if (Social.localUser != null)
+//                SaveUserName(Social.localUser.userName, null);
+
+
+        //            //Analytics
+        //          //  Dictionary<string, object> param = new Dictionary<string, object>();
+
+        //           // if (Data.Instance.onBoardingManager.IsBoardingStep(OnBoardingManager.BoardingStepStates.FIRST_TIME_GAME_LOADED))
+
+        //           Events.OnTrack("UserRegistered", null);
+        //#endif
+        //            }
+        //        }
+        //        else
             DBManager.Instance.DbUserData.state = DBUserData.userStates.FIRST_TIME;
 
-            if (DBManager.Instance.DbUserData.data.gameData.tutorialStep == 0) {
-#if UNITY_EDITOR
-                SaveUserName(DBManager.Instance.user.ToString(), OnUsernameSaved);
-#else
-            if (Social.localUser != null)
-                SaveUserName(Social.localUser.userName, null);
-
-
-            //Analytics
-          //  Dictionary<string, object> param = new Dictionary<string, object>();
-
-           // if (Data.Instance.onBoardingManager.IsBoardingStep(OnBoardingManager.BoardingStepStates.FIRST_TIME_GAME_LOADED))
-            
-           Events.OnTrack("UserRegistered", null);
-#endif
-            }
-        }
-        else
-            DBManager.Instance.DbUserData.state = DBUserData.userStates.LOGGED_IN;
-
-        if (Data.Instance != null)
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Splash");
-        else
-        {
             UnityEngine.SceneManagement.SceneManager.LoadScene("Logos");
-            Debug.Log("_LOGOS");
-        }
     }
     void OldVersion(string text)
     {

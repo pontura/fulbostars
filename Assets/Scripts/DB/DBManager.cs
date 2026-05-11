@@ -1,9 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
-using System;
+using static Fulbo.DB.DBServerConfig;
 
 namespace Fulbo.DB
 {
@@ -182,6 +183,9 @@ namespace Fulbo.DB
         }
         public void SetConfigFile(System.Action<bool, string> OnDone)
         {
+            versionMode = versionModes.DEV;
+            OnDone(true, "0"); return;//TO-DO version:
+
             string version = Application.version;
 
             DBServerConfig.VersionsData[] versions = dBServerConfig.configData.versions;
@@ -305,8 +309,10 @@ namespace Fulbo.DB
 
         public void Request(string url, string bodyJsonString, System.Action<bool, string> OnSuccess, string method, string readableUserFeedback = "Saving Data", Dictionary<string, string> headers = null)
         {
-            Debug.Log("[Request method:" + method + "] url: " + url + " bodyJsonString: " + bodyJsonString + " readableUserFeedback: " + readableUserFeedback);            
-            StartCoroutine(RequestC(url, bodyJsonString, OnSuccess, method, readableUserFeedback, headers));
+            Debug.Log("[Request method:" + method + "] url: " + url + " bodyJsonString: " + bodyJsonString + " readableUserFeedback: " + readableUserFeedback);
+            if(OnSuccess != null)   OnSuccess(true, ""); //TO-DO
+            PlayerPrefs.SetString("DB", bodyJsonString);
+//          StartCoroutine(RequestC(url, bodyJsonString, OnSuccess, method, readableUserFeedback, headers));
         }
         IEnumerator RequestC(string url, string bodyJsonString, System.Action<bool, string> OnSuccess, string method, string readableUserFeedback = "Saving Data", Dictionary<string, string> headers = null)
         {

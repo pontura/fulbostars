@@ -50,6 +50,10 @@ namespace Fulbo.DB
         }
         public void Load(System.Action OnSuccess)
         {
+            //to-do:
+            if (OnSuccess != null)
+            OnSuccess();
+            return;
             StartCoroutine(LoadDataC(OnSuccess));
         }
         IEnumerator LoadDataC(System.Action OnSuccess)

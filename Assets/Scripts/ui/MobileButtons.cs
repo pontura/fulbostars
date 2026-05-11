@@ -24,10 +24,10 @@ namespace Fulbo.UI
 
         void Start()
         {
-            if (!Data.Instance.isMobile)
-                Destroy(this);
-            else
-            {
+            //if (!Data.Instance.isMobile)
+            //    Destroy(this);
+            //else
+            //{
                 Events.CharacterCatchBall += CharacterCatchBall;
                 Events.OnBallKicked += OnBallKicked;
                 Events.OnGameStatusChanged += OnGameStatusChanged;
@@ -36,7 +36,7 @@ namespace Fulbo.UI
                     if (screenshotButton != null)
                         screenshotButton.SetActive(false);
                 }
-            }
+          //  }
         }
 
         void OnDestroy()

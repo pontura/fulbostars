@@ -90,6 +90,13 @@ namespace Fulbo.DB
             {
                 return role == "GOALKEEPER";
             }
+            public void SetGoalkeeper(bool isGK)
+            {
+                if (isGK)
+                    role = "GOALKEEPER";
+                else
+                    role = "PLAYER";
+            }
             public FigusData.rarities GetRarity() // TO-DO : Esto debería venir del server en rarity:
             {
                 // return rarity;
@@ -197,6 +204,22 @@ namespace Fulbo.DB
             public List<DBCharacterData> players_characters;
             public List<DBCharacterData> players_goalkeepers;
 
+            public void SetInitialCharacters() // TO-DO: Replace with server!
+            {
+                DBCharacterData dBCharacterData = new DBCharacterData();
+                dBCharacterData.SetGoalkeeper(true);
+                dBCharacterData.player_id = 1;
+                players_goalkeepers.Add(dBCharacterData);
+
+                for (int a = 1; a<5+1; a++)
+                {
+                    dBCharacterData = new DBCharacterData();
+                    dBCharacterData.player_id = a;
+                    dBCharacterData.SetGoalkeeper(false);
+                    players_characters.Add(dBCharacterData);
+                }
+            }
+
             [HideInInspector] public string hash;
 
             public string Name()
@@ -293,7 +316,11 @@ namespace Fulbo.DB
                 OnSuccess();
             }
             else
-                StartCoroutine(LoadUserDataC(OnSuccess, DBManager.Instance.UrlLoadUserData));
+            {
+                //TO-DO: userdata
+                OnSuccess();
+                //StartCoroutine(LoadUserDataC(OnSuccess, DBManager.Instance.UrlLoadUserData));
+            }
         }
         
         IEnumerator LoadUserDataC(System.Action OnSuccess, string url)

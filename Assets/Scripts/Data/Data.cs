@@ -144,7 +144,7 @@ namespace Fulbo
 #elif UNITY_EDITOR
 
 #elif UNITY_STANDALONE
-            Cursor.visible = false; 
+           // Cursor.visible = false; 
         loadType = loadTypes.LOCAL;
        // Screen.fullScreen = true;
 #elif UNITY_ANDROID || UNITY_IOS
@@ -172,7 +172,7 @@ namespace Fulbo
 
             if (DB.DBManager.Instance != null && DB.DBManager.Instance.DbUserData.type == DB.DBUserData.types.GUEST)
             {
-                mode = modes.PARTYMODE;
+               // mode = modes.PARTYMODE;
                 settings.mainSettings.isArcade = false; // not multiplayer:
             }
             ForceMode(mode);
