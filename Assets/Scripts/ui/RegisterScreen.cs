@@ -396,13 +396,13 @@ public class RegisterScreen : MonoBehaviour {
         else
             DBManager.Instance.DbUserData.state = DBUserData.userStates.LOGGED_IN;
 
-        if (Data.Instance != null)
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Splash");
-        else
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Logos");
-            Debug.Log("_LOGOS");
-        }
+        //if (Data.Instance != null)
+        //    UnityEngine.SceneManagement.SceneManager.LoadScene("Splash");
+        //else
+        //{
+        //    UnityEngine.SceneManagement.SceneManager.LoadScene("Logos");
+        //    Debug.Log("_LOGOS");
+        //}
     }
     void OldVersion(string text)
     {

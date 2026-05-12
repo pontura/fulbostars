@@ -193,11 +193,13 @@ namespace Fulbo
 
             if (mode == modes.PARTYMODE)
             {
-                if (Data.Instance.settings.mainSettings.isArcade) // multiplayer:
-                    // Data.Instance.LoadLevel("PlayersTeamSelector");
-                    Data.Instance.LoadLevel("Splash");
-                else
-                    Data.Instance.LoadLevel("TeamSelector"); // Ruleta
+                Data.Instance.LoadLevel("Splash");
+                // lo hace el loading ahora:
+                //if (Data.Instance.settings.mainSettings.isArcade) // multiplayer:
+                //    // Data.Instance.LoadLevel("PlayersTeamSelector");
+                //    Data.Instance.LoadLevel("Splash");
+                //else
+                //    Data.Instance.LoadLevel("TeamSelector"); // Ruleta
 
             }
             else if (Fulbo.Game.GameManager.Instance != null)
