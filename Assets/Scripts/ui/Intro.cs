@@ -14,7 +14,7 @@ namespace Fulbo.Game
         float totalFilesToLoad = 12; // Hardcoded oh yeah! (no stadiums ni pinballs)
         float fileID;
         float fakeAdvance;
-        string[] texts;
+      //  string[] texts;
 
         void Awake()
         {
@@ -26,10 +26,10 @@ namespace Fulbo.Game
         {
             OnLoading("");
             FakeLoading();
-            texts = DB.DBManager.Instance.dBServerConfig.configData.loading;
-            print("texts " + texts.Length);
-            Utils.Shuffle(texts);
-            LoopTexts();
+          //  texts = DB.DBManager.Instance.dBServerConfig.configData.loading;
+            //print("texts " + texts.Length);
+            //Utils.Shuffle(texts);
+          //  LoopTexts();
         }
         void OnDestroy()
         {
@@ -39,10 +39,10 @@ namespace Fulbo.Game
         int id;
         void LoopTexts()
         {
-            if (id > texts.Length - 1)
-                id = 0;
-            field.text = texts[id];
-            id++;
+            //if (id > texts.Length - 1)
+            //    id = 0;
+            //field.text = texts[id];
+            //id++;
             Invoke("LoopTexts", Random.Range(2, 4));
         }
         void OnLoading(string text)
@@ -57,7 +57,7 @@ namespace Fulbo.Game
             //    field.text = "";
 
             fileID++;
-            print("_______" + fileID);
+            print("_______" + fileID + " text: " + text);
             OnLoadingProgress(0);
             if(text == "AllDone")
                 Data.Instance.LoadLevel("Splash");

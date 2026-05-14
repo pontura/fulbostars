@@ -45,6 +45,7 @@ namespace Fulbo
             }
             else
             {
+                print("texts_" + Data.Instance.langsManager.GetLang() + ".json");
                 AssetsBundleLoader abl = AssetsBundleManager.Instance.assetsBundleLoader;
                 AllLoaded(abl.GetJsonText("texts_" + Data.Instance.langsManager.GetLang() + ".json"));
             }

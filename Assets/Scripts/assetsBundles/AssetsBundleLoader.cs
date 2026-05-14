@@ -283,8 +283,13 @@ namespace Fulbo.AssetsBundle
         {
             //Debug.Log("Get AudioClip: " + bundleName + " asset: " + asset);
             AssetBundle assetBundle = bundles[bundleName];
-            AudioClip go = assetBundle.LoadAsset(asset) as AudioClip;
-            return go;
+            UnityEngine.Object o = assetBundle.LoadAsset(asset);
+            if (o != null && o is AudioClip)
+            {
+                AudioClip go = assetBundle.LoadAsset(asset) as AudioClip;
+                return go;
+            }
+            return null;
         }
         public Texture2D GetAssetAsTexture2D(string bundleName, string asset)
         {

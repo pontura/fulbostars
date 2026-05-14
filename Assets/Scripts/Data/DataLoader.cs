@@ -28,6 +28,7 @@ namespace Fulbo
                 OnLoaded(yutokun.CSVParser.LoadFromString(file_in_server.text));
             else {
                 AssetsBundleLoader abl = AssetsBundleManager.Instance.assetsBundleLoader;
+                print(file_in_server.name + ".txt");
                 OnLoaded(yutokun.CSVParser.LoadFromString(abl.GetSheetText(file_in_server.name + ".txt")));
                 //Data.Instance.sheetLoader.LoadFromTo(Data.Instance.GetURL() + "AssetBundles/" + file_in_server.name + ".txt" + "?rand=" + UnityEngine.Random.Range(1000, 10000), OnLoaded);
             }

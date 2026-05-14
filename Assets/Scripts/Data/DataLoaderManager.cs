@@ -90,18 +90,18 @@ namespace Fulbo
         public void LoadTexts()
         {
             Events.OnLoading("Texts");
-            Data.Instance.texts.Load(LoadTextsData);
-        }
-        public void LoadTextsData()
-        {
-            Events.OnLoading("TextsData");
-            Data.Instance.textsData.Init(LoadDashboard);
+            Data.Instance.texts.Load(LoadDashboard);
         }
         void LoadDashboard()
         {
             Events.OnLoading("Dashboard");
-            DashboardData.Instance.Init(LoadLevelBonus);
+            DashboardData.Instance.Init(LoadTextsData);
         }
+        public void LoadTextsData()
+        {
+            Events.OnLoading("TextsData");
+            Data.Instance.textsData.Init(LoadLevelBonus);
+        }       
         void LoadLevelBonus()
         {
             Events.OnLoading("LevelBonus");
