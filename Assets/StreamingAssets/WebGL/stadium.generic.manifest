@@ -1,15 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2857343508
+CRC: 415774438
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: dba44c99298a59455b8468c1459a965e
+    Hash: ece7460197207b70ca75fcf50f6af09b
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 1472bb6b5cc21129a6cb7afabc8366db
-  IncrementalBuildHash:
-    serializedVersion: 2
-    Hash: dba44c99298a59455b8468c1459a965e
+    Hash: 7e0655a44c87b8155a210ab45b8db2d9
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -49,13 +46,25 @@ ClassTypes:
 - Class: 111
   Script: {instanceID: 0}
 - Class: 114
-  Script: {fileID: 11500000, guid: 3084b6868b7d20c498032718e979b40c, type: 3}
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9f9533d1b794bd944b9d21e8d7364bfa, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 85f7bbbb909823848b15c30999f98920, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 8084f648e7da29a4eb24a46cadb8fa31, type: 3}
+  Script: {fileID: 11500000, guid: 3084b6868b7d20c498032718e979b40c, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 05cddfa1805da144081ed7ba178af789, type: 3}
+  Script: {fileID: 11500000, guid: c7207f9ae4b7e1749833ff0d6b1d718c, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 91eb9c227d51f0143875e984d69c0622, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8084f648e7da29a4eb24a46cadb8fa31, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 78bd4af439f94af4bab720a2dbfc61be, type: 3}
 - Class: 115
@@ -76,6 +85,10 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 213
   Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers:
 - AssemblyName: Assembly-CSharp
   ClassName: Fulbo.Stadiums.StadiumsData/StadiumAsset
@@ -83,6 +96,20 @@ SerializeReferenceClassIdentifiers:
   ClassName: Fulbo.Stadiums.StadiumsData/StadiumAsset/CamereSettings
 - AssemblyName: Assembly-CSharp
   ClassName: Fulbo.Stadiums.StadiumsData/StadiumData
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.AnimationTriggers
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Button/ButtonClickedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.ColorBlock
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Navigation
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.SpriteState
 Assets:
 - Assets/stadiums/StadiumsData.prefab
 Dependencies: []
