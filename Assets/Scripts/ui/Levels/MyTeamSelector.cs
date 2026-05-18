@@ -49,14 +49,37 @@ namespace Fulbo.UI
                 OnRight(1, true);//para evitar los 2 teams iguales:
 
             Events.OnRight += OnRight;
-            Events.OnUp += OnUp;
+            Events.OnUp += OnUp; 
+            Events.SetArcadeVolUp += SetArcadeVolUp;
+            Events.SetArcadeVolDown += SetArcadeVolDown;
         }
         private void OnDestroy()
         {
             Events.OnRight -= OnRight;
             Events.OnUp -= OnUp;
+            Events.SetArcadeVolUp -= SetArcadeVolUp;
+            Events.SetArcadeVolDown -= SetArcadeVolDown;
         }
+        void SetArcadeVolUp()
+        {
+            int team_ID = 1;
+            CupsData.Instance.levels.ChangeMultiplayerTeam(team_ID, true);
 
+            InitTeam(team_ID, posID_team_1);
+
+            if (Data.Instance.partyModeData.teamID_1 == Data.Instance.partyModeData.teamID_2)
+                OnRight(team_ID, true);
+        }
+        void SetArcadeVolDown()
+        {
+            int team_ID = 1;
+            CupsData.Instance.levels.ChangeMultiplayerTeam(team_ID, false);
+
+            InitTeam(team_ID, posID_team_1);
+
+            if (Data.Instance.partyModeData.teamID_1 == Data.Instance.partyModeData.teamID_2)
+                OnRight(team_ID, false);
+        }
         private void OnUp(int playerID, bool up)
         {
             int team_ID = Data.Instance.matchData.players[playerID - 1];
