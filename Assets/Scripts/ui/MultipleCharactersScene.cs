@@ -16,6 +16,7 @@ namespace Fulbo.Game
 #if UNITY_ANDROID || UNITY_IOS
             return;
 #endif
+            Data.Instance.partyModeData.Reset();
             characters = GetComponentsInChildren<CharacterForCamera>();
             Utils.Shuffle(characters);
             id = Random.Range(0, CharactersData.Instance.all.Count - 2);

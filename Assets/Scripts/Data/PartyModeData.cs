@@ -13,6 +13,17 @@ namespace Fulbo
         [SerializeField] ClubData team1;
         [SerializeField] ClubData team2;
 
+        [SerializeField] ClubData introSettings; // guardados en el init:
+
+        private void Start()
+        {
+            introSettings = team2;
+        }
+        public void Reset()// Se resetea por el splash:
+        {
+            team2 = introSettings;
+        }
+
         public ClubData GetDataForPartyMode(int teamID)
         {
            switch(teamID)
