@@ -15,6 +15,16 @@ namespace Fulbo
     public class CupLevelsData : DataLoader
     {
         public List<LevelData> content;
+        public List<LevelData> GetByState(string state = "on") {
+            List<LevelData> all = new List<LevelData>();
+            foreach(LevelData ld in content)
+            {
+                if (ld.state == state)
+                    all.Add(ld);
+            }
+            return all;
+        }
+
         public List<MultiCharactersData> multi_characters;
         //  public List<LevelData> contentMultiplayer;
         public TextAsset file_for_multiplayer;
@@ -70,6 +80,21 @@ namespace Fulbo
             }
             return arr;
         }
+        public List<int> GetCharactersForTagNoShuffle(string tag)
+        {
+            List<int> arr = new List<int>();
+            arr.Add(GetGoalkeeperForTag(tag));
+            int a = 0;
+            foreach (MultiCharactersData characterData in multi_characters)
+            {
+                if (characterData.tag == tag && characterData.rol != "GK")
+                {
+                    arr.Add(characterData.id);
+                    a++;
+                }
+            }
+            return arr;
+        }
         public int GetGoalkeeperForTag(string tag)
         {
             foreach (MultiCharactersData characterData in multi_characters)
@@ -109,6 +134,35 @@ namespace Fulbo
             SetClubData(1);
             SetClubData(2);
         }
+        public void InitTournament()
+        {
+            int id = 0;
+            List<LevelData> all = new List<LevelData>();
+            foreach (LevelData ld in content)
+            {
+                if (ld.state == "torneo")
+                {
+                    if (team1 == 0)
+                        team1 = id;
+                    else team2 = id;
+                }
+                id++;
+            }
+            print("InitTournament team1" + team1 + content[team1].name);
+            print("InitTournament team2" + team2 + content[team2].name);
+
+            List<int> team1Characters = CupsData.Instance.levels.GetCharactersForTagNoShuffle(content[team1].team_tag);
+            List<int> team2Characters = CupsData.Instance.levels.GetCharactersForTagNoShuffle(content[team2].team_tag);
+
+            Data.Instance.matchData.team1 = team1Characters;
+            Data.Instance.matchData.team2 = team2Characters;
+
+            Data.Instance.partyModeData.SetTeamID(1, team1);
+            Data.Instance.partyModeData.SetTeamID(2, team2);
+
+            SetClubData(1);
+            SetClubData(2);
+        }
         public void ChangeMultiplayerTeam(int teamID, bool add)
         {
             if (teamID == 1)
@@ -120,6 +174,21 @@ namespace Fulbo
             else
             {
                 if (add) team2++; else team2--;
+                if (team2 < 0) team2 = content.Count - 1; else if (team2 > content.Count - 1) team2 = 0;
+                Data.Instance.partyModeData.SetTeamID(teamID, team2);
+            }
+            SetGetMultiplayerTeam(teamID);
+            SetClubDataMultiplayer(teamID);
+        }
+        public void SetTournament(int teamID, int teamIDInArray)
+        {
+            if (teamID == 1)
+            {
+                if (team1 < 0) team1 = content.Count - 1; else if (team1 > content.Count - 1) team1 = 0;
+                Data.Instance.partyModeData.SetTeamID(teamID, team1);
+            }
+            else
+            {
                 if (team2 < 0) team2 = content.Count - 1; else if (team2 > content.Count - 1) team2 = 0;
                 Data.Instance.partyModeData.SetTeamID(teamID, team2);
             }
@@ -432,6 +501,10 @@ namespace Fulbo
                             {
                                 contentLine.logoID = int.Parse(value);
                                 contentLine.clubData.logo = contentLine.logoID;
+                            }
+                            else if (colID == 11 && value != "")
+                            {
+                                contentLine.state = value;
                             }
                         }
                     }

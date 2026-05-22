@@ -59,8 +59,11 @@ namespace Fulbo.Game
             fileID++;
             print("_______" + fileID + " text: " + text);
             OnLoadingProgress(0);
-            if(text == "AllDone")
-                Data.Instance.LoadLevel("Splash");
+            if (text == "AllDone")
+            {
+                //Data.Instance.LoadLevel("Splash");
+                Data.Instance.LoadLevel("TournamentSelector");
+            }
         }
         void OnLoadingProgress(float value)
         {

@@ -39,6 +39,7 @@ namespace Fulbo
         public int duelStatsPlayer;
         public int duelStatsGK;
 
+        public string state = "on"; // "on" = todos: sino "torneo"
         public bool locked = true;
 
         [Serializable]

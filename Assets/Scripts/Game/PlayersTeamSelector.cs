@@ -74,7 +74,7 @@ namespace Fulbo.UI
                 if (p.teamID != 0)
                     total++;
             }
-            field.text = total + " PLAYERS";
+            field.text = total + " JUGADOR/ES";
         }
     }
 }

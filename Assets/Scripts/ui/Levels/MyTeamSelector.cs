@@ -132,8 +132,8 @@ namespace Fulbo.UI
         }
         public void SetTeamNames()
         {
-            LevelData team_1_Data = CupsData.Instance.levels.content[Data.Instance.partyModeData.teamID_1];
-            LevelData team_2_Data = CupsData.Instance.levels.content[Data.Instance.partyModeData.teamID_2];
+            LevelData team_1_Data = CupsData.Instance.levels.GetByState("on")[Data.Instance.partyModeData.teamID_1];
+            LevelData team_2_Data = CupsData.Instance.levels.GetByState("on")[Data.Instance.partyModeData.teamID_2];
 
             teamNames[0].text = team_1_Data.name;
             teamNames[1].text = team_2_Data.name;

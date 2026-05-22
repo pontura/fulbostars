@@ -5,6 +5,7 @@ using Fulbo.UI;
 using Fulbo.Onboarding;
 using Fulbo.Energy;
 using Fulbo.UI.Pvp;
+using Fulbo.Tournamets;
 
 namespace Fulbo
 {
@@ -45,6 +46,7 @@ namespace Fulbo
 
         public UICanvas ui;
 
+        [HideInInspector] public TournamentsData tournamentsData;
         [HideInInspector] public MatchData matchData;
         [HideInInspector] public Settings settings;
         [HideInInspector] public CharactersPositions charactersPositions;
@@ -152,6 +154,7 @@ namespace Fulbo
         isMobile = true;
         loadType = loadTypes.SERVER;
 #endif
+            tournamentsData = GetComponent<TournamentsData>();
             dataLoaderManager = GetComponent<DataLoaderManager>();
             langsManager = GetComponent<LangsManager>();
             matchData = GetComponent<MatchData>();
@@ -193,14 +196,8 @@ namespace Fulbo
 
             if (mode == modes.PARTYMODE)
             {
-                Data.Instance.LoadLevel("Splash");
-                // lo hace el loading ahora:
-                //if (Data.Instance.settings.mainSettings.isArcade) // multiplayer:
-                //    // Data.Instance.LoadLevel("PlayersTeamSelector");
-                //    Data.Instance.LoadLevel("Splash");
-                //else
-                //    Data.Instance.LoadLevel("TeamSelector"); // Ruleta
-
+               // Data.Instance.LoadLevel("Splash");
+                Data.Instance.LoadLevel("TournamentSelector");
             }
             else if (Fulbo.Game.GameManager.Instance != null)
                 Fulbo.Game.GameManager.Instance.OnInit();

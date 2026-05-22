@@ -9,7 +9,25 @@
                     "name": "Kick",
                     "type": "Button",
                     "id": "02ac59ce-5eaf-4c54-8395-700561eb39ff",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "VolDown",
+                    "type": "Button",
+                    "id": "f19749da-6b2c-4c21-bfb0-e4a556bee214",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "VolUp",
+                    "type": "Button",
+                    "id": "0bb928e4-1535-4c6b-af53-8a323cc5f0bd",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -18,7 +36,7 @@
                     "name": "Pass",
                     "type": "Button",
                     "id": "75e0a8e2-6c06-4883-96af-76408c461014",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -71,6 +89,28 @@
                     "processors": "",
                     "groups": "Keyboard_1",
                     "action": "Kick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0c67c823-1816-442e-9c55-be1fd71abf22",
+                    "path": "<Keyboard>/n",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard_1;Keyboard_2;Keyboard_3;Keyboard_4",
+                    "action": "VolDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ac06fcf7-52e7-4748-b0f1-55e60f143b45",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard_1;Keyboard_2;Keyboard_3;Keyboard_4",
+                    "action": "VolUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -249,7 +289,7 @@
                     "name": "Kick",
                     "type": "Button",
                     "id": "8cab47a2-fa1f-4744-85a3-b77596727447",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -258,7 +298,7 @@
                     "name": "VolUp",
                     "type": "Button",
                     "id": "caf33d45-5362-4e0e-9ee8-3e3658d48c55",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -267,7 +307,7 @@
                     "name": "VolDown",
                     "type": "Button",
                     "id": "510df5ae-1e01-4851-ab39-792a04287290",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
