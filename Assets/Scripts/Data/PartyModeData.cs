@@ -36,6 +36,7 @@ namespace Fulbo
         }
         public void SetTeamID(int teamID, int id)
         {
+            print("PartyModeData set team id: " + id);
             if (teamID == 1)
                 teamID_1 = id;
             else

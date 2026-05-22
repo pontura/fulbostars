@@ -28,8 +28,6 @@ namespace Fulbo.Tournamets
             CupsData.Instance.levels.InitTournament();
 
 
-            Data.Instance.partyModeData.SetTeamID(1, teams[0].id);
-            Data.Instance.partyModeData.SetTeamID(2, teams[1].id);
 
             cards[0].ForceShow(CharactersData.Instance.GetCharacterData(Data.Instance.matchData.team1[1], false), 10000);
             cards[1].ForceShow(CharactersData.Instance.GetCharacterData(Data.Instance.matchData.team2[1], false), 10000);
@@ -52,9 +50,9 @@ namespace Fulbo.Tournamets
         void OnRight(int playerID, bool isRight)
         {
             if (isRight)
-                SelectTeam(1);
-            else if(!isRight)
                 SelectTeam(2);
+            else 
+                SelectTeam(1);
         }
         void SelectTeam(int teamID)
         {

@@ -32,8 +32,10 @@ namespace Fulbo.UI
             StadiumsData.Instance.SetRandomStadium();
             Events.OnSkipOn(OnSkip, "skip");
             Data.Instance.matchData.SetTotalPlayers(8, 8);
-
-            CupsData.Instance.levels.InitMultiplayer();
+            if(!Data.Instance.tournamentsData.IsTournament())
+            {
+                CupsData.Instance.levels.InitMultiplayer();
+            }
 
             totalPos = Data.Instance.charactersPositions.team1.all.Length;
 
@@ -132,8 +134,19 @@ namespace Fulbo.UI
         }
         public void SetTeamNames()
         {
-            LevelData team_1_Data = CupsData.Instance.levels.GetByState("on")[Data.Instance.partyModeData.teamID_1];
-            LevelData team_2_Data = CupsData.Instance.levels.GetByState("on")[Data.Instance.partyModeData.teamID_2];
+            LevelData team_1_Data;
+            LevelData team_2_Data;
+            if (Data.Instance.tournamentsData.IsTournament())
+            {
+                team_1_Data = CupsData.Instance.levels.GetByState("torneo")[0];
+                team_2_Data = CupsData.Instance.levels.GetByState("torneo")[1];
+            }
+            else
+            {
+                team_1_Data = CupsData.Instance.levels.GetByState("on")[Data.Instance.partyModeData.teamID_1];
+                team_2_Data = CupsData.Instance.levels.GetByState("on")[Data.Instance.partyModeData.teamID_2];
+            }
+
 
             teamNames[0].text = team_1_Data.name;
             teamNames[1].text = team_2_Data.name;
