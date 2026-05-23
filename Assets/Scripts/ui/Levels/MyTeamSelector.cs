@@ -45,15 +45,17 @@ namespace Fulbo.UI
             InitTeam(1, posID_team_1);
             InitTeam(2, posID_team_2);
 
-            InitStadium();
+            InitStadium();           
 
-            if (Data.Instance.partyModeData.teamID_1 == Data.Instance.partyModeData.teamID_2)
-                OnRight(1, true);//para evitar los 2 teams iguales:
-
-            Events.OnRight += OnRight;
+            if (!Data.Instance.tournamentsData.IsTournament())
+            {
+                if (Data.Instance.partyModeData.teamID_1 == Data.Instance.partyModeData.teamID_2)
+                    OnRight(1, true);//para evitar los 2 teams iguales:
+                Events.OnRight += OnRight;
+                Events.SetArcadeVolUp += SetArcadeVolUp;
+                Events.SetArcadeVolDown += SetArcadeVolDown;
+            }
             Events.OnUp += OnUp; 
-            Events.SetArcadeVolUp += SetArcadeVolUp;
-            Events.SetArcadeVolDown += SetArcadeVolDown;
         }
         private void OnDestroy()
         {
