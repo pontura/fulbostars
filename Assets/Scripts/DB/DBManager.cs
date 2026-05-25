@@ -4,6 +4,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 using System;
+using Fulbo.Tournamets;
 
 namespace Fulbo.DB
 {
@@ -32,7 +33,7 @@ namespace Fulbo.DB
             DEMO4,
             DEMO5
         }
-
+        public TournamentsManager tournamentsManager;
         public string ranking_url = "https://ranking.fulbogalaxy.com/rankingByStadium/";
         public string myStats_url = "https://ranking.fulbogalaxy.com/myStats/";
 
@@ -122,7 +123,6 @@ namespace Fulbo.DB
 
 
             DontDestroyOnLoad(this.gameObject);
-
             dBServerConfig = new DBServerConfig();
             dBTrack = new DBTrack();
             dBStats = new DBStats();
@@ -139,6 +139,7 @@ namespace Fulbo.DB
             dbMatches = GetComponent<DBMatches>();
             dbMatchesPerLevel = GetComponent<DBMatchesPerLevel>();
             dBUserData = GetComponent<DBUserData>();
+            tournamentsManager = GetComponent<TournamentsManager>();    
             
         }
         private void Start()

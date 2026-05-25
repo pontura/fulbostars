@@ -470,16 +470,20 @@ namespace Fulbo
 
         public void GameOver()
         {
+           
             watchVideoWasDisplayed = 0;
             matchPlayed = true;
-          //  Data.Instance.myFigus.SetNew(1);
+
             Game.GameManager.Instance.GameOver();
             if (Data.Instance.mode != Data.modes.PARTYMODE)
             {
                 Data.Instance.onBoardingManager.CheckOnboardingGamesDone();
                 Rewards().Calculate();
-            }
-            
+            }            
+        }
+        void OnResultSaved(bool ok)
+        {
+            print("OnResultSaved " + ok);
         }
         public void SetMyPosition(int myPos)
         {

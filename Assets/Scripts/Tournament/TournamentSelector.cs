@@ -1,6 +1,7 @@
 using Fulbo.Game;
 using Fulbo.Stadiums;
 using Fulbo.UI;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,11 +15,14 @@ namespace Fulbo.Tournamets
         public CharacterCardInGame[] cards;
         public Text[] teams;
         public Text[] goles;
+        public Text gamesPlayedField;
 
         int teamID = 0;
 
         void Start()
         {
+            SetResults();
+            Data.Instance.tournamentsData.Refresh(OnDataRefreshed);
             StadiumsData.Instance.SetRandomStadium();
             Data.Instance.matchData.SetTotalPlayers(8, 8);
             List<LevelData> teams = CupsData.Instance.levels.GetByState("torneo");
@@ -43,6 +47,17 @@ namespace Fulbo.Tournamets
             tournamentButtons[0].SetOn(false);
             tournamentButtons[1].SetOn(false);
         }
+        void SetResults()
+        {
+            goles[0].text = Data.Instance.tournamentsData.goles1.ToString();
+            goles[1].text = Data.Instance.tournamentsData.goles2.ToString();
+            gamesPlayedField.text = Data.Instance.tournamentsData.gamesPlayed.ToString();
+        }
+        private void OnDataRefreshed()
+        {
+            SetResults();
+        }
+
         public void OnDestroyed()
         {
             Events.OnRight -= OnRight;
@@ -60,6 +75,7 @@ namespace Fulbo.Tournamets
             tournamentButtons[0].SetOn(false);
             tournamentButtons[1].SetOn(false);
             tournamentButtons[teamID-1].SetOn(true);
+            Data.Instance.tournamentsData.SetTeam(teamID);
         }
         void Done()
         {
