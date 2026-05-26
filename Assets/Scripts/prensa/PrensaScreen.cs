@@ -7,12 +7,17 @@ namespace Fulbo.UI
     {
         [SerializeField] CharacterForCamera character;
         [SerializeField]  CharacterDialogueUI dialogueUI;
-
+        string[] frases;
         bool team2_win = true;
         void Start()
         {
             team2_win = Data.Instance.tournamentsData.lastMatchGoles1 < Data.Instance.tournamentsData.lastMatchGoles2;
-                
+
+            if(team2_win)
+                frases = Data.Instance.tournamentsData.GetRandomFrases(0, 1);
+            else
+                frases = Data.Instance.tournamentsData.GetRandomFrases(0, 2);
+
             Events.OnSkipOn(OnSkip, "skip");
 
             int chID = Data.Instance.matchData.team1[1];
@@ -43,8 +48,9 @@ namespace Fulbo.UI
 
             character.SetAnim(anim);
             Invoke("Loop", Random.Range(4, 6));
-            dialogueUI.Init(null, "GANAMEOS!!!");
+            dialogueUI.Init(null, frases[Random.Range(0, frases.Length - 1)]);
         }
+        
     }
 
 }

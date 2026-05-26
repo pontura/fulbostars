@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using Fulbo.AssetsBundle;
 using Fulbo.DB;
 using UnityEngine;
 
@@ -6,6 +8,9 @@ namespace Fulbo.Tournamets
 {
     public class TournamentsData : MonoBehaviour
     {
+        public TData data;
+        public TextAsset fileAsset;
+
         public bool isTournament = true;
         public int myTeamID; // 1 o 2 (left o right)
 
@@ -21,6 +26,40 @@ namespace Fulbo.Tournamets
         {
             myTeamID = 0;
             DBManager.Instance.tournamentsManager.GetResults("torneo1", OnLoadedResults);
+        }
+         [Serializable]
+        public class TData
+        {
+            public TsData[] tournaments;
+        }
+         [Serializable]
+         public class TsData
+        {
+            public string id;
+            public string name;
+            public string[] team1_win;
+            public string[] team2_win;
+        }
+       
+        System.Action OnDone;
+        public void Init(System.Action OnDone)
+        {
+            this.OnDone = OnDone;
+            if (Data.Instance.loadType == Data.loadTypes.LOCAL || Data.Instance.loadType == Data.loadTypes.DATABASE)
+            {
+                AllLoaded(fileAsset.text);
+            }
+            else
+            {
+                print("tournaments_texts_" + Data.Instance.langsManager.GetLang() + ".json");
+                AssetsBundleLoader abl = AssetsBundleManager.Instance.assetsBundleLoader;
+                AllLoaded(abl.GetJsonText("tournaments_texts_" + Data.Instance.langsManager.GetLang() + ".json"));
+            }
+        }
+         private void AllLoaded(string text)
+        {
+            data = JsonUtility.FromJson<TData>(text);
+            OnDone();
         }
         System.Action OnRefreshed;
         public void Refresh(System.Action OnRefreshed)
@@ -58,6 +97,15 @@ namespace Fulbo.Tournamets
         public void SetTournament(bool isTournament)
         {
             this.isTournament = isTournament;
+        }
+
+        public string[] GetRandomFrases(int torneoID, int teamID)
+        {
+            switch(teamID)
+            {
+                case 1: return data.tournaments[torneoID].team1_win;
+                default: return data.tournaments[torneoID].team2_win;
+            }
         }
     }
 }

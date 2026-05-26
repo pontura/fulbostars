@@ -100,8 +100,13 @@ namespace Fulbo
         public void LoadTextsData()
         {
             Events.OnLoading("TextsData");
-            Data.Instance.textsData.Init(LoadLevelBonus);
-        }       
+            Data.Instance.textsData.Init(LoadTournamentsTextsData);
+        }  
+         public void LoadTournamentsTextsData()
+        {
+            Events.OnLoading("TournamentsTextsData");
+            Data.Instance.tournamentsData.Init(LoadLevelBonus);
+        }        
         void LoadLevelBonus()
         {
             Events.OnLoading("LevelBonus");
