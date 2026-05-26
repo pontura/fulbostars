@@ -943,7 +943,10 @@ PrefabInstance:
     - {fileID: 6235146891240748150, guid: 1737e1085c2888d459f2d3563546afb6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1936385046283842337, guid: 1737e1085c2888d459f2d3563546afb6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1242212575}
   m_SourcePrefab: {fileID: 100100000, guid: 1737e1085c2888d459f2d3563546afb6, type: 3}
 --- !u!224 &220755305
 RectTransform:
@@ -3974,7 +3977,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 299.99997}
+  m_AnchoredPosition: {x: 0, y: 300.00003}
   m_SizeDelta: {x: 587.3, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &653731580
@@ -6092,7 +6095,7 @@ MonoBehaviour:
       happiness: 0
     duelStatsPlayer: 0
     duelStatsGK: 0
-    available: 1
+    state: on
     locked: 1
   secs: 180
   time: 0
@@ -9439,6 +9442,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1240272211}
   m_CullTransparentMesh: 0
+--- !u!1 &1242212566 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1936385046283842337, guid: 1737e1085c2888d459f2d3563546afb6, type: 3}
+  m_PrefabInstance: {fileID: 210733272}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1242212575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242212566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6375624790963cb4c9be100516cfc56c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1246913130
 RectTransform:
   m_ObjectHideFlags: 0
@@ -184505,7 +184525,7 @@ MonoBehaviour:
       happiness: 0
     duelStatsPlayer: 0
     duelStatsGK: 0
-    available: 1
+    state: on
     locked: 1
   formation: []
 --- !u!224 &5883065241619866109
@@ -268834,6 +268854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 030e1fd42913f1b4a840e2abfb71c50c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTournament: 1
   myTeamID: 0
 --- !u!1 &9006792962682576349
 GameObject:
