@@ -10,7 +10,11 @@ namespace Fulbo.UI
         }
         void OnSkip()
         {
-            Data.Instance.LoadLevel("PlayersTeamSelector");
+            if(Data.Instance.tournamentsData.IsTournament())
+                Data.Instance.LoadLevel("GameIntro");
+            else
+                Data.Instance.LoadLevel("PlayersTeamSelector");
+
             Events.OnSkipOff();
         }
     }

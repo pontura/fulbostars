@@ -19,13 +19,21 @@ namespace Fulbo
         {
             introSettings = team2;
         }
-        public void Reset()// Se resetea por el splash:
+        public ClubData GetDefaultClubSettings()
         {
-            team2 = introSettings;
+            return introSettings;
+        }
+        public void Reset()
+        {
         }
 
         public ClubData GetDataForPartyMode(int teamID)
         {
+            if (teamID == 0)
+            {
+                ClubData clubData = Data.Instance.partyModeData.GetDefaultClubSettings();
+                return clubData;
+            }
            switch(teamID)
             {
                 case 1:
@@ -44,6 +52,7 @@ namespace Fulbo
         }
         public void SetClubData(ClubData clubData, int teamID)
         {
+            print("PartyModeData SetClubData set team id: " + teamID);
             if (teamID == 1)
                 team1 = clubData;
             else

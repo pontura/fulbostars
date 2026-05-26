@@ -31,8 +31,6 @@ namespace Fulbo.Tournamets
             
             CupsData.Instance.levels.InitTournament();
 
-
-
             cards[0].ForceShow(CharactersData.Instance.GetCharacterData(Data.Instance.matchData.team1[1], false), 10000);
             cards[1].ForceShow(CharactersData.Instance.GetCharacterData(Data.Instance.matchData.team2[1], false), 10000);
 
@@ -42,7 +40,6 @@ namespace Fulbo.Tournamets
             multipleCharactersScene.TounrnamentMode();
 
             Events.OnRight += OnRight; 
-            Events.OnSkipOn(Done, "skip");
 
             tournamentButtons[0].SetOn(false);
             tournamentButtons[1].SetOn(false);
@@ -62,8 +59,14 @@ namespace Fulbo.Tournamets
         {
             Events.OnRight -= OnRight;
         }
+        bool canSelect = false;
         void OnRight(int playerID, bool isRight)
         {
+            if (!canSelect)
+            {
+                Events.OnSkipOn(Done, "skip");
+                canSelect = true;
+            }
             if (isRight)
                 SelectTeam(2);
             else 
@@ -76,13 +79,20 @@ namespace Fulbo.Tournamets
             tournamentButtons[1].SetOn(false);
             tournamentButtons[teamID-1].SetOn(true);
             Data.Instance.tournamentsData.SetTeam(teamID);
+            Data.Instance.matchData.team1Controlled = teamID == 2;
+            Data.Instance.matchData.team2Controlled = teamID == 1;
+            if(teamID == 1)
+                Data.Instance.matchData.players[0] = 2;
+            else
+                Data.Instance.matchData.players[0] = 1;
         }
         void Done()
         {
             if (teamID == 0)
                 return;
             Events.OnSkipOff();
-            Data.Instance.LoadLevel("TeamSelector");
+            Data.Instance.LoadLevel("Controls");
+            Data.Instance.matchData.SetTotalPlayers(8, 8);
         }
     }
 }

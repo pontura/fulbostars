@@ -26,8 +26,12 @@ namespace Fulbo
         {
             if (Data.Instance.mode == Data.modes.PARTYMODE)
                 return Data.Instance.partyModeData.GetDataForPartyMode(teamID);
-
-            if (teamID == 2 || teamID == 0)
+            if (teamID == 0)
+            {
+                ClubData clubData = Data.Instance.partyModeData.GetDefaultClubSettings();
+                return clubData;
+            }
+            else if (teamID == 2)
             {
                 ClubData clubData = Data.Instance.myTeam.clubData;
                 if (clubData.name_abr == "")

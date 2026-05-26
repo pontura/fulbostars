@@ -26,7 +26,6 @@ namespace Fulbo.UI
             string[] arr = gameObject.name.Split("_"[0]);
             string colorName = arr[arr.Length - 1];
             ClubData clubData = Data.Instance.clubsData.GetData(teamID);
-            print("____________colorName " + colorName + " clubData:" + clubData.name_abr);
             switch (colorName)
             {
                 case "A": GetComponent<SpriteRenderer>().color = clubData.GetColor(1); break;
