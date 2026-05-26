@@ -21,15 +21,11 @@ namespace Fulbo.Tournamets
 
         void Start()
         {
-            SetResults();
             Data.Instance.tournamentsData.Refresh(OnDataRefreshed);
-            StadiumsData.Instance.SetRandomStadium();
-            Data.Instance.matchData.SetTotalPlayers(8, 8);
-            List<LevelData> teams = CupsData.Instance.levels.GetByState("torneo");
-
-            print("teamsCount " + teams.Count);
+            SetResults();
             
-            CupsData.Instance.levels.InitTournament();
+            List<LevelData> teams = CupsData.Instance.levels.GetByState("torneo");
+            
 
             cards[0].ForceShow(CharactersData.Instance.GetCharacterData(Data.Instance.matchData.team1[1], false), 10000);
             cards[1].ForceShow(CharactersData.Instance.GetCharacterData(Data.Instance.matchData.team2[1], false), 10000);
@@ -46,8 +42,8 @@ namespace Fulbo.Tournamets
         }
         void SetResults()
         {
-            goles[0].text = Data.Instance.tournamentsData.goles1.ToString();
-            goles[1].text = Data.Instance.tournamentsData.goles2.ToString();
+            goles[0].text = Data.Instance.tournamentsData.goles2.ToString();
+            goles[1].text = Data.Instance.tournamentsData.goles1.ToString();
             gamesPlayedField.text = Data.Instance.tournamentsData.gamesPlayed.ToString();
         }
         private void OnDataRefreshed()
@@ -59,12 +55,16 @@ namespace Fulbo.Tournamets
         {
             Events.OnRight -= OnRight;
         }
+        void OnDestroy()
+        {
+            Events.OnRight -= OnRight;
+        }
         bool canSelect = false;
         void OnRight(int playerID, bool isRight)
         {
             if (!canSelect)
             {
-                Events.OnSkipOn(Done, "skip");
+                Events.OnButtonClick += OnButtonClick;
                 canSelect = true;
             }
             if (isRight)
@@ -86,11 +86,11 @@ namespace Fulbo.Tournamets
             else
                 Data.Instance.matchData.players[0] = 1;
         }
-        void Done()
+        void OnButtonClick(int a, int b)
         {
             if (teamID == 0)
                 return;
-            Events.OnSkipOff();
+            Events.OnButtonClick -= OnButtonClick;
             Data.Instance.LoadLevel("Controls");
             Data.Instance.matchData.SetTotalPlayers(8, 8);
         }

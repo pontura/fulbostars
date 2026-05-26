@@ -126,9 +126,9 @@ namespace Fulbo.Dashoard
         int GetGoleadorForTeam(int teamID)
         {
             int id = 0;
-            if (teamID == 1)
+            if (teamID == 1 &&  Data.Instance.matchData.team1_goals.Count > 0)
                 id = Data.Instance.matchData.team1_goals[0];
-            else
+            else  if(  Data.Instance.matchData.team2_goals.Count > 0)
                 id = Data.Instance.matchData.team2_goals[0];
             return id;
         }

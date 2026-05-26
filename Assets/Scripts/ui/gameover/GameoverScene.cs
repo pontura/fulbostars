@@ -80,7 +80,14 @@ namespace Fulbo.Game
             SetGoalToCharacter();
             Events.OnShowDasboard(true);
             yield return new WaitForSeconds(0.2f);
-            Data.Instance.matchData.ResetAll();
+            if(Data.Instance.tournamentsData.IsTournament())
+            {
+                
+            }
+            else
+            {
+                Data.Instance.matchData.ResetAll();
+            }
             yield return new WaitForSeconds(1);
             Events.OnSkipOn(OnSkip, "skip");
             yield return new WaitForSeconds(9);
@@ -149,7 +156,15 @@ namespace Fulbo.Game
         {
             Events.OnSkipOff();
             AudioManager.Instance.FadeVolume("music", 0.5f);
-            Data.Instance.LoadLevel("Splash");
+            if(Data.Instance.hasTorneo)
+            {
+                if(Data.Instance.tournamentsData.IsTournament())
+                    Data.Instance.LoadLevel("Prensa");
+                else
+                    Data.Instance.LoadLevel("SplashOptions");
+            }
+            else
+                Data.Instance.LoadLevel("Splash");
         }
     }
 

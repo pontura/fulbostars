@@ -52,6 +52,10 @@ namespace Fulbo.Tournamets
             string torneoId = "torneo1";
             int golesTeam1 = (int)Data.Instance.matchData.score[0];
             int golesTeam2= (int)Data.Instance.matchData.score[1];
+            
+            Data.Instance.tournamentsData.lastMatchGoles1 = golesTeam1;
+            Data.Instance.tournamentsData.lastMatchGoles2 = golesTeam2;
+
             SubmitMatchResult(torneoId, golesTeam1, golesTeam2, OnResultSaved);
         }
         public void SubmitMatchResult(string torneoId, int golesTeam1, int golesTeam2, System.Action<bool> onDone)

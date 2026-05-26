@@ -6,11 +6,13 @@ using Fulbo.Onboarding;
 using Fulbo.Energy;
 using Fulbo.UI.Pvp;
 using Fulbo.Tournamets;
+using Fulbo.Stadiums;
 
 namespace Fulbo
 {
     public class Data : MonoBehaviour
     {
+        public bool hasTorneo = true;
         static Data mInstance = null;
         string storeURL = "https://play.google.com/store/apps/details?id=com.aconcaguagames.FulboGalaxy";
         string purchaseHard = "com.aconcaguagames.fulbogalaxy.fulbo";
@@ -186,7 +188,14 @@ namespace Fulbo
             dataLoaderManager = GetComponent<DataLoaderManager>();
             dataLoaderManager.Load(LoadReady);
         }
-
+        public void InitTournament()
+        {
+            Data.Instance.tournamentsData.SetTournament(true);
+            StadiumsData.Instance.SetRandomStadium();
+            Data.Instance.matchData.SetTotalPlayers(8, 8);
+            CupsData.Instance.levels.InitTournament();
+            LoadLevel("TournamentSelector");
+        }
         void LoadReady()
         {
            
@@ -197,7 +206,7 @@ namespace Fulbo
             if (mode == modes.PARTYMODE)
             {
                // Data.Instance.LoadLevel("Splash");
-                Data.Instance.LoadLevel("TournamentSelector");
+                InitTournament();
             }
             else if (Fulbo.Game.GameManager.Instance != null)
                 Fulbo.Game.GameManager.Instance.OnInit();
@@ -262,9 +271,19 @@ namespace Fulbo
                 case modes.STORYMODE:
                     onBoardingManager.gameObject.SetActive(true);
                     break;
-
-
             }
+        }
+        public void OnSummaryOver()
+        {
+            if(Data.Instance.tournamentsData.IsTournament())
+            {
+                if(Data.Instance.tournamentsData.lastMatchGoles1 == Data.Instance.tournamentsData.lastMatchGoles2)
+                    Data.Instance.LoadLevel("SplashOptions");
+                else
+                    Data.Instance.LoadLevel("Prensa");
+            }
+                else
+                    Data.Instance.LoadLevel("SplashOptions");
         }
     }
 

@@ -8,8 +8,13 @@ namespace Fulbo.Tournamets
     {
         public bool isTournament = true;
         public int myTeamID; // 1 o 2 (left o right)
-        public int goles1; 
-        public int goles2; 
+
+        public int goles1; // total goles del torneo, no se resetea cada partido
+        public int goles2; // total goles del torneo, no se resetea cada partido
+
+        public int lastMatchGoles1; // total goles del partido, se resetea cada partido
+        public int lastMatchGoles2; // total goles del partido, se resetea cada partido
+
         public int gamesPlayed;
 
         void Start()
@@ -23,7 +28,6 @@ namespace Fulbo.Tournamets
             this.OnRefreshed = OnRefreshed;
             DBManager.Instance.tournamentsManager.GetResults("torneo1", OnLoadedResults);
         }
-
         private void OnLoadedResults(bool success, int goles1, int goles2, int gamesPlayed)
         {
             this.goles1 = goles1;

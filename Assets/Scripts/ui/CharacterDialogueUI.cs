@@ -22,6 +22,8 @@ namespace Fulbo.UI
         }
         void Update()
         {
+            if(character == null)
+                return;
             transform.position = character.transform.position;
         }
         void Reset()

@@ -192,7 +192,14 @@ namespace Fulbo.UI
         void EndGame()
         {
             if (Data.Instance.mode == Data.modes.PARTYMODE)
-                Data.Instance.LoadLevel("Splash");
+            {
+                if(Data.Instance.hasTorneo)
+                {
+                    Data.Instance.OnSummaryOver();
+                }
+                else
+                    Data.Instance.LoadLevel("Splash");
+            }
             else
                 Data.Instance.LoadLevel("MainMenu");
             

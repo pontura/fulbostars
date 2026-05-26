@@ -61,8 +61,7 @@ namespace Fulbo.Game
             OnLoadingProgress(0);
             if (text == "AllDone")
             {
-                //Data.Instance.LoadLevel("Splash");
-                Data.Instance.LoadLevel("TournamentSelector");
+                Data.Instance.InitTournament();
             }
         }
         void OnLoadingProgress(float value)
