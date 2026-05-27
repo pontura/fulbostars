@@ -1,9 +1,12 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class WebGLGamepadFix : MonoBehaviour
 {
     private bool _isReregistering = false;
+    private readonly List<InputDevice> _connectedGamepads = new();
 
     void OnEnable()
     {
@@ -18,19 +21,33 @@ public class WebGLGamepadFix : MonoBehaviour
     void OnDeviceChange(InputDevice device, InputDeviceChange change)
     {
         if (_isReregistering) return;
-        if (change != InputDeviceChange.Added) return;
         if (device.layout != "WebGLGamepad") return;
 
-        Debug.Log("[FIX] WebGLGamepad detectado, forzando pair con PlayerInput...");
+        if (change == InputDeviceChange.Added && !_connectedGamepads.Contains(device))
+            _connectedGamepads.Add(device);
+        else if (change == InputDeviceChange.Removed)
+            _connectedGamepads.Remove(device);
+        else
+            return;
+
         _isReregistering = true;
-
-        var playerInputs = FindObjectsOfType<PlayerInput>();
-        foreach (var pi in playerInputs)
-        {
-            pi.SwitchCurrentControlScheme("Gamepad", device);
-            Debug.Log($"[FIX] SwitchControlScheme aplicado a {pi.gameObject.name}");
-        }
-
+        RebindGamepads();
         _isReregistering = false;
+    }
+
+    void RebindGamepads()
+    {
+        var playerInputs = FindObjectsOfType<PlayerInput>()
+            .OrderBy(pi => pi.playerIndex)
+            .ToArray();
+
+        for (int i = 0; i < playerInputs.Length; i++)
+        {
+            if (i < _connectedGamepads.Count)
+            {
+                playerInputs[i].SwitchCurrentControlScheme("Gamepad", _connectedGamepads[i]);
+                Debug.Log($"[FIX] Gamepad {i} → {playerInputs[i].gameObject.name}");
+            }
+        }
     }
 }

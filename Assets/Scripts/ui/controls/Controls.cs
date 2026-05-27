@@ -14,8 +14,7 @@ namespace Fulbo.UI
         }
         void OnDestroy()
         {
-            if(Data.Instance.hasTorneo)
-                Events.OnButtonClick -= OnButtonClick;
+            Events.OnButtonClick -= OnButtonClick;
         }
         private void OnButtonClick(int arg1, int arg2)
         {
@@ -28,7 +27,7 @@ namespace Fulbo.UI
             if(Data.Instance.tournamentsData.IsTournament())
                 Data.Instance.LoadLevel("GameIntro");
             else
-                Data.Instance.LoadLevel("TeamSelector");
+                Data.Instance.LoadLevel("SplashOptions");
 
             Events.OnSkipOff();
         }

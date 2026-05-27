@@ -10,12 +10,14 @@ namespace Fulbo.UI
         [SerializeField] GameObject panel;
         [SerializeField] Animator anim; //perder, empatar, ganar
         [SerializeField] GameObject[] referies; //ids de los referies
+        int referiID = 0;
 
         void Start()
         {
             panel.SetActive(false);
             Events.GameOver += GameOver;
         }
+       
         void OnDestroy()
         {
             Events.GameOver -= GameOver;
@@ -25,8 +27,8 @@ namespace Fulbo.UI
             DBManager.Instance.tournamentsManager.OnSendResults(OnResultsSended); 
             panel.SetActive(true);
             AudioManager.Instance.PlaySound("music", "", true);
-            AudioManager.Instance.FadeVolume("ambience", 0, 0.5f);
-           
+            AudioManager.Instance.FadeVolume("ambience", 0, 0.5f);            
+            SetReferis();           
         }
         void OnResultsSended(bool ok)
         {
@@ -42,12 +44,23 @@ namespace Fulbo.UI
             } else
                 StartCoroutine( C() );
         }
-        IEnumerator C()
-        {
-            string animName = "";
+         string animName = "";
+        void SetReferis()
+        { 
             foreach (GameObject g in referies)
                 g.SetActive(false);
-             if(Data.Instance.tournamentsData.IsTournament())
+
+            
+
+            if (Data.Instance.mode == Data.modes.PARTYMODE)
+                referiID = CharactersData.Instance.GetReferi().id;
+            else if (Data.Instance.matchData.levelData.referiID <= referies.Length)
+                referiID = Data.Instance.matchData.levelData.referiID;
+
+            referies[referiID-1].SetActive(true);
+
+            
+            if(Data.Instance.tournamentsData.IsTournament())
              {
                  if(Data.Instance.tournamentsData.myTeamID == 1)
                     if (Data.Instance.matchData.score.x > Data.Instance.matchData.score.y)
@@ -77,16 +90,9 @@ namespace Fulbo.UI
             AudioManager.Instance.PlaySoundOneShot("ui", "ui/endScreen/" + animName);
 
             anim.Play(animName);
-
-            int referiID = 0;
-
-            if (Data.Instance.mode == Data.modes.PARTYMODE)
-                referiID = CharactersData.Instance.GetReferi().id;
-            else if (Data.Instance.matchData.levelData.referiID <= referies.Length)
-                referiID = Data.Instance.matchData.levelData.referiID - 1;
-
-            referies[referiID].SetActive(true);
-
+        }
+        IEnumerator C()
+        {
             yield return new WaitForSeconds(1.5f);
 
             if(Data.Instance.mode == Data.modes.PARTYMODE)

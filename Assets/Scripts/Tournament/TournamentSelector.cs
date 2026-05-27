@@ -94,8 +94,11 @@ namespace Fulbo.Tournamets
             if (teamID == 0)
                 return;
             Events.OnButtonClick -= OnButtonClick;
-            Data.Instance.LoadLevel("Controls");
+            
             Data.Instance.matchData.SetTotalPlayers(8, 8);
+            CharactersData.Instance.SetRandomReferi();
+
+            Data.Instance.LoadLevel("Controls");
         }
     }
 }
