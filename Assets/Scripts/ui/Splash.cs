@@ -24,8 +24,8 @@ namespace Fulbo.UI
         void OnUp(int playerID, bool a)
         {
             if (a)
-                var++;
-            else var--;
+                var--;
+            else var++;
 
             if (var < 0) var = buttons.Length-1;
             if (var > 2) var = 0;
