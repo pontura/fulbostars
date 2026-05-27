@@ -22,7 +22,7 @@ namespace Fulbo.UI
         }
         void Update()
         {
-            if(character == null)
+            if(character == null || !character.gameObject.activeInHierarchy)
                 return;
             transform.position = character.transform.position;
         }

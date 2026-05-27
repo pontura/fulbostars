@@ -14,6 +14,7 @@ namespace Fulbo
         public Transform container;
         float random_x;
         float random_y;
+        public bool randomMessagesOn = true;
 
         private void Start()
         {
@@ -25,7 +26,7 @@ namespace Fulbo
         }
         public void Init()
         {
-            if (Fulbo.Game.GameManager.Instance != null)
+            if (randomMessagesOn && Fulbo.Game.GameManager.Instance != null)
             {
                 Invoke(nameof(LoopRandomDialogues), 5);
                 Invoke(nameof(InitReferi), 0.1f);
