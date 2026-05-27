@@ -25,11 +25,7 @@ namespace Fulbo.Tournamets
             SetResults();
             
             List<LevelData> teams = CupsData.Instance.levels.GetByState("torneo");
-            
-
-            cards[0].ForceShow(CharactersData.Instance.GetCharacterData(Data.Instance.matchData.team1[1], false), 10000);
-            cards[1].ForceShow(CharactersData.Instance.GetCharacterData(Data.Instance.matchData.team2[1], false), 10000);
-
+        
             teams[0].name = teams[0].name;
             teams[1].name = teams[1].name;
 
@@ -39,6 +35,13 @@ namespace Fulbo.Tournamets
 
             tournamentButtons[0].SetOn(false);
             tournamentButtons[1].SetOn(false);
+            
+            Invoke("Delayed", 0.1f);
+        }
+         void Delayed()
+        {
+            cards[0].ForceShow(CharactersData.Instance.GetCharacterData(Data.Instance.matchData.team1[1], false), 10000);
+            cards[1].ForceShow(CharactersData.Instance.GetCharacterData(Data.Instance.matchData.team2[1], false), 10000);
         }
         void SetResults()
         {
