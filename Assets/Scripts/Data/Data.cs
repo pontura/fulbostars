@@ -124,7 +124,6 @@ namespace Fulbo
         }
         void Awake()
         {
-            Cursor.visible = false;
             if (this.GetType() != typeof(Data))
                 DestroySelf();
 

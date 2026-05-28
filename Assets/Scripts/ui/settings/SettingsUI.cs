@@ -59,19 +59,19 @@ namespace Fulbo.UI
 #if UNITY_IOS || UNITY_ANDROID
             controlsButton.gameObject.SetActive(false);
 #else
-            controlsButton.Init(1, Clicked, Data.Instance.texts.Get("controlsButton"));
-            if (Data.Instance.newScene == "Game" || Data.Instance.newScene == "Tutorial")
-                controlsButton.gameObject.SetActive(false);
-            else
-                controlsButton.gameObject.SetActive(true);
+            // controlsButton.Init(1, Clicked, Data.Instance.texts.Get("controlsButton"));
+            // if (Data.Instance.newScene == "Game" || Data.Instance.newScene == "Tutorial")
+            //     controlsButton.gameObject.SetActive(false);
+            // else
+            //     controlsButton.gameObject.SetActive(true);
 #endif            
 
-            if (DB.DBManager.Instance.versionMode == DB.DBManager.versionModes.DEV)
-            {
-                deleteAccount.gameObject.SetActive(true);
-                deleteAccount.Init(4, Clicked, Data.Instance.texts.Get("delete_account"));
-            }
-            else
+            // if (DB.DBManager.Instance.versionMode == DB.DBManager.versionModes.DEV)
+            // {
+            //     deleteAccount.gameObject.SetActive(true);
+            //     deleteAccount.Init(4, Clicked, Data.Instance.texts.Get("delete_account"));
+            // }
+            // else
                 deleteAccount.gameObject.SetActive(false);
 
             registerLogoutButton.Init(3, Clicked, Data.Instance.texts.Get("accountButton"));
@@ -87,13 +87,13 @@ namespace Fulbo.UI
             SetAnnouncements();
             SetSpeechBubbles();
 
-            if (Data.Instance.newScene == "Game")
-            {
-                endgameButton.gameObject.SetActive(true);
-                endgameButton.GetComponentInChildren<Text>().text = Data.Instance.texts.Get("end_game");
-                endgameButton.Init(2, Clicked, Data.Instance.texts.Get("endgameButton"));
-            }
-            else
+            // if (Data.Instance.newScene == "Game")
+            // {
+            //     endgameButton.gameObject.SetActive(true);
+            //     endgameButton.GetComponentInChildren<Text>().text = Data.Instance.texts.Get("end_game");
+            //     endgameButton.Init(2, Clicked, Data.Instance.texts.Get("endgameButton"));
+            // }
+            // else
                 endgameButton.gameObject.SetActive(false);
 
             Time.timeScale = 0;
@@ -303,15 +303,15 @@ namespace Fulbo.UI
 
 
         public void JoinDiscord() {
-            Application.OpenURL("https://discord.gg/fulbo-galaxy-921937789833084978");
+            Application.OpenURL("https://discord.gg/2HeXUGWMN");
         }
 
         public void JoinInstagram() {
-            Application.OpenURL("https://www.instagram.com/fulbogalaxy/");
+            Application.OpenURL("https://www.instagram.com/fulbostars/");
         }
 
         public void JoinTwitter() {
-            Application.OpenURL("https://twitter.com/FulboGalaxy");
+            Application.OpenURL("https://twitter.com/FulboStars");
         }
     }
 

@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Fulbo.Onboarding;
 using UnityEngine.UI;
+using System;
 
 namespace Fulbo.UI
 {
     public class UICanvas : MonoBehaviour
     {
+        [SerializeField] GameObject top;
         [SerializeField] GameObject topBar;
         [SerializeField] GameObject topBarTutorial;
         [SerializeField] BackButton back;
@@ -29,19 +31,29 @@ namespace Fulbo.UI
         public FigusScreen figusScreen;
 
         [SerializeField] SettingsUI settingsUI;
-
+        void Awake()
+        {
+            print("______loading");
+            Events.OnLoading += OnLoading;
+            Events.OnFlyingParticles += OnFlyingParticles;
+            Events.OnSceneLoaded += OnSceneLoaded;
+        }
         private void Start()
         {
             topBar.SetActive(false);
             settingsButton.SetActive(false);
-
-            Events.OnFlyingParticles += OnFlyingParticles;
-            Events.OnSceneLoaded += OnSceneLoaded;
+            
             buyGoldButton.gameObject.SetActive(true);
             buyGoldButton.Init(0, OnButtonClicked);
             buyHardButton.Init(1, OnButtonClicked);
 
             CheckForPlusIcons();
+        }
+          void OnDestroy()
+        {
+            Events.OnSceneLoaded -= OnSceneLoaded;
+            Events.OnFlyingParticles -= OnFlyingParticles;
+            Events.OnLoading -= OnLoading;
         }
         void CheckForPlusIcons()
         {
@@ -103,11 +115,15 @@ namespace Fulbo.UI
         //    else
         //        Events.OnPopup(Data.Instance.texts.Get("store_not_available"), null);
         //}
-        void OnDestroy()
+      
+
+        private void OnLoading(string text)
         {
-            Events.OnSceneLoaded -= OnSceneLoaded;
-            Events.OnFlyingParticles -= OnFlyingParticles;
+            print("____________OnLoading " + text);
+            if (text == "AllDone" || text == "" )
+                top.SetActive(true);
         }
+
         public void Init()
         {
             backActions = new List<System.Action>();
