@@ -14,6 +14,7 @@ namespace Fulbo
 {
     public class CupLevelsData : DataLoader
     {
+        [SerializeField]int totalTeamsForMultiplayer;
         public List<LevelData> content;
         public List<LevelData> GetByState(string state = "on") {
             List<LevelData> all = new List<LevelData>();
@@ -64,11 +65,9 @@ namespace Fulbo
             }
         }
 
-        public List<int> GetCharactersForTag(string tag, int totalCharacters = 8)
+        public List<int> GetCharactersForTag(string tag, int totalCharacters = 8, bool shuffle = true)
         {
-            Utils.Shuffle(multi_characters);
             List<int>arr = new List<int>();
-            arr.Add(GetGoalkeeperForTag(tag));
             int a = 0;
             foreach(MultiCharactersData characterData in multi_characters)
             {
@@ -78,23 +77,15 @@ namespace Fulbo
                     a++;
                 }
             }
+            if(shuffle)
+                Utils.Shuffle(arr);
+                
+            arr.Insert(0, GetGoalkeeperForTag(tag));
+            if(arr.Count>totalCharacters)
+                arr.RemoveRange(totalCharacters,arr.Count - totalCharacters);
             return arr;
         }
-        public List<int> GetCharactersForTagNoShuffle(string tag)
-        {
-            List<int> arr = new List<int>();
-            arr.Add(GetGoalkeeperForTag(tag));
-            int a = 0;
-            foreach (MultiCharactersData characterData in multi_characters)
-            {
-                if (characterData.tag == tag && characterData.rol != "GK")
-                {
-                    arr.Add(characterData.id);
-                    a++;
-                }
-            }
-            return arr;
-        }
+       
         public int GetGoalkeeperForTag(string tag)
         {
             foreach (MultiCharactersData characterData in multi_characters)
@@ -106,7 +97,12 @@ namespace Fulbo
         }
         public void InitMultiplayer()
         {
-
+            totalTeamsForMultiplayer = 0;
+            foreach (LevelData ld in content)
+            {
+                if (ld.state == "on")
+                    totalTeamsForMultiplayer++;
+            }
             // default memes
             // default ninios o tercermundo
 
@@ -136,6 +132,10 @@ namespace Fulbo
         }
         public void InitTournament()
         {
+            
+            team1 = 0;
+            team2 = 0;
+
             int id = 0;
             List<LevelData> all = new List<LevelData>();
             foreach (LevelData ld in content)
@@ -151,11 +151,15 @@ namespace Fulbo
             print("InitTournament team1" + team1 + content[team1].name);
             print("InitTournament team2" + team2 + content[team2].name);
 
-            List<int> team1Characters = CupsData.Instance.levels.GetCharactersForTagNoShuffle(content[team1].team_tag);
-            List<int> team2Characters = CupsData.Instance.levels.GetCharactersForTagNoShuffle(content[team2].team_tag);
+            List<int> team1Characters = GetCharactersForTag(content[team1].team_tag, 20, false);
+            List<int> team2Characters = GetCharactersForTag(content[team2].team_tag, 20, false);
 
             Data.Instance.matchData.team1 = team1Characters;
             Data.Instance.matchData.team2 = team2Characters;
+
+            
+            print("InitTournament team1 " + Data.Instance.matchData.team1.Count);
+            print("InitTournament team2 " + Data.Instance.matchData.team2.Count);
 
             Data.Instance.partyModeData.SetTeamID(1, team1);
             Data.Instance.partyModeData.SetTeamID(2, team2);
@@ -168,13 +172,13 @@ namespace Fulbo
             if (teamID == 1)
             {
                 if (add) team1++; else team1--;
-                if (team1 < 0) team1 = content.Count - 1; else if (team1 > content.Count - 1) team1 = 0;
+                if (team1 < 0) team1 = totalTeamsForMultiplayer - 1; else if (team1 > totalTeamsForMultiplayer - 1) team1 = 0;
                 Data.Instance.partyModeData.SetTeamID(teamID, team1);
             } 
             else
             {
                 if (add) team2++; else team2--;
-                if (team2 < 0) team2 = content.Count - 1; else if (team2 > content.Count - 1) team2 = 0;
+                if (team2 < 0) team2 = totalTeamsForMultiplayer- 1; else if (team2 > totalTeamsForMultiplayer - 1) team2 = 0;
                 Data.Instance.partyModeData.SetTeamID(teamID, team2);
             }
             SetGetMultiplayerTeam(teamID);

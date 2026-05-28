@@ -21,6 +21,8 @@ namespace Fulbo.Tournamets
 
         void Start()
         {
+            print("SPLASK");
+            PlayMusicIntro();
             Data.Instance.tournamentsData.Refresh(OnDataRefreshed);
             SetResults();
             
@@ -37,6 +39,10 @@ namespace Fulbo.Tournamets
             tournamentButtons[1].SetOn(false);
             
             Invoke("Delayed", 0.1f);
+        }
+         public void PlayMusicIntro()
+        {
+            AudioManager.Instance.Play2Musics("music/intro", "music/music");
         }
          void Delayed()
         {
@@ -93,6 +99,10 @@ namespace Fulbo.Tournamets
         {
             if (teamID == 0)
                 return;
+
+            AudioManager.Instance.FadeVolume("music", 0.3f);
+            AudioManager.Instance.PlaySoundOneShot("ui", "ui/ui_play_now");
+            
             Events.OnButtonClick -= OnButtonClick;
             
             Data.Instance.matchData.SetTotalPlayers(8, 8);
