@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 namespace Fulbo.UI
 {
@@ -6,14 +7,14 @@ namespace Fulbo.UI
     {
         [SerializeField] Animator[] buttons;
 
-        int var = 1;
+        int var = 0;
         void Start()
         {
             print("SPLASK");
             PlayMusicIntro();
             Events.OnButtonClick += OnButtonClick;
             Events.OnUp += OnUp; 
-            Select(1);
+            Select();
         }
         void OnDestroy()
         {
@@ -23,17 +24,20 @@ namespace Fulbo.UI
         void OnUp(int playerID, bool a)
         {
             if (a)
-                Select(1);
-            else 
-                Select(2);
+                var--;
+            else var++;
+
+            if (var < 0) var = buttons.Length-1;
+            if (var > 2) var = 0;
+            Select();
         }
-        void Select(int _var)
+        void Select()
         {
-            var = _var;
             if(buttons.Length > 0)
             {
-                buttons[0].SetBool("isOn", var == 1);
-                buttons[1].SetBool("isOn", var == 2);
+                buttons[0].SetBool("isOn", var == 0);
+                buttons[1].SetBool("isOn", var == 1);
+                buttons[2].SetBool("isOn", var == 2);
             }
         }
         public void PlayMusicIntro()
@@ -52,14 +56,17 @@ namespace Fulbo.UI
             AudioManager.Instance.FadeVolume("music", 0.3f);
             AudioManager.Instance.PlaySoundOneShot("ui", "ui/ui_play_now");
 
-            if(var == 1)//tournamemt:
+            if(var == 0)//tournamemt:
             {
                 Data.Instance.InitTournament();
-            } else//friendly
+            } else  if(var == 1)//friendly
             {                
                 Data.Instance.tournamentsData.SetTournament(false);
                 Data.Instance.LoadLevel("TeamSelector");
+            } else
+            {                
+                Data.Instance.LoadLevel("Controls");
             }
-        }
+        } 
     }
 }

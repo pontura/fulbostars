@@ -110,11 +110,9 @@ namespace Fulbo
         [HideInInspector] public List<int> availablesTeam2;
         [HideInInspector] public List<int> availablesTeam1_goalkeepers;
         [HideInInspector] public List<int> availablesTeam2_goalkeepers;
-        [HideInInspector] public List<int> availableReferis;
 
-        int totalCharacters;
-        int totalGoalKeepers;
-        int totalReferis;
+        [SerializeField] int totalCharacters;
+        [SerializeField] int totalGoalKeepers;
 
         AssetsBundleManager assetsBundleManager;
 
@@ -138,7 +136,6 @@ namespace Fulbo
             //LoadAudios();
             totalCharacters = all.Count;
             totalGoalKeepers = all_goalkeepers.Count;
-            totalReferis = all_referis.Count;
 
             availablesTeam1.Clear();
             availablesTeam2.Clear();
@@ -197,8 +194,6 @@ namespace Fulbo
                 else
                     availablesTeam2_goalkeepers.Add(a);
             }
-            for (int a = 1; a < totalReferis + 1; a++)
-                availableReferis.Add(a);
 
             Utils.Shuffle(availablesTeam1);
             Utils.Shuffle(availablesTeam2);
@@ -206,7 +201,6 @@ namespace Fulbo
             Utils.Shuffle(availablesTeam1_goalkeepers);
             Utils.Shuffle(availablesTeam2_goalkeepers);
 
-            Utils.Shuffle(availableReferis);
         }
 
         public GameObject GetCharacterByTeam(int teamID, int id, bool isGoalKeeper)
@@ -235,11 +229,10 @@ namespace Fulbo
         public List<CharacterData> GetReferies()
         {
             List<CharacterData> allavailable = new List<CharacterData>();
-            int totalActive = 4; // TO-DO: solo muestra los 4 primeros porque los otros no tienen thumb!
-            foreach (int a in availableReferis)
+            foreach (CharacterData cd in all_referis)
             {
-                if(a<totalActive)
-                    allavailable.Add( all_referis[a - 1] );
+                if(cd.IsAvailable())
+                    allavailable.Add( cd );
             }
             return allavailable;
         }
@@ -315,14 +308,7 @@ namespace Fulbo
             string[] players = assetsBundleManager.assetsBundleLoader.bundles["players.1_100"].GetAllAssetNames();
             string[] goalkeepers = assetsBundleManager.assetsBundleLoader.bundles["goalkeepers.1_100"].GetAllAssetNames();
 
-            Debug.Log("___________players count in bundle: " +             players.Length);
-            //Debug.Log("playgoalkeepersers count in bundle: " +  goalkeepers.Length);
-            //Debug.Log("names players count in bundle: " + names_players.Length);
-            //Debug.Log("names goalkeepers count in bundle: " + names_goalkeepers.Length);
-            //Debug.Log("names referis count in bundle: " + names_referis.Length);
-
-            //Debug.Log("goals count in bundle: " + goals.Length);
-            //Debug.Log("comments count in bundle: " + comments.Length);
+           // Debug.Log("___________players count in bundle: " +             players.Length);
 
             all.Clear();
             all_goalkeepers.Clear();
@@ -480,6 +466,12 @@ namespace Fulbo
         public void SetReferi(int id)
         {
             this.referiId = id;
+        }
+         public void SetRandomReferi()
+         {
+            int randomIndex = UnityEngine.Random.Range(0, all_referis.Count);
+            print("SetRandomReferi "+ randomIndex + " total: " + all_referis.Count);
+            this.referiId = all_referis[randomIndex].id;
         }
     }
 }

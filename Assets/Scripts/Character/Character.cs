@@ -191,7 +191,7 @@ namespace Fulbo.Game
         }
         void SetPartymodeStats()
         {
-            characterStats.ForceStats((int)(Data.Instance.settings.GetSetting("stats_for_guestmode_opponents")*100));
+            characterStats.ForceStats((int)(Data.Instance.settings.GetSetting("stats_for_guestmode_opponents")*70));
            // if (!Data.Instance.settings.mainSettings.isArcade && teamID == 2)
            //     characterStats.ForceStats((int)(Data.Instance.settings.GetSetting("stats_for_guestmode_myteam") * 100));            
         }
