@@ -41,7 +41,7 @@ namespace Fulbo.Game
             GetComponent<DialoguesManager>().Init();
             AudioManager.Instance.ChangeVolume("crowd", 0.25f);
 
-            charactersManager.Init(false, true);
+            charactersManager.Init( true);
             charactersManager.referi.gameObject.SetActive(false);
 
             foreach (Character ch in charactersManager.team1)

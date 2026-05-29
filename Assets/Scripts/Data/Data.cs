@@ -67,6 +67,7 @@ namespace Fulbo
         [HideInInspector] public PvpData pvpData; 
         [HideInInspector] public PoolObjects pool; 
         [HideInInspector] public PricesData pricesData;
+        [HideInInspector] public WebGLGamepadFix webGLGamepadFix;
 #if UNITY_ANDROID
         [HideInInspector] public ReviewRequest reviewRequest;   
 #endif
@@ -155,6 +156,7 @@ namespace Fulbo
         isMobile = true;
         loadType = loadTypes.SERVER;
 #endif
+            webGLGamepadFix = GetComponent<WebGLGamepadFix>();
             tournamentsData = GetComponent<TournamentsData>();
             dataLoaderManager = GetComponent<DataLoaderManager>();
             langsManager = GetComponent<LangsManager>();
@@ -274,15 +276,13 @@ namespace Fulbo
         }
         public void OnSummaryOver()
         {
-            if(Data.Instance.tournamentsData.IsTournament())
-            {
-                if(Data.Instance.tournamentsData.lastMatchGoles1 == Data.Instance.tournamentsData.lastMatchGoles2)
-                    Data.Instance.LoadLevel("SplashOptions");
-                else
-                    Data.Instance.LoadLevel("Prensa");
-            }
-                else
-                    Data.Instance.LoadLevel("SplashOptions");
+            print("OnSummaryOver");
+            if(Data.Instance.settings.mainSettings.isArcade)
+                Data.Instance.LoadLevel("Splash");
+            else if(Data.Instance.tournamentsData.IsTournament() && Data.Instance.tournamentsData.lastMatchGoles1 != Data.Instance.tournamentsData.lastMatchGoles2)                    
+                Data.Instance.LoadLevel("Prensa");
+            else
+                Data.Instance.LoadLevel("SplashOptions");
         }
     }
 

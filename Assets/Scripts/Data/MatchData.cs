@@ -138,6 +138,20 @@ namespace Fulbo
                 }
             }
         }
+        void SetJoysticksToLeftTeam()
+        {
+            print("SetJoysticksToLeftTeam");
+            for (int a = 0; a < players.Length; a++)
+            {
+                if(players[a] > 0)
+                {
+                    if(team1Controlled)
+                        players[a] = 1;
+                    else  
+                        players[a] = 2;
+                }
+            }
+        }
         public CharactersPositions.PositionsData GetPositionsForTeam(int teamID)
         {
             CharactersPositions.PositionsData positionsData;
@@ -195,6 +209,10 @@ namespace Fulbo
         }
         public void SetTotalPlayers(int myTeamQty, int oponentsQty)
         {
+            if(Data.Instance.tournamentsData.IsTournament())
+            {
+                SetJoysticksToLeftTeam();
+            }
             totalPlayers = myTeamQty; // for guestMode only:
             if (myTeamQty > team2.Count && Data.Instance.mode != Data.modes.PARTYMODE) myTeamQty = team2.Count;
 
@@ -523,6 +541,15 @@ namespace Fulbo
             else
                 characterID = team2[UnityEngine.Random.Range(1, team2.Count - 1)];
             return CharactersData.Instance.GetCharacterData(characterID, false);
+        }
+        public int GetWinner()
+        {
+            if(Data.Instance.matchData.score.x == Data.Instance.matchData.score.y)
+                return 0;
+             if(Data.Instance.matchData.score.x<Data.Instance.matchData.score.y)
+                return 2;
+            else 
+                return 1;
         }
         public void AddMonitoToMyTeam(int characterID)
         {

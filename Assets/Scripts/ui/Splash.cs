@@ -62,7 +62,10 @@ namespace Fulbo.UI
             } else  if(var == 1)//friendly
             {                
                 Data.Instance.tournamentsData.SetTournament(false);
-                Data.Instance.LoadLevel("TeamSelector");
+                if(Data.Instance.webGLGamepadFix.playersQty > 1) // si hay más de un joystick
+                    Data.Instance.LoadLevel("PlayersTeamSelector");
+                else
+                    Data.Instance.LoadLevel("TeamSelector");
             } else
             {                
                 Data.Instance.LoadLevel("Controls");

@@ -27,17 +27,17 @@ namespace Fulbo.Game
         {
             yield return new WaitForSeconds(0.1f);
 
+            win = true;
             // Events.OnOutroSound(OnPita, audioID);
             int totalCharacters;
-            if (Data.Instance.matchData.score.y > Data.Instance.matchData.score.x)
-            {
-                win = true;
+            // if (Data.Instance.matchData.score.y > Data.Instance.matchData.score.x)
+            // {
                 cam.GetComponent<Animation>().Play("gameOverScene");
-            }
-            else
-            {
-                cam.GetComponent<Animation>().Play("gameOverSceneLose");
-            }
+            // }
+            // else
+            // {
+            //     cam.GetComponent<Animation>().Play("gameOverSceneLose");
+            // }
 
             totalCharacters = Data.Instance.matchData.totalCharacters_team2;
 
@@ -56,8 +56,13 @@ namespace Fulbo.Game
             }
             GetComponent<DialoguesManager>().Init();
             AudioManager.Instance.ChangeVolume("crowd", 0.25f);
-                charactersManager.Init(true, true);
-            team = charactersManager.winnerTeam;
+                charactersManager.Init(true);
+
+                int teamWon = Data.Instance.matchData.GetWinner();
+                if(teamWon == 2)
+                    team = charactersManager.team2;
+                else     
+                    team = charactersManager.team1;
 
             for (int id = 0; id < totalCharacters; id++)
             {
@@ -156,15 +161,7 @@ namespace Fulbo.Game
         {
             Events.OnSkipOff();
             AudioManager.Instance.FadeVolume("music", 0.5f);
-            if(Data.Instance.hasTorneo)
-            {
-                if(Data.Instance.tournamentsData.IsTournament())
-                    Data.Instance.LoadLevel("Prensa");
-                else
-                    Data.Instance.LoadLevel("SplashOptions");
-            }
-            else
-                Data.Instance.LoadLevel("Splash");
+            Data.Instance.OnSummaryOver();
         }
     }
 

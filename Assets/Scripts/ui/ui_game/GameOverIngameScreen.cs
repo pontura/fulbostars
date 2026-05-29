@@ -23,12 +23,17 @@ namespace Fulbo.UI
             Events.GameOver -= GameOver;
         }
         void GameOver()
-        {
-            DBManager.Instance.tournamentsManager.OnSendResults(OnResultsSended); 
+        {           
             panel.SetActive(true);
             AudioManager.Instance.PlaySound("music", "", true);
             AudioManager.Instance.FadeVolume("ambience", 0, 0.5f);            
-            SetReferis();           
+            SetReferis();   
+             if(Data.Instance.tournamentsData.IsTournament())
+                DBManager.Instance.tournamentsManager.OnSendResults(OnResultsSended); 
+            else 
+            {
+                Invoke("OnResultsSended", 1.5f);
+            }        
         }
         void OnResultsSended(bool ok)
         {
@@ -50,8 +55,6 @@ namespace Fulbo.UI
             foreach (GameObject g in referies)
                 g.SetActive(false);
 
-            
-
             if (Data.Instance.mode == Data.modes.PARTYMODE)
                 referiID = CharactersData.Instance.GetReferi().id;
             else if (Data.Instance.matchData.levelData.referiID <= referies.Length)
@@ -59,33 +62,13 @@ namespace Fulbo.UI
 
             referies[referiID-1].SetActive(true);
 
-            
-            if(Data.Instance.tournamentsData.IsTournament())
-             {
-                 if(Data.Instance.tournamentsData.myTeamID == 1)
-                    if (Data.Instance.matchData.score.x > Data.Instance.matchData.score.y)
-                        animName = "endWin";
-                    else if (Data.Instance.matchData.score.x < Data.Instance.matchData.score.y)
-                        animName = "endLose";
-                    else
-                        animName = "endTied";
-                else
-                    if (Data.Instance.matchData.score.x > Data.Instance.matchData.score.y)
-                        animName = "endLose";
-                    else if (Data.Instance.matchData.score.x < Data.Instance.matchData.score.y)
-                        animName = "endWin";
-                    else
-                        animName = "endTied";
-             }
-             else
-             {
-                 if (Data.Instance.matchData.score.x > Data.Instance.matchData.score.y)
-                     animName = "endWin";
-                 else if (Data.Instance.matchData.score.x < Data.Instance.matchData.score.y)
-                     animName = "endLose";
-                 else
-                     animName = "endTied";
-             }
+            int winner = Data.Instance.matchData.GetWinner();
+            if(winner == 0)
+                animName = "endTied";                
+            else  if (Data.Instance.matchData.team1Controlled && winner == 1 || Data.Instance.matchData.team2Controlled && winner == 2) 
+                animName = "endWin";
+            else
+                animName = "endLose";               
 
             AudioManager.Instance.PlaySoundOneShot("ui", "ui/endScreen/" + animName);
 

@@ -20,32 +20,23 @@ namespace Fulbo.Dashoard
         }
         void Add(DashboardSignalContent signal)
         {
-            DashboardContentData data = null;
             DashboardContentData dcData = DashboardData.Instance.GetByType(signal.type);
             if (dcData != null)
             {
-                dcData.characterID = GetCharacter(2);
-                dcData.characterID2 = GetCharacter(1);
+                if(Data.Instance.matchData.GetWinner() == 1)
+                {
+                    dcData.characterID = GetCharacterForTeam(1);
+                    dcData.characterID2 = GetCharacterForTeam(2);
+                }
+                else
+                {
+                    dcData.characterID = GetCharacterForTeam(2);
+                    dcData.characterID2 = GetCharacterForTeam(1);
+                }
                 signal.Init(dcData);
             }
             else
                 Destroy(this.gameObject);
-        }
-        int GetCharacter(int teamID = 0)
-        {
-            //if (teamID == 0)
-            //{
-            //    return randomCharacters[UnityEngine.Random.Range(0, randomCharacters.Count)];
-            //}
-            //else
-            //{
-                if (teamID == 1)
-                    return GetCharacterForTeam(1);
-                else// if (Data.Instance.matchData.GetTotalPlayersInMatch(2) > 0)
-                    return GetCharacterForTeam(2);
-                //else
-                //    return randomCharacters[UnityEngine.Random.Range(0, randomCharacters.Count)];
-           // }
         }
         int GetCharacterForTeam(int teamID)
         {

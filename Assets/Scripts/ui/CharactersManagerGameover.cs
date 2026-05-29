@@ -8,32 +8,24 @@ namespace Fulbo.Game
     {
         public int scoreWinned;
 
-        public override void Init(bool reverseTeams = false, bool isBillboard = false)
+        public override void Init(bool isBillboard = false)
         {
+            AudioManager.Instance.PlaySpecificSound(Fulbo.Stadiums.StadiumsData.Instance.active.ambience_end_loop, "ambience", true);
             SetScore();
 
             CharactersConstructor cc = GetComponent<CharactersConstructor>();
             if (cc != null) cc.AddCharacters();
 
+            int teamWon = Data.Instance.matchData.GetWinner();
+            if(teamWon == 2)
+                teamWon = 2;
+            else     
+                teamWon = 1;   
 
             ball = Fulbo.Game.GameManager.Instance.ball;
             referi.InitReferi(this, CharactersData.Instance.GetReferi().asset);
-
-            if (reverseTeams)
-            {
-                winnerTeam = team2;
-                if(Data.Instance.mode == Data.modes.PARTYMODE)
-                    SetCharactersToTeam(2, false, true, true);
-                else
-                    SetCharactersToTeam(2, true, true, true);
-            }
-            else
-            {
-                winnerTeam = team1;
-                SetCharactersToTeam(1, false, true, false);
-            }
-
-            AudioManager.Instance.PlaySpecificSound(Fulbo.Stadiums.StadiumsData.Instance.active.ambience_end_loop, "ambience", true);
+            print("CharactersManagerGameover teamWon: "+ teamWon);
+            SetCharactersToTeam(teamWon, false, true, true);
         }
         void SetScore()
         {

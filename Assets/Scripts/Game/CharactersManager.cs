@@ -26,7 +26,6 @@ namespace Fulbo.Game
         public Ball ball;
 
         public GameObject containerTeam1, containerTeam2;
-        public List<Character> winnerTeam;
         public List<Character> team1;
         public List<Character> team2;
 
@@ -69,25 +68,14 @@ namespace Fulbo.Game
             Events.KickToGoal -= KickToGoal;
         }
        
-        public virtual void Init(bool reverseTeams = false, bool isBillboard = false)
+        public virtual void Init(bool isBillboard = false)
         {
             loopTime = Data.Instance.settings.GetSetting("timeToSwapCharactersAutomatically");
             CharactersConstructor cc = GetComponent<CharactersConstructor>();
             if (cc != null) cc.AddCharacters();
 
             gameplaySettings = Data.Instance.settings.gameplay;
-            if (reverseTeams)
-            {
-                teamID_1 = 2;
-                teamID_2 = 1;
-                winnerTeam = team2;
-            }
-            else
-            {
-                teamID_1 = 1;
-                teamID_2 = 2;
-                winnerTeam = team1;
-            }
+
             ball = game.ball;
             charactersStrategy.Init(this);
             charactersAiManager.Init(this);
@@ -144,20 +132,19 @@ namespace Fulbo.Game
             if (GameManager.Instance.state == Fulbo.Game.GameManager.states.PLAYING)
                 charactersAiManager.Loop();
         }
-        public void SetCharactersToTeam(int teamID, bool userDBTeam, bool isBillboard = false, bool reverseTeams = false)
+        public void SetCharactersToTeam(int teamID, bool userDBTeam, bool isBillboard = false, bool isGameOver = false)
         {
            // print("SetCharacters teamID: " + teamID + "     userDBTeam: " + userDBTeam + "   is billboard:"+  isBillboard + "  reverse: " + reverseTeams);
             List <Character> arr;
             GameObject container;
             if (teamID == 1) {
                 arr = team1;
-                if (reverseTeams)  container = containerTeam2;
-                else  container = containerTeam1;
+                container = containerTeam1;
             } else {
                 arr = team2;
-                if (reverseTeams) container = containerTeam1;
-                else container = containerTeam2;
+                container = containerTeam2;
             } 
+            if (isGameOver)  container = containerTeam1;
 
             int id = 0;
             GameObject asset = null;
