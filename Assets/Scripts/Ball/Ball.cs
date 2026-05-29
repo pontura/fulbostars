@@ -29,7 +29,8 @@ namespace Fulbo.Game
         BallRaycast ballRaycast;
         bool isRecordedMatch;
         public CharacterStates.kickTypes kickType;
-
+        Vector3 ballScale;
+        GameObject ballAsset;
 
         public void Init(GameObject _ballAsset)
         {
@@ -38,7 +39,7 @@ namespace Fulbo.Game
 
             game = GameManager.Instance;
             transform.localEulerAngles = Vector3.zero;
-            GameObject ballAsset = Instantiate(_ballAsset, transform);
+            ballAsset = Instantiate(_ballAsset, transform);
             ballAsset.transform.localScale = Vector3.one;
             ballAsset.transform.localPosition = Vector3.zero;
             ballAsset.transform.localEulerAngles = Vector3.zero;
@@ -103,6 +104,26 @@ namespace Fulbo.Game
         {
             return character;
         }
+        void Visibility(bool isOn)
+        {
+            if(!isOn)
+            {
+                if(character != null)
+                {
+                    Transform casaca = character.CatchBallTransform();
+                    if(casaca != null)
+                    {                        
+                        ballAsset.transform.SetParent(casaca);
+                        ballAsset.transform.localPosition = new Vector3(0,-0.25f,-0.5f);
+                    }
+                }
+            } else
+            {
+                ballAsset.transform.SetParent(transform);
+                ballAsset.transform.localPosition = Vector3.zero;
+                ballAsset.transform.localScale = Vector3.one;
+            }
+        }
         public void CharacterCatchBall(Character newCharacter)
         {
             if (this.character != null)
@@ -113,6 +134,7 @@ namespace Fulbo.Game
                 Events.LoseBall(character);
                 this.character.ballCatcher.LoseBall();
             }
+          
 
             shadow.SetActive(false);
 
@@ -124,6 +146,8 @@ namespace Fulbo.Game
             this.character = newCharacter;
             rb.constraints = RigidbodyConstraints.FreezeAll;
             ballRaycast.SetOff();
+            if(newCharacter.type == Character.types.GOALKEEPER)
+                Visibility(false);
         }
         private void OnTriggerEnter(Collider other)
         {
@@ -470,6 +494,7 @@ namespace Fulbo.Game
         }
         public void FreeBall()
         {
+            Visibility(true);
             shadow.SetActive(true);
             Vector3 rot = transform.eulerAngles;
             if (customContainer != null)

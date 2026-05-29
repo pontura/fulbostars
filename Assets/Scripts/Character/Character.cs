@@ -191,7 +191,7 @@ namespace Fulbo.Game
         }
         void SetPartymodeStats()
         {
-            characterStats.ForceStats((int)(Data.Instance.settings.GetSetting("stats_for_guestmode_opponents")*70));
+            characterStats.ForceStats((int)(Data.Instance.settings.GetSetting("stats_for_guestmode_opponents")*100));
            // if (!Data.Instance.settings.mainSettings.isArcade && teamID == 2)
            //     characterStats.ForceStats((int)(Data.Instance.settings.GetSetting("stats_for_guestmode_myteam") * 100));            
         }
@@ -735,6 +735,16 @@ namespace Fulbo.Game
             else dist = (stadiumWidth) + (transform.position.x*-1);
             return dist / w;
         }
+        public Transform CatchBallTransform()
+        {
+            Transform[] all = GetComponentsInChildren<Transform>();
+            GameObject a = System.Array.Find(
+                all, 
+                t => t.name == "casaca"
+            ).gameObject;
+            return a.transform; 
+        }
+
     }
 
 }
