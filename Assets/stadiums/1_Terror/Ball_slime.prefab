@@ -4961,7 +4961,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.15
+  m_Time: 0.3
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -4979,8 +4979,8 @@ TrailRenderer:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.3717751
-        value: 0.26627308
+        time: 0.2660088
+        value: 0.27817494
         inSlope: 0.50037557
         outSlope: 0.50037557
         tangentMode: 0
@@ -4988,14 +4988,23 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.64943904
       - serializedVersion: 3
-        time: 0.72948074
-        value: 0.34251803
-        inSlope: -0.46547696
-        outSlope: -0.46547696
+        time: 0.5323677
+        value: 0.2829924
+        inSlope: -1.2771116
+        outSlope: -1.2771116
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.8028195
+        inWeight: 1
         outWeight: 0.6856871
+      - serializedVersion: 3
+        time: 0.78072923
+        value: 0.22648425
+        inSlope: -1.0088593
+        outSlope: -1.0088593
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 1
+        outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
         value: 0
@@ -5011,7 +5020,7 @@ TrailRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 0.0625937, g: 1, b: 0, a: 0.46666667}
-      key1: {r: 0, g: 1, b: 0.072836876, a: 0.32941177}
+      key1: {r: 0, g: 1, b: 0.072836876, a: 0.24313726}
       key2: {r: 1, g: 0.9449338, b: 0, a: 0.4117647}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -5035,7 +5044,7 @@ TrailRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
+      m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
@@ -5182,7 +5191,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 0
+  looping: 1
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -5242,7 +5251,7 @@ ParticleSystem:
       m_RotationOrder: 4
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
-  scalingMode: 1
+  scalingMode: 0
   randomSeed: 0
   InitialModule:
     serializedVersion: 3
@@ -5250,8 +5259,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
-      minScalar: 0.5
+      scalar: 0.6
+      minScalar: 0.4
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5422,7 +5431,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 4
-      minScalar: 2
+      minScalar: 22
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5738,7 +5747,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 100
+    maxNumParticles: 50
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -6057,8 +6066,8 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 8
-      minScalar: 6
+      scalar: 5
+      minScalar: 12
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -10084,7 +10093,7 @@ ParticleSystem:
       m_RotationOrder: 4
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
-  scalingMode: 1
+  scalingMode: 0
   randomSeed: 0
   InitialModule:
     serializedVersion: 3
@@ -10093,7 +10102,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 3
-      minScalar: 4
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -10263,8 +10272,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 111
-      minScalar: 77
+      scalar: 44
+      minScalar: 66
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -10846,7 +10855,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
