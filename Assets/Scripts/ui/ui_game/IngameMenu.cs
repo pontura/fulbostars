@@ -50,15 +50,14 @@ namespace Fulbo.UI
         }
         void SetOn(bool on)
         {
-            if (Data.Instance.settings.mainSettings.isArcade)
-                return;
-
+#if UNITY_ANDROID
             if (isMobile)
                 foreach (GameObject go in mobilePanels)
                     go.SetActive(on);
             else if(Data.Instance.mode != Data.modes.PARTYMODE)
                 foreach (GameObject go in arcadePanels)
                     go.SetActive(on);
+#endif
         }
 
 

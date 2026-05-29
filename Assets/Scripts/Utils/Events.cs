@@ -10,6 +10,7 @@ using static Fulbo.PricesData;
 
 public static class Events
 {
+    public static System.Action<Character, Vector3> TakePhoto = delegate { };
     public static System.Action EndGame = delegate { };
     public static System.Action<bool> OnShowDasboard = delegate { };
     public static System.Action EnergyUpdated = delegate { };
@@ -182,4 +183,5 @@ public static class Events
     public static System.Action<string> CheckForImportantNotifications = delegate { };
 
     public static System.Action<Fulbo.UI.Shop.Shop.sectionType, bool> OnFreeStaffUpdate = delegate { };
+    public static System.Action<int> TotalJoysticks = delegate { };
 }

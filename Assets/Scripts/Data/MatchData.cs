@@ -116,11 +116,27 @@ namespace Fulbo
             time = 0;
             Events.GameInit += GameInit;
             Events.OnGoal += OnGoal;
+            Events.TotalJoysticks += TotalJoysticks;
         }
         private void OnDestroy()
         {
             Events.GameInit -= GameInit;
             Events.OnGoal -= OnGoal;
+            Events.TotalJoysticks -= TotalJoysticks;
+        }
+        void TotalJoysticks(int qty)
+        {
+            print("TotalJoysticks: " + qty);
+            if(Data.Instance.tournamentsData.IsTournament())
+            {
+                for(int a = 0; a<qty; a++)
+                {
+                    if(team1Controlled)
+                        players[a] = 1;
+                    else  
+                        players[a] = 2;
+                }
+            }
         }
         public CharactersPositions.PositionsData GetPositionsForTeam(int teamID)
         {
