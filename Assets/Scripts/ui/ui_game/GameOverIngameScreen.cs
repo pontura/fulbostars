@@ -32,7 +32,7 @@ namespace Fulbo.UI
                 DBManager.Instance.tournamentsManager.OnSendResults(OnResultsSended); 
             else 
             {
-                Invoke("OnResultsSended", 1.5f);
+                 StartCoroutine( C() );
             }        
         }
         void OnResultsSended(bool ok)
@@ -49,7 +49,7 @@ namespace Fulbo.UI
             } else
                 StartCoroutine( C() );
         }
-         string animName = "";
+        string animName = "";
         void SetReferis()
         { 
             foreach (GameObject g in referies)
