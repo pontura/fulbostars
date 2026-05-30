@@ -10,6 +10,7 @@ namespace Fulbo.UI
         int var = 0;
         void Start()
         {
+            Events.OnBackActive(false);
             print("SPLASK");
             PlayMusicIntro();
             Events.OnButtonClick += OnButtonClick;

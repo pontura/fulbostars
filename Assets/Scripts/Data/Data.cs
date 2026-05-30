@@ -284,6 +284,12 @@ namespace Fulbo
             else
                 Data.Instance.LoadLevel("SplashOptions");
         }
+        public void Back()
+        {
+            Data.Instance.matchData.Reset();
+            Data.Instance.tournamentsData.SetTournament(false);
+            LoadLevel("SplashOptions");
+        }
     }
 
 }

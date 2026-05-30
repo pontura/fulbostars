@@ -21,6 +21,7 @@ namespace Fulbo.Tournamets
 
         void Start()
         {
+            Events.OnBackActive(Data.Instance.tournamentsData.played);
             print("SPLASK");
             PlayMusicIntro();
             Data.Instance.tournamentsData.Refresh(OnDataRefreshed);

@@ -29,6 +29,7 @@ namespace Fulbo.UI
         int posID_team_2;
         public void Start()
         {
+            Events.OnBackActive(true);
             StadiumsData.Instance.SetRandomStadium();
             Events.OnSkipOn(OnSkip, "skip");
             Data.Instance.matchData.SetTotalPlayers(8, 8);

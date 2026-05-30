@@ -21,6 +21,8 @@ namespace Fulbo.Tournamets
         public int lastMatchGoles2; // total goles del partido, se resetea cada partido
 
         public int gamesPlayed;
+        public bool played;
+
 
         void Start()
         {
@@ -106,6 +108,10 @@ namespace Fulbo.Tournamets
                 case 1: return data.tournaments[torneoID].team1_win;
                 default: return data.tournaments[torneoID].team2_win;
             }
+        }
+        public void Played()
+        {
+            played = true;
         }
     }
 }

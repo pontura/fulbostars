@@ -13,6 +13,7 @@ public static class Events
     public static System.Action<Character, Vector3> TakePhoto = delegate { };
     public static System.Action EndGame = delegate { };
     public static System.Action<bool> OnShowDasboard = delegate { };
+    public static System.Action<bool> OnBackActive = delegate { };
     public static System.Action EnergyUpdated = delegate { };
     public static System.Action OnEnergyUseUpdate = delegate { };
     public static System.Action<bool> OnPostProcessingFX = delegate { };
