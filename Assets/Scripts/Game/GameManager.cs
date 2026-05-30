@@ -68,6 +68,7 @@ namespace Fulbo.Game
         }
         private void Start()
         {
+            Events.OnBackActive(Data.Instance.tournamentsData.played);
             gameRecorder = GameRecorder.Manager.Instance();
             if (gameRecorder.state == GameRecorder.Manager.states.PLAYING) recordType = recordTypes.PLAYING;
             else if (gameRecorder.state == GameRecorder.Manager.states.RECORDING) recordType = recordTypes.RECORDING;
@@ -234,6 +235,8 @@ namespace Fulbo.Game
         }
         void EndGame()
         {
+            print("EndGame + Data.Instance.tournamentsData.played: " + Data.Instance.tournamentsData.played);
+            if(!Data.Instance.tournamentsData.played) return;
             GameOver();
         }
     }

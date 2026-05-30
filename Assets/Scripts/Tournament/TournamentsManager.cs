@@ -48,6 +48,7 @@ namespace Fulbo.Tournamets
 
          public void OnSendResults(System.Action<bool> OnResultSaved)
         {
+            Data.Instance.tournamentsData.Played();
             print("TournamentsData OnGameOver");
             string torneoId = "torneo1";
             int golesTeam1 = (int)Data.Instance.matchData.score[0];

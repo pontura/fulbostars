@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 namespace Fulbo.UI
 {
@@ -14,6 +15,32 @@ namespace Fulbo.UI
         {
             BACK,
             HOME
+        }
+        void Start()
+        {
+            Events.OnBackActive += OnBackActive;
+            Events.EndGame += EndGame;
+        }
+        void OnDestroy()
+        {            
+            Events.OnBackActive -= OnBackActive;
+            Events.EndGame -= EndGame;
+        }
+
+        private void EndGame()
+        {
+            if(!gameObject.activeSelf)
+                return;
+            Clicked();  
+        }
+
+        void OnBackActive(bool isOn)
+        {
+            SetActive(isOn);
+        }
+        public void Clicked()
+        {
+            Data.Instance.Back();
         }
         public void SetActive(bool isOn)
         {

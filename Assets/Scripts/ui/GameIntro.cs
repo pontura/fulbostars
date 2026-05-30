@@ -22,6 +22,7 @@ namespace Fulbo.Game
         }
         void Start()
         {
+            Events.OnBackActive(Data.Instance.tournamentsData.played);
             AudioManager.Instance.PlaySoundOneShot("ui", "ui/game_cup_intro");
             if (Data.Instance.mode == Data.modes.PVP)
                 Data.Instance.ui.SetBackButton(true, Back);
