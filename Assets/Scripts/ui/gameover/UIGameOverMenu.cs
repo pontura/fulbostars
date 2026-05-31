@@ -257,12 +257,7 @@ namespace Fulbo.UI
             Events.OnSkipOff();
             if (Data.Instance.mode == Data.modes.PARTYMODE)
             {
-                 if(Data.Instance.hasTorneo)
-                {
-                   Data.Instance.OnSummaryOver();
-                }
-                else
-                    Data.Instance.LoadLevel("Splash");
+                Data.Instance.OnSummaryOver();
                 return;
             }
 

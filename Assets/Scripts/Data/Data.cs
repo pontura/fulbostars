@@ -282,12 +282,18 @@ namespace Fulbo
             else if(Data.Instance.tournamentsData.IsTournament() && Data.Instance.tournamentsData.lastMatchGoles1 != Data.Instance.tournamentsData.lastMatchGoles2)                    
                 Data.Instance.LoadLevel("Prensa");
             else
+            {
+                Reset();
                 Data.Instance.LoadLevel("SplashOptions");
+            }
         }
-        public void Back()
-        {
+        void Reset()
+        {            
             Data.Instance.matchData.Reset();
             Data.Instance.tournamentsData.SetTournament(false);
+        }
+        public void Back()
+        {   Reset();
             LoadLevel("SplashOptions");
         }
     }
