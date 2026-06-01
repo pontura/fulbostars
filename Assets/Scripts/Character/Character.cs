@@ -684,12 +684,28 @@ namespace Fulbo.Game
             return PositionsInGame.COMMON;
         }
         float fr_update;
+        float _stillWithBallTimer = 0;
         private void Update()
         {
             if (isGame)
             {
                 states.UpdatedByCharacter();
                 ai.UpdatedByCharacter();
+
+                if (ai.ball.character == this && !IsMoving())
+                {
+                    _stillWithBallTimer += Time.deltaTime;
+                    if (_stillWithBallTimer >= 1f)
+                    {
+                        _stillWithBallTimer = 0;
+                        Jueguito();
+                    }
+                }
+                else
+                {
+                    _stillWithBallTimer = 0;
+                }
+
                 fr_update += Time.deltaTime;
                 if (fr_update > 0.2f)
                 {
