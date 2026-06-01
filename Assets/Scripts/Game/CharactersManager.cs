@@ -664,7 +664,9 @@ namespace Fulbo.Game
             if (characterNear != null)// && characterNear.type != Character.types.GOALKEEPER)
             {
                 character.ballCatcher.LookAt(characterNear.transform.position);
-                SwapTo(GetCharacterToPassInTeam(character), characterNear);
+                Character characterToPassInTeam = GetCharacterToPassInTeam(character);
+                //SwapTo(characterToPassInTeam, characterNear);
+                SwapTo(character, characterNear);
                 float dist = Vector3.Distance(character.transform.position, characterNear.transform.position);
 
                 character.Kick(kickType, 1 + (dist / 10));
@@ -703,15 +705,17 @@ namespace Fulbo.Game
         }
 
         public void SwapTo(Character from, Character to)
-        {
+        {   
+             print("SwapTo");
             if (to == null || to.isBeingControlled) return;
             if (from == null) return;
             if (from.teamID != to.teamID) return;
-            if (from.control_id == to.control_id) return;
+             print("SwapTo  " + from.control_id  + "to: " + to.control_id);
+            if (from.control_id == 0 && to.control_id == 0) return;
 
             if (powerupsManager != null) powerupsManager.ResetPowerBar(from.teamID);
 
-            // print("SWAP from: " + from.data.avatarName + " to: " + to.data.avatarName);
+            print("SwapTo from: " + from.avatarName + " to: " + to.avatarName);
 
             int teamID = from.teamID;
             to.control_id = from.control_id;

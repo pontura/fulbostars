@@ -1,8 +1,8 @@
   	value / 10	DEFENSOR	CENTRAL	DELANTERO	GOALKEEPER		comments
-speed	35	5	0	0	0	speed/60	Velocidad normal del jugador sin la pelota (Jog)
-speedRun	55	5	0	0	0		Velocidad máxima de Sprint sin la pelota
+speed	30	5	0	0	0	speed/60	Velocidad normal del jugador sin la pelota (Jog)
+speedRun	50	5	0	0	0		Velocidad máxima de Sprint sin la pelota
 speedRunFade	54	0	0	0	0		Tiempo que toma en bajar desde la velocidad máxima de Sprint a la velocidad de Jog
-speedWithBall	30	-5	2	0	0		Velocidad normal del jugador con la pelota (Jog)
+speedWithBall	20	-5	2	0	0		Velocidad normal del jugador con la pelota (Jog)
 speedRunWithBall	50	-5	5	0	0		Velocidad máxima de Sprint con la pelota
 speedDash	65	10	0	-10	0		Velocidad de traslado durante el Tackle
 random_jump_a_dash	50	0	25	15	0		Probabilidad entre 0 y 1000  de que la IA te salte un Tackle
@@ -18,14 +18,14 @@ freeze_by_kick	5	0	0	0	0		Tiempo en que el jugador se queda freeze luego de pate
 freeze_dash	10	0	-1	1	0		Tiempo en que el jugador se queda freeze luego de fallar un dash
 freeze_by_loseBall	30	0	0	0	0		Tiempo en que el jugador se queda freeze luego de perder la pelota por contacto
 freeze_by_dashBall	35	0	5	15	0		Tiempo en que el jugador se queda freeze luego de perder la pelota por un Tackle
-height_to_dominate_ball	50	50	-25	10	0		Altura (impacto de pelota en jugador) necesaria para dominar la pelota en vez de cabecearla
+height_to_dominate_ball	45	40	-25	10	0		Altura (impacto de pelota en jugador) necesaria para dominar la pelota en vez de cabecearla
 timeToSwapCharactersAutomatically	7	0	0	0	0		Tiempo que espera la PC para cambiarle de jugador automaticamente al Usuario
-collider_radius	30	0	-10	0	40		Radio de colisión del jugador con la pelota
-collider_height	200	0	0	0	0		Altura de colisión del jugador con la pelota
+collider_radius	25	0	-10	0	40		Radio de colisión del jugador con la pelota
+collider_height	170	0	0	0	0		Altura de colisión del jugador con la pelota
 collider_radius_air	110	100	0	50	20		Radio de colisión para el jugador cuando esta en el aire (chilena, cabezaso.. etc)
 lujito_multiplier	10	0	0	0	0		Velocidad que multiplica. ej:  15 = speed * 1.5 mientras hace jueguito. (esta se suma a la de Sprint)
-kickHard	4000	0	-500	1000	0		Fuerza con la que patea la pelota al arco
-kickHardAngle	3000	100	200	300	0		Globito con el que se patea al arco
+kickHard	4500	0	-500	1000	0		Fuerza con la que patea la pelota al arco
+kickHardAngle	4400	100	200	300	0		Globito con el que se patea al arco
 kickSoft	4500	500	250	0	500		Fuerza con la que se hace un pase
 kickSoftAngle	1200	0	0	0	0		Altura en la que se hace un pase
 kickBaloon	2100	250	500	0	500		Fuerza con la que se hace un pase por arriba

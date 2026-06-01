@@ -43,10 +43,23 @@ namespace Fulbo.Game.AIs
             {
                 timerJueguito = 0;
                 dest.x = stadiumSize.x / 2 - Utils.GetRandomFloatBetween(6, 13);
-                if (character.teamID == 1) dest.x *= -1;
+               
                 dest.z = Utils.GetRandomFloatBetween(-stadiumSize.y/4, stadiumSize.y / 4);
                 actionState = actionStates.RUNING;
                 timer = 0;
+                if(Random.Range(0, 10) < 5)
+                {
+                    if (character.teamID == 1) 
+                    {
+                        dest.x *= -1;
+                        if(_transform.position.x < -((stadiumSize.x / 2) - 7))
+                            KickToGoal();
+                    } else 
+                    {
+                        if(_transform.position.x > (stadiumSize.x / 2) - 7)
+                            KickToGoal();
+                    }
+                }
             }
         }
         public override void OnCatchBall()
@@ -157,7 +170,10 @@ namespace Fulbo.Game.AIs
         void KickToGoal()
         {
             actionState = actionStates.KICK;
-            character.Kick(CharacterStates.kickTypes.KICK_TO_GOAL);
+            if(Random.Range(0, 10) < 5)
+                character.Kick(CharacterStates.kickTypes.VOLEA,Random.Range(1.1f, 1.3f));
+            else
+                 character.Kick(CharacterStates.kickTypes.KICK_TO_GOAL);
             SetState(ai.aiPositionAttacking);
         }
         bool CheckPase(Vector3 originalPosition, float forward)

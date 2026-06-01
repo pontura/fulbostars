@@ -533,7 +533,8 @@ namespace Fulbo.Game
                     kickType = CharacterStates.kickTypes.KICK_TO_GOAL;
             }
             if ( kickType == CharacterStates.kickTypes.KICK_POWERUP 
-                || (kickType == CharacterStates.kickTypes.KICK_TO_GOAL && !character.isBeingControlled)
+                || (kickType == CharacterStates.kickTypes.KICK_TO_GOAL && !character.isBeingControlled
+                || (kickType == CharacterStates.kickTypes.VOLEA && !character.isBeingControlled))
             )
             {
                 character.ballCatcher.LookAt(AimGoal(character, kickType));

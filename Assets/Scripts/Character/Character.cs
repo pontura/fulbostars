@@ -692,7 +692,7 @@ namespace Fulbo.Game
                 states.UpdatedByCharacter();
                 ai.UpdatedByCharacter();
 
-                if (ai.ball.character == this && !IsMoving())
+                if (ai.ball != null && ai.ball.character == this && !IsMoving())
                 {
                     _stillWithBallTimer += Time.deltaTime;
                     if (_stillWithBallTimer >= 1f)

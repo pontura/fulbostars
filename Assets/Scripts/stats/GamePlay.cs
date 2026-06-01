@@ -318,8 +318,8 @@ namespace Fulbo
                     dir *= _kickHard * force;
                     dir = GetNewForceByDistance(character, dir);
 
-                    Vector3 u = Vector3.up * (kickHardAngle + Utils.GetRandomFloatBetween(-60, 10));// * (force/10f);
-                    float maxHeight = 430;
+                    Vector3 u = Vector3.up * (kickHardAngle + Utils.GetRandomFloatBetween(-80, 20));// * (force/10f);
+                    float maxHeight = 440;
                     if (u.y > maxHeight) u.y = maxHeight;
 
                     if (velDistortion != Vector3.zero) {
