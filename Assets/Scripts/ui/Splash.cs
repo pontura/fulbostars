@@ -34,7 +34,7 @@ namespace Fulbo.UI
         }
         void Select()
         {
-            if(buttons.Length > 0)
+            if(buttons != null &&buttons.Length > 0)
             {
                 buttons[0].SetBool("isOn", var == 0);
                 buttons[1].SetBool("isOn", var == 1);
@@ -52,15 +52,18 @@ namespace Fulbo.UI
         }
         void GotoGame()
         {
-            
+           
             print("GotoGame");
             AudioManager.Instance.FadeVolume("music", 0.3f);
             AudioManager.Instance.PlaySoundOneShot("ui", "ui/ui_play_now");
 
-            if(var == 0)//tournamemt:
+             if(Data.Instance.settings.mainSettings.isArcade)
+                Data.Instance.LoadLevel("PlayersTeamSelector");
+
+            else if(var == 0)//tournamemt:
             {
                 Data.Instance.InitTournament();
-            } else  if(var == 1)//friendly
+            } else  if(var == 1) //friendly
             {                
                 Data.Instance.tournamentsData.SetTournament(false);
                 if(Data.Instance.webGLGamepadFix.playersQty > 1) // si hay más de un joystick

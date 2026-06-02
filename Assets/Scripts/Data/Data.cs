@@ -206,8 +206,10 @@ namespace Fulbo
 
             if (mode == modes.PARTYMODE)
             {
-               // Data.Instance.LoadLevel("Splash");
-                InitTournament();
+                if(Data.Instance.settings.mainSettings.isArcade)
+                    Data.Instance.LoadLevel("Splash");
+                else
+                    InitTournament();
             }
             else if (Fulbo.Game.GameManager.Instance != null)
                 Fulbo.Game.GameManager.Instance.OnInit();
@@ -293,8 +295,12 @@ namespace Fulbo
             Data.Instance.tournamentsData.SetTournament(false);
         }
         public void Back()
-        {   Reset();
-            LoadLevel("SplashOptions");
+        {   
+            Reset();
+            if(Data.Instance.settings.mainSettings.isArcade)
+                Data.Instance.LoadLevel("Splash");
+            else
+                Data.Instance.LoadLevel("SplashOptions");
         }
     }
 

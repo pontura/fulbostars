@@ -16,7 +16,7 @@ namespace Fulbo.Game
 
         void Start()
         {
-            if (!Data.Instance.tournamentsData.IsTournament())
+            if (Data.Instance.settings.mainSettings.isArcade || !Data.Instance.tournamentsData.IsTournament())
                 AllScreen();
         }
         public void TounrnamentMode()

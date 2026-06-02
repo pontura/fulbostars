@@ -135,7 +135,13 @@ namespace Fulbo.UI
         void OnSceneLoaded(string sceneName)
         {
             CheckForPlusIcons();
-            settingsButton.SetActive(true);
+            if(!Data.Instance.settings.mainSettings.isArcade)
+            {
+                settingsButton.SetActive(true);
+            } else
+            {
+                settingsButton.SetActive(false);
+            }
             clubShield.gameObject.SetActive(false);
             switch (sceneName)
             {

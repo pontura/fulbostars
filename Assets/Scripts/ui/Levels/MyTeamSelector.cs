@@ -33,7 +33,7 @@ namespace Fulbo.UI
             StadiumsData.Instance.SetRandomStadium();
             Events.OnSkipOn(OnSkip, "skip");
             Data.Instance.matchData.SetTotalPlayers(8, 8);
-            if(!Data.Instance.tournamentsData.IsTournament())
+            if(Data.Instance.settings.mainSettings.isArcade || !Data.Instance.tournamentsData.IsTournament())
             {
                 CupsData.Instance.levels.InitMultiplayer();
             }
@@ -52,6 +52,11 @@ namespace Fulbo.UI
             {
                 if (Data.Instance.partyModeData.teamID_1 == Data.Instance.partyModeData.teamID_2)
                     OnRight(1, true);//para evitar los 2 teams iguales:
+                Events.OnRight += OnRight;
+                Events.SetArcadeVolUp += SetArcadeVolUp;
+                Events.SetArcadeVolDown += SetArcadeVolDown;
+            } else if (Data.Instance.settings.mainSettings.isArcade)
+            {
                 Events.OnRight += OnRight;
                 Events.SetArcadeVolUp += SetArcadeVolUp;
                 Events.SetArcadeVolDown += SetArcadeVolDown;

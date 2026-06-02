@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -47,22 +47,9 @@ namespace Fulbo.Game
         }
         void OnLoading(string text)
         {
-            //if (text == "Bundles")
-            //    field.text = "Upgrading";
-
-            //else if (text == "Positions") // assets bundle done!
-            //    field.text = "Entering";
-
-            //else if (text == "LevelBonus") // assets bundle done!
-            //    field.text = "";
-
             fileID++;
-            print("_______" + fileID + " text: " + text);
+            print("_______" + fileID + " text: " + text + "  Data.Instance.settings.mainSettings.isArcade: " + Data.Instance.settings.mainSettings.isArcade);
             OnLoadingProgress(0);
-            if (text == "AllDone")
-            {
-                Data.Instance.InitTournament();
-            }
         }
         void OnLoadingProgress(float value)
         {

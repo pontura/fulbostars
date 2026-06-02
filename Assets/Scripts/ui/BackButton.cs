@@ -29,7 +29,7 @@ namespace Fulbo.UI
 
         private void EndGame()
         {
-            if(!gameObject.activeSelf)
+            if(!Data.Instance.settings.mainSettings.isArcade && !gameObject.activeSelf)
                 return;
             Clicked();  
         }

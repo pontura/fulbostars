@@ -60,6 +60,8 @@ namespace Fulbo.Tournamets
         }
          private void AllLoaded(string text)
         {
+            if(Data.Instance.settings.mainSettings.isArcade)
+                isTournament = false;
             data = JsonUtility.FromJson<TData>(text);
             OnDone();
         }
