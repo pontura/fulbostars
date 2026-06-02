@@ -44,7 +44,7 @@ namespace Fulbo.Game
         float loopTime;
         PowerupsManager powerupsManager;
         bool singlePlayer; // one player only in team 2.
-
+        [SerializeField] bool isArcade;
 
         private void Awake()
         {
@@ -58,7 +58,7 @@ namespace Fulbo.Game
             powerupsManager = GameManager.Instance.powerupsManager;
             matchData = Data.Instance.matchData;
             game = Fulbo.Game.GameManager.Instance;
-          
+            isArcade = Data.Instance.settings.mainSettings.isArcade;
 
             Events.KickToGoal += KickToGoal;
            
@@ -665,8 +665,12 @@ namespace Fulbo.Game
             {
                 character.ballCatcher.LookAt(characterNear.transform.position);
                 Character characterToPassInTeam = GetCharacterToPassInTeam(character);
-                //SwapTo(characterToPassInTeam, characterNear);
-                SwapTo(character, characterNear);
+
+                if (isArcade)   
+                    SwapTo(characterToPassInTeam, characterNear);
+                else
+                    SwapTo(character, characterNear);
+
                 float dist = Vector3.Distance(character.transform.position, characterNear.transform.position);
 
                 character.Kick(kickType, 1 + (dist / 10));
