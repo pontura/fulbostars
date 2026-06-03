@@ -1,4 +1,5 @@
 ﻿using Fulbo.Stadiums;
+using Fulbo.Tournamets;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ namespace Fulbo.UI
 {
     public class PlayersTeamSelector : MonoBehaviour
     {
+        public TournamentSelector tournamentSelector;
         public PlayerTeamSignalUI[] all;
         public Text field;
 
@@ -36,13 +38,21 @@ namespace Fulbo.UI
             int id = playerID - 1;
             all[id].MoveRight(isRight);
             SetTotalPlayers();
+            if(tournamentSelector == null) return;
+            if(isRight)
+                tournamentSelector.SetTeamActive(1);
+            else 
+                tournamentSelector.SetTeamActive(2);
         }
         void Go()
         {
             Events.OnSkipOff();
             if (AnyActive())
             {
-                Data.Instance.LoadLevel("TeamSelector");
+                if(Data.Instance.tournamentsData.IsTournament())
+                    Data.Instance.LoadLevel("GameIntro");
+                else
+                    Data.Instance.LoadLevel("TeamSelector");
             }
             else
             {

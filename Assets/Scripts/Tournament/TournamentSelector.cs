@@ -36,8 +36,11 @@ namespace Fulbo.Tournamets
 
             Events.OnRight += OnRight; 
 
+if(tournamentButtons.Length>0)
+{
             tournamentButtons[0].SetOn(false);
             tournamentButtons[1].SetOn(false);
+}
             
             Invoke("Delayed", 0.1f);
         }
@@ -74,7 +77,9 @@ namespace Fulbo.Tournamets
         {
             if (!canSelect)
             {
+#if !UNITY_STANDALONE
                 Events.OnButtonClick += OnButtonClick;
+#endif
                 canSelect = true;
             }
             if (isRight)
@@ -82,13 +87,19 @@ namespace Fulbo.Tournamets
             else 
                 SelectTeam(1);
         }
-        void SelectTeam(int teamID)
+        public void SetTeamActive(int teamID)
+        {            
+            tournamentButtons[teamID-1].SetOn(true);
+            Data.Instance.tournamentsData.SetTournament(true);
+        }
+        void SelectTeam(int teamID) // si no es standalone lo managerea el control, si es standalone lo maneja el input
         {
             this.teamID = teamID;
             tournamentButtons[0].SetOn(false);
             tournamentButtons[1].SetOn(false);
             tournamentButtons[teamID-1].SetOn(true);
             Data.Instance.tournamentsData.SetTeam(teamID);
+
             Data.Instance.matchData.team1Controlled = teamID == 2;
             Data.Instance.matchData.team2Controlled = teamID == 1;
             if(teamID == 1)
@@ -96,7 +107,7 @@ namespace Fulbo.Tournamets
             else
                 Data.Instance.matchData.players[0] = 1;
         }
-        void OnButtonClick(int a, int b)
+        public void OnButtonClick(int a, int b)// si no es standalone lo managerea el control, si es standalone lo maneja el input
         {
             if (teamID == 0)
                 return;
@@ -108,8 +119,11 @@ namespace Fulbo.Tournamets
             
             Data.Instance.matchData.SetTotalPlayers(8, 8);
             CharactersData.Instance.SetRandomReferi();
-
+#if UNITY_STANDALONE
+            Data.Instance.LoadLevel("PlayersTeamSelector");
+#else
             Data.Instance.LoadLevel("Controls");
+#endif
         }
     }
 }

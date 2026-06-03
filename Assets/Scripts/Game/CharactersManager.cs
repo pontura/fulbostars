@@ -14,6 +14,9 @@ namespace Fulbo.Game
     public class CharactersManager : MonoBehaviour
     {
 
+        public int totalUsedPlayers_team1;
+        public int totalUsedPlayers_team2;
+
         public List<int> team1_playingCharacters;
         public List<int> team2_playingCharacters;
 
@@ -44,7 +47,6 @@ namespace Fulbo.Game
         float loopTime;
         PowerupsManager powerupsManager;
         bool singlePlayer; // one player only in team 2.
-        [SerializeField] bool isArcade;
 
         private void Awake()
         {
@@ -53,12 +55,14 @@ namespace Fulbo.Game
         }
         private void Start()
         {
+            totalUsedPlayers_team1 = Data.Instance.matchData.GetTotalUsedPlayersInTeam(1);
+            totalUsedPlayers_team2 = Data.Instance.matchData.GetTotalUsedPlayersInTeam(2);  
+
             if(Data.Instance.mode == Data.modes.STORYMODE || Data.Instance.mode == Data.modes.PVP)
                 singlePlayer = true;
             powerupsManager = GameManager.Instance.powerupsManager;
             matchData = Data.Instance.matchData;
             game = Fulbo.Game.GameManager.Instance;
-            isArcade = Data.Instance.settings.mainSettings.isArcade;
 
             Events.KickToGoal += KickToGoal;
            
@@ -666,7 +670,7 @@ namespace Fulbo.Game
                 character.ballCatcher.LookAt(characterNear.transform.position);
                 Character characterToPassInTeam = GetCharacterToPassInTeam(character);
 
-                if (isArcade)   
+                if (character.teamID == 1 && totalUsedPlayers_team1>1 || character.teamID == 2 && totalUsedPlayers_team2>1)   
                     SwapTo(characterToPassInTeam, characterNear);
                 else
                     SwapTo(character, characterNear);

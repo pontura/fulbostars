@@ -691,5 +691,24 @@ namespace Fulbo
             response.chestData.energy = jsonNode["chestWon"]["energy"];
             response.chestData.shard = jsonNode["chestWon"]["shard"];
         }
+        public int GetTotalUsedPlayersInTeam(int teamID)
+        {
+            int total = 0;
+            for(int a = 0; a<4; a++)
+            {
+                if(players[a] == teamID)
+                {
+                    if(teamID == 1 && players[a] == 1)
+                    {
+                        total++;
+                    }
+                    else if(teamID == 2 && players[a] == 2)
+                    {
+                        total++;
+                    }
+                }
+            }
+            return total;
+        }
     }    
 }

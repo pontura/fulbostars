@@ -92,11 +92,12 @@ namespace Fulbo.Tournamets
                 this.myTeamID = teamID;
             } else
                 isTournament = false;
-
+#if !UNITY_STANDALONE
             if(teamID ==2) // team invertido, el team1 es el derecho y el team2 el izquierdo
                 GetComponent<MatchData>().players[0] = 1;
             else
                 GetComponent<MatchData>().players[0] = 1;
+#endif
         }
         public void SetTournament(bool isTournament)
         {

@@ -235,7 +235,10 @@ namespace Fulbo.Game
         }
         void EndGame()
         {
-            print("EndGame + Data.Instance.tournamentsData.played: " + Data.Instance.tournamentsData.played);
+    #if UNITY_STANDALONE
+             GameOver();
+             return;
+    #endif
             if(!Data.Instance.tournamentsData.played) return;
             GameOver();
         }
