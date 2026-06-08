@@ -7,7 +7,7 @@ namespace Fulbo.UI
 {
     public class TeamPoster : MonoBehaviour
     {
-        [SerializeField] float scale = 0.4f;
+        [SerializeField] float scale = 0.3f;
         [SerializeField] Image characterImageThumb;
         [SerializeField] Transform container;
         [SerializeField] int _width = 440;
@@ -35,7 +35,7 @@ namespace Fulbo.UI
             }
             container.transform.localPosition = new Vector2(offset - (separation / 2), 0);
 
-            //  Para algo que quiero implementar (Luka) en el futuro que me pidió Nacho
+            //  Para algo que quiero implementar (Luka) en el futuro que me pidiï¿½ Nacho
             //  Debug.Log("Nuevo equipo tiene " + i + " jugadores", context:this);
         }
     }

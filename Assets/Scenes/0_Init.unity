@@ -4474,7 +4474,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 300.00006}
+  m_AnchoredPosition: {x: 0, y: 299.99945}
   m_SizeDelta: {x: 587.3, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &653731580
@@ -9447,8 +9447,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1205050234}
   m_HandleRect: {fileID: 1205050233}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.42857033
+  m_Value: 1.0000007
+  m_Size: 0.42857146
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -18908,6 +18908,7 @@ GameObject:
   - component: {fileID: 9005282285375159217}
   - component: {fileID: 9005282285375159218}
   - component: {fileID: 9005282285375159219}
+  - component: {fileID: 9005282285375159220}
   m_Layer: 0
   m_Name: DATA
   m_TagString: Untagged
@@ -22803,6 +22804,7 @@ MonoBehaviour:
   pool: {fileID: 0}
   pricesData: {fileID: 0}
   webGLGamepadFix: {fileID: 0}
+  fixtureManager: {fileID: 0}
   loadType: 0
   mode: 1
   shortcut_upgrade_playerID: 0
@@ -271355,6 +271357,19 @@ MonoBehaviour:
   lastMatchGoles2: 0
   gamesPlayed: 0
   played: 0
+--- !u!114 &9005282285375159220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000013722638487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6f47a21706f20a4abd65276d24b56bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teamsSelected: 
 --- !u!1 &9006792962682576349
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,8 @@ using Fulbo.Energy;
 using Fulbo.UI.Pvp;
 using Fulbo.Tournamets;
 using Fulbo.Stadiums;
+using Fulbo.Fixture;
+using UnityEngine.PlayerLoop;
 
 namespace Fulbo
 {
@@ -68,6 +70,7 @@ namespace Fulbo
         [HideInInspector] public PoolObjects pool; 
         [HideInInspector] public PricesData pricesData;
         [HideInInspector] public WebGLGamepadFix webGLGamepadFix;
+        [HideInInspector] public FixtureManager fixtureManager;
 #if UNITY_ANDROID
         [HideInInspector] public ReviewRequest reviewRequest;   
 #endif
@@ -172,6 +175,7 @@ namespace Fulbo
             pvpData = GetComponent<PvpData>();
             pool = GetComponent<PoolObjects>();
             pricesData = GetComponent<PricesData>();
+            fixtureManager = GetComponent<FixtureManager>();
     #if UNITY_ANDROID
             reviewRequest = GetComponent<ReviewRequest>();
 #endif
@@ -209,7 +213,7 @@ namespace Fulbo
                 if(Data.Instance.settings.mainSettings.isArcade)
                     Data.Instance.LoadLevel("Splash");
                 else
-                    InitTournament();
+                   InitAll();
             }
             else if (Fulbo.Game.GameManager.Instance != null)
                 Fulbo.Game.GameManager.Instance.OnInit();
@@ -301,6 +305,11 @@ namespace Fulbo
                 Data.Instance.LoadLevel("Splash");
             else
                 Data.Instance.LoadLevel("SplashOptions");
+        }
+        public void InitAll()//cuando termina el intro
+        {
+            Back();
+            //InitTournament();
         }
     }
 

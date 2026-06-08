@@ -29,7 +29,7 @@ namespace Fulbo.UI
             else var++;
 
             if (var < 0) var = buttons.Length-1;
-            if (var > 2) var = 0;
+            if (var > buttons.Length-1) var = 0;
             Select();
         }
         void Select()
@@ -39,6 +39,7 @@ namespace Fulbo.UI
                 buttons[0].SetBool("isOn", var == 0);
                 buttons[1].SetBool("isOn", var == 1);
                 buttons[2].SetBool("isOn", var == 2);
+                buttons[3].SetBool("isOn", var == 3);
             }
         }
         public void PlayMusicIntro()
@@ -62,18 +63,21 @@ namespace Fulbo.UI
 
             else if(var == 0)//tournamemt:
             {
-                Data.Instance.InitTournament();
+                Data.Instance.Back();
             } else  if(var == 1) //friendly
             {                
                 Data.Instance.tournamentsData.SetTournament(false);
                 #if UNITY_STANDALONE
                     Data.Instance.LoadLevel("PlayersTeamSelector");
-                    return;
+                    return; 
                     #endif
                 if(Data.Instance.webGLGamepadFix.playersQty > 1) // si hay más de un joystick
                     Data.Instance.LoadLevel("PlayersTeamSelector");
                 else
                     Data.Instance.LoadLevel("TeamSelector");
+            } else if(var ==2)
+            {                
+                Data.Instance.LoadLevel("Fixture");
             } else
             {                
                 Data.Instance.LoadLevel("Controls");

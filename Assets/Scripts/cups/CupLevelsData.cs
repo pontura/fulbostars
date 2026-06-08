@@ -64,7 +64,10 @@ namespace Fulbo
                 OnReady = null;
             }
         }
-
+        public void SetOponents(LevelData levelData, int totalCharacters = 8, bool shuffle = true)
+        {
+            levelData.oponents = GetCharactersForTag(levelData.team_tag, totalCharacters, shuffle);
+        }
         public List<int> GetCharactersForTag(string tag, int totalCharacters = 8, bool shuffle = true)
         {
             List<int>arr = new List<int>();
