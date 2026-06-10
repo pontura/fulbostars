@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,13 +30,54 @@ namespace Fulbo.UI
         {
             Events.OnConfirmPanel += OnConfirmPanel;
             Events.OnConfirmPanel3Buttons += OnConfirmPanel3Buttons;
+            Events.OnRight += OnRight;
+            Events.OnButtonClick += OnButtonClick;
             Close();
         }
         void OnDestroy()
         {
             Events.OnConfirmPanel -= OnConfirmPanel;
             Events.OnConfirmPanel3Buttons -= OnConfirmPanel3Buttons;
+            Events.OnRight -= OnRight;
+            Events.OnButtonClick -= OnButtonClick;
         }
+
+        private void OnButtonClick(int arg1, int arg2)
+        {
+            if(this.OnDone == null) return;
+            if(selection == 0)
+            {
+                Close();                
+                OnDone(false);
+            }
+            else if(OnDone != null)
+                OnDone(true);
+        }
+
+        int selection = 0;
+        private void OnRight(int arg1, bool right)
+        {
+            if(this.OnDone == null) return;
+            if(selection == 0 && !right) selection = 1;
+            if(selection == 1 && right) selection = 0;
+            SetActive();
+        }
+        void SetActive()
+        {
+            switch(selection)
+            {
+                case 0:
+                    cancelBtn.GetComponent<Animator>().SetBool("isOn", true);
+                    okBtn.GetComponent<Animator>().SetBool("isOn", false);
+                break;
+                case 1:
+                    cancelBtn.GetComponent<Animator>().SetBool("isOn", false);
+                    okBtn.GetComponent<Animator>().SetBool("isOn", true);
+                break;
+            }
+
+        }
+
         void OnConfirmPanel3Buttons(string title, string text, System.Action<int> OnDone3, string confirm = "confirm", string cancel = "cancel", string btn3Text = "")
         {
             this.OnDone3 = OnDone3;
@@ -64,12 +106,13 @@ namespace Fulbo.UI
             else
             {
                 cancelBtn.gameObject.SetActive(true);
-                cancelBtn.Init(1, ButtonClicked, Data.Instance.texts.Get(cancel));
+                cancelBtn.Init(1, ButtonClicked, cancel);
             }
-            okBtn.Init(0, ButtonClicked, Data.Instance.texts.Get("yes"));
+            okBtn.Init(0, ButtonClicked, confirm);
             closeBtn.Init(1, ButtonClicked);
 
             panel.SetActive(true);
+            SetActive();
         }
         void ButtonClicked(int id)
         {
@@ -84,6 +127,7 @@ namespace Fulbo.UI
         }
         void Close()
         {
+            this.OnDone = null;
             panel.SetActive(false);
             panel3buttons.SetActive(false);
         }

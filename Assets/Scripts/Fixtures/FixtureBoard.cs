@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters;
 using Fulbo.UI;
@@ -60,9 +61,16 @@ namespace Fulbo.Fixture
                 case 0:
                     StartPlaying(); break;
                 default:
-                    Data.Instance.Back(); break;
+                    Events.OnConfirmPanel("TERMINAR TORNEO", "SEGURO QUE QUERÉS CERRAR EL TORNEO?", OnConfirmExit, "TERMINAR", "NO");
+                    break;
             }
         }
+
+        private void OnConfirmExit(bool ok)
+        {
+            if(ok)Data.Instance.Back(); 
+        }
+
         private void StartPlaying()
         {
             Data.Instance.PlayNextFixture();
