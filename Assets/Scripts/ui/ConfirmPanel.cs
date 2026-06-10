@@ -23,41 +23,37 @@ namespace Fulbo.UI
         [SerializeField] Text text3buttons;
 
 
-        System.Action<bool> OnDone;
-        System.Action<int> OnDone3;
+        System.Action<bool> OnDone = null;
+        System.Action<int> OnDone3 = null;
 
         void Start()
         {
             Events.OnConfirmPanel += OnConfirmPanel;
-            Events.OnConfirmPanel3Buttons += OnConfirmPanel3Buttons;
-            Events.OnRight += OnRight;
-            Events.OnButtonClick += OnButtonClick;
+            Events.OnConfirmPanel3Buttons += OnConfirmPanel3Buttons;           
             Close();
         }
         void OnDestroy()
         {
             Events.OnConfirmPanel -= OnConfirmPanel;
             Events.OnConfirmPanel3Buttons -= OnConfirmPanel3Buttons;
-            Events.OnRight -= OnRight;
-            Events.OnButtonClick -= OnButtonClick;
         }
 
         private void OnButtonClick(int arg1, int arg2)
         {
-            if(this.OnDone == null) return;
+            print(OnDone);
+            if(OnDone == null) return;
             if(selection == 0)
-            {
-                Close();                
                 OnDone(false);
-            }
             else if(OnDone != null)
                 OnDone(true);
+                
+            Close(); 
         }
 
         int selection = 0;
         private void OnRight(int arg1, bool right)
         {
-            if(this.OnDone == null) return;
+            if(OnDone == null) return;
             if(selection == 0 && !right) selection = 1;
             if(selection == 1 && right) selection = 0;
             SetActive();
@@ -97,6 +93,10 @@ namespace Fulbo.UI
         }
         void OnConfirmPanel(string _title, string _subtitle, System.Action<bool> OnDone, string confirm = "confirm", string cancel = "cancel")
         {
+            print("_______________Confirm");
+            Events.OnRight += OnRight;
+            Events.OnButtonClick += OnButtonClick;
+
             this.OnDone = OnDone;
             title.text = _title;
             subtitle.text = _subtitle;
@@ -127,6 +127,9 @@ namespace Fulbo.UI
         }
         void Close()
         {
+            print("_______________ConfirmClose");
+            Events.OnRight -= OnRight;
+            Events.OnButtonClick -= OnButtonClick;
             this.OnDone = null;
             panel.SetActive(false);
             panel3buttons.SetActive(false);

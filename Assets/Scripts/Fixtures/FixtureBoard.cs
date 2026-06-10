@@ -27,7 +27,7 @@ namespace Fulbo.Fixture
             Events.OnButtonClick += OnButtonClick;
             Events.OnUp += OnUp;
             Init();
-            SetMenuButton();
+            ResetMenu();
             SetMenu();
         }
         void SetMenu()
@@ -47,11 +47,15 @@ namespace Fulbo.Fixture
         }
         bool finishedClicked;
         private void OnButtonClick(int arg1, int arg2)
-        {           
+        {          
+            Events.OnButtonClick -= OnButtonClick;
             if(finish)
             {
                 if(!finishedClicked)
+                {
+                    print("OnSkipOn");
                     Events.OnSkipOn(OnSkip, "VOLVER");
+                }
                 finishedClicked = true;
                 OnDestroy();
                 return;
@@ -64,11 +68,20 @@ namespace Fulbo.Fixture
                     Events.OnConfirmPanel("TERMINAR TORNEO", "SEGURO QUE QUERÉS CERRAR EL TORNEO?", OnConfirmExit, "TERMINAR", "NO");
                     break;
             }
+            ResetMenu();
+            
         }
-
-        private void OnConfirmExit(bool ok)
+        void ResetMenu()
         {
-            if(ok)Data.Instance.Back(); 
+            menuID = 0;
+            SetMenuButton();
+        }
+        private void OnConfirmExit(bool ok)
+        {        
+            if(ok)
+                Data.Instance.Back(); 
+            else            
+                Events.OnButtonClick += OnButtonClick;  
         }
 
         private void StartPlaying()
