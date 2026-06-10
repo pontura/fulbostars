@@ -85,11 +85,7 @@ namespace Fulbo.Game
             SetGoalToCharacter();
             Events.OnShowDasboard(true);
             yield return new WaitForSeconds(0.2f);
-            if(Data.Instance.tournamentsData.IsTournament())
-            {
-                
-            }
-            else
+            if(!Data.Instance.tournamentsData.IsTournament() && !Data.Instance.fixtureManager.isFixtureHappening)
             {
                 Data.Instance.matchData.ResetAll();
             }

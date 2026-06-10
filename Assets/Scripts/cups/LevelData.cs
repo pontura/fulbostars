@@ -10,6 +10,7 @@ namespace Fulbo
     [Serializable]
     public class LevelData
     {
+        public bool controlledInFixtures;
         public int cupID;
         public string team_tag; // for multiplayer_
         public int id;

@@ -53,8 +53,10 @@ namespace Fulbo.UI
         }
         void GotoGame()
         {
-           
-            print("GotoGame");
+            //RESET Ohers:           
+            Data.Instance.tournamentsData.SetTournament(false);
+            Data.Instance.fixtureManager.Reset();
+            //
             AudioManager.Instance.FadeVolume("music", 0.3f);
             AudioManager.Instance.PlaySoundOneShot("ui", "ui/ui_play_now");
 
@@ -63,10 +65,10 @@ namespace Fulbo.UI
 
             else if(var == 0)//tournamemt:
             {
-                Data.Instance.Back();
+                Data.Instance.InitTournament();
             } else  if(var == 1) //friendly
             {                
-                Data.Instance.tournamentsData.SetTournament(false);
+                Data.Instance.tournamentsData.Played(); 
                 #if UNITY_STANDALONE
                     Data.Instance.LoadLevel("PlayersTeamSelector");
                     return; 
@@ -76,8 +78,9 @@ namespace Fulbo.UI
                 else
                     Data.Instance.LoadLevel("TeamSelector");
             } else if(var ==2)
-            {                
-                Data.Instance.LoadLevel("Fixture");
+            {               
+                Data.Instance.tournamentsData.Played(); 
+                Data.Instance.LoadLevel("FixtureSelect");
             } else
             {                
                 Data.Instance.LoadLevel("Controls");

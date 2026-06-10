@@ -16,11 +16,16 @@ namespace Fulbo.Game
 
         void Start()
         {
-            if (Data.Instance.settings.mainSettings.isArcade || !Data.Instance.tournamentsData.IsTournament())
+            if(Data.Instance.fixtureManager.isFixtureHappening) 
+                TounrnamentMode();
+            else if(Data.Instance.tournamentsData.IsTournament()) 
+                TounrnamentMode();
+            else
                 AllScreen();
         }
         public void TounrnamentMode()
         {
+            print("TounrnamentMode " );
             Data.Instance.partyModeData.Reset();
             SetTeam(team1, 1);
             SetTeam(team2, 2);
@@ -36,12 +41,20 @@ namespace Fulbo.Game
                 int chID = 0;
 
                 if(_teamID ==1) 
-                    chID = Data.Instance.matchData.team1[id];
+                {
+                    if(id<Data.Instance.matchData.team1.Count)
+                        chID = Data.Instance.matchData.team1[id];
+                }
                 else  
-                    chID = Data.Instance.matchData.team2[id];
-
-                CharactersData.CharacterData d = CharactersData.Instance.GetCharacterData(chID, id == 0);
-                character.Init(d, "run");
+                {
+                    if(id<Data.Instance.matchData.team2.Count)
+                        chID = Data.Instance.matchData.team2[id];
+                }
+                if(chID>0)
+                {
+                    CharactersData.CharacterData d = CharactersData.Instance.GetCharacterData(chID, id == 0);
+                    character.Init(d, "run");
+                }
                 character.gameObject.SetActive(false);
                 id++;
             }
@@ -49,6 +62,7 @@ namespace Fulbo.Game
         }
         void AllScreen()
         {
+            print("AllScreen " );
             Data.Instance.partyModeData.Reset();
             characters = GetComponentsInChildren<CharacterForCamera>();
             Utils.Shuffle(characters);
@@ -81,7 +95,7 @@ namespace Fulbo.Game
                 }
 
             }
-            print("initial character id: " + id);
+          //  print("initial character id: " + id);
 
             id_special_character++;
 

@@ -365,6 +365,7 @@ namespace Fulbo
         }
         public void Reset()
         {
+            print("MAtch data RESET");
             matchPlayed = false;
             team1_goals.Clear();
             team2_goals.Clear();

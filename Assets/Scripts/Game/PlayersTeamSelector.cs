@@ -36,6 +36,10 @@ namespace Fulbo.UI
         {
             print("Right playerID: " + playerID + " isRight: " + isRight);
             int id = playerID - 1;
+            
+            if(all[id].teamID == 0 && isRight && ignoreRight) return;
+            if(all[id].teamID == 0 && !isRight && ignoreLeft) return;
+
             all[id].MoveRight(isRight);
             SetTotalPlayers();
             if(tournamentSelector == null) return;
@@ -85,6 +89,13 @@ namespace Fulbo.UI
                     total++;
             }
             field.text = total + " JUGADOR/ES";
+        }
+        bool ignoreRight;
+        bool ignoreLeft;
+        public void IgnoreSize(bool team1, bool team2)
+        {
+            if(team2)ignoreRight = true;
+            if(team1)ignoreLeft = true;
         }
     }
 }

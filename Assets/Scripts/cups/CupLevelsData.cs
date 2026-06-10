@@ -151,9 +151,13 @@ namespace Fulbo
                 }
                 id++;
             }
-            print("InitTournament team1" + team1 + content[team1].name);
-            print("InitTournament team2" + team2 + content[team2].name);
-
+            InitData(team1, team2);
+        }
+        public void InitData(int team1, int team2)
+        {
+            this.team1 = team1;
+            this.team2 = team2;
+            
             List<int> team1Characters = GetCharactersForTag(content[team1].team_tag, 20, false);
             List<int> team2Characters = GetCharactersForTag(content[team2].team_tag, 20, false);
 

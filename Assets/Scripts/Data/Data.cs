@@ -9,6 +9,7 @@ using Fulbo.Tournamets;
 using Fulbo.Stadiums;
 using Fulbo.Fixture;
 using UnityEngine.PlayerLoop;
+using System.Collections.Generic;
 
 namespace Fulbo
 {
@@ -283,7 +284,12 @@ namespace Fulbo
         public void OnSummaryOver()
         {
             print("OnSummaryOver");
-            if(Data.Instance.settings.mainSettings.isArcade)
+            if( Data.Instance.fixtureManager.isFixtureHappening)
+            {
+                Data.Instance.fixtureManager.GameOver();
+                Data.Instance.LoadLevel("Fixture");
+            }
+            else if(Data.Instance.settings.mainSettings.isArcade)
                 Data.Instance.LoadLevel("Splash");
             else if(Data.Instance.tournamentsData.IsTournament() && Data.Instance.tournamentsData.lastMatchGoles1 != Data.Instance.tournamentsData.lastMatchGoles2)                    
                 Data.Instance.LoadLevel("Prensa");
@@ -295,7 +301,8 @@ namespace Fulbo
         }
         void Reset()
         {            
-            Data.Instance.matchData.Reset();
+            if(!Data.Instance.fixtureManager.isFixtureHappening)
+                Data.Instance.matchData.Reset();
             Data.Instance.tournamentsData.SetTournament(false);
         }
         public void Back()
@@ -310,6 +317,29 @@ namespace Fulbo
         {
             Back();
             //InitTournament();
+        }
+        public void StartFixture(List<LevelData> selectedTeamsTags)
+        {
+            Data.Instance.fixtureManager.Init(selectedTeamsTags);
+            Data.Instance.LoadLevel("Fixture");
+        }
+        public void PlayNextFixture()
+        {
+            StadiumsData.Instance.SetRandomStadium();
+            Data.Instance.matchData.SetTotalPlayers(8, 8);
+            
+            int team1 = Data.Instance.fixtureManager.GetNextTeam(1);
+            int team2 = Data.Instance.fixtureManager.GetNextTeam(2);
+
+            CupsData.Instance.levels.InitData(team1,team2);
+
+            if(!fixtureManager.GetNextTeamData(1).controlledInFixtures && !fixtureManager.GetNextTeamData(2).controlledInFixtures)
+            {
+                List<int> randomScores = new List<int>{0,1,2,3,4,5,6};
+                Utils.Shuffle(randomScores);
+                matchData.score = new Vector2(randomScores[0], randomScores[1]);
+            }
+            LoadLevel("PlayersTeamSelectorFixture");
         }
     }
 

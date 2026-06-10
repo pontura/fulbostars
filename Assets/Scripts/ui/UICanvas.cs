@@ -119,7 +119,7 @@ namespace Fulbo.UI
 
         private void OnLoading(string text)
         {
-            print("____________OnLoading " + text);
+           // print("____________OnLoading " + text);
             if (text == "AllDone" || text == "" )
                 top.SetActive(true);
         }

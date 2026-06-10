@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.IO.IsolatedStorage;
-using Fulbo.UI;
 using Fulbo.UI.EditTeam;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,14 +12,14 @@ namespace Fulbo.UI
         [SerializeField] ClubShield chubShield;
         public bool isOn;
         public GameObject selectedGO;
-        public string teamName;
+        public LevelData levelData;
 
         public void Init(LevelData levelData)
         {
+            this.levelData = levelData;
             anim = GetComponent<Animator>();
             chubShield.Init(levelData.clubData);
             field.text = levelData.name;
-            teamName = levelData.name;;
             teamPoster.AddData(levelData);
         }
         public void OnClicked()

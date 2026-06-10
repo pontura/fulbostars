@@ -38,10 +38,15 @@ namespace Fulbo.Game
         public void SetAnim(string animName)
         {
             this.animName = animName;
-            if (anim == null)
+            if (anim == null && asset != null)
+            {
                 anim = asset.GetComponent<Animator>();
-            anim.StopPlayback();
-            Invoke("AnimDelayed", 0.1f);
+            }
+            if(anim != null)
+            {
+                anim.StopPlayback();
+                Invoke("AnimDelayed", 0.1f);
+            }
         }
         public void AnimDelayed()
         {

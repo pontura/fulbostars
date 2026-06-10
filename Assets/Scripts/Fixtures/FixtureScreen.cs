@@ -64,7 +64,15 @@ namespace Fulbo.Fixture
 
         private void StartFixture()
         {
-            throw new NotImplementedException();
+            List<LevelData> selectedTeams= new List<LevelData>();
+            foreach(FixtureTeamButton b in all)
+            {
+                if(b.isOn)
+                {
+                    selectedTeams.Add(b.levelData); 
+                }             
+            }
+            Data.Instance.StartFixture(selectedTeams);
         }
 
         void SetTotal()
@@ -77,7 +85,7 @@ namespace Fulbo.Fixture
             {
                 if(b.isOn)
                 {
-                    allTeams += num + "- " + b.teamName+"\n";
+                    allTeams += num + "- " + b.levelData.name +"\n";
                     num++;   
                 }             
             }
@@ -88,7 +96,7 @@ namespace Fulbo.Fixture
         {
             all = new List<FixtureTeamButton>();
             Utils.RemoveAllChildsIn(container);
-            foreach(LevelData lData in CupsData.Instance.levels.content)
+            foreach(LevelData lData in CupsData.Instance.levels.GetByState("on"))
             {
                 CupsData.Instance.levels.SetOponents(lData);
                 AddButton(lData);

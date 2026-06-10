@@ -48,7 +48,7 @@ namespace Fulbo.Game
         void OnLoading(string text)
         {
             fileID++;
-            print("_______" + fileID + " text: " + text + "  Data.Instance.settings.mainSettings.isArcade: " + Data.Instance.settings.mainSettings.isArcade);
+          //  print("_______" + fileID + " text: " + text + "  Data.Instance.settings.mainSettings.isArcade: " + Data.Instance.settings.mainSettings.isArcade);
             OnLoadingProgress(0);
         }
         void OnLoadingProgress(float value)

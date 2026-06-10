@@ -63,7 +63,7 @@ namespace Fulbo
                                     {
                                         data.stats = new CharacterStats();
                                         data.avatarName = avatarName;
-                                        print("avatarName: " + data.avatarName);
+                                       // print("avatarName: " + data.avatarName);
                                     }
                                 }
                                 else
