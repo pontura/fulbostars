@@ -43,11 +43,16 @@ namespace Fulbo.Fixture
         {
               if(!leftMenu)
               {
-            all[id].OnClicked();
-            if(all[id].isOn)
-                totalPlayers++;
-            else
-                totalPlayers--;
+                
+                if(!all[id].isOn && totalPlayers>7) return;
+
+                all[id].OnClicked();
+
+                if(all[id].isOn)
+                    totalPlayers++;
+                else
+                    totalPlayers--;
+
                 SetTotal();
               }
             else
