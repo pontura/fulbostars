@@ -39,9 +39,9 @@ namespace Fulbo.Fixture
             LevelData ld = all[Random.Range(0, all.Count)];
             if(teams.Contains(ld))
             {
-                ld.controlledInFixtures = false;
                 return GetFreeRandomTeam();
-            }
+            }             
+            ld.controlledInFixtures = false;
             return ld;
         }
         public void GameOver()
