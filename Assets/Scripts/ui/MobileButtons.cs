@@ -28,6 +28,7 @@ namespace Fulbo.UI
                 Destroy(this);
             else
             {
+                panel.SetActive(true);
                 Events.CharacterCatchBall += CharacterCatchBall;
                 Events.OnBallKicked += OnBallKicked;
                 Events.OnGameStatusChanged += OnGameStatusChanged;

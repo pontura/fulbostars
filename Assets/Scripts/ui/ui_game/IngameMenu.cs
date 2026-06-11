@@ -24,8 +24,9 @@ namespace Fulbo.UI
 #endif
             foreach (GameObject go in arcadePanels)
                 go.SetActive(false);
-            foreach (GameObject go in mobilePanels)
-                go.SetActive(false);
+            if(!Data.Instance.isMobile)
+                foreach (GameObject go in mobilePanels)
+                    go.SetActive(false);
 
             SetOn(true);
 

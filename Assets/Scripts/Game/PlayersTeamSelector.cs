@@ -15,6 +15,11 @@ namespace Fulbo.UI
 
         void Start()
         {
+            if(Data.Instance.isMobile)
+            {
+                gameObject.SetActive(false);
+                return;
+            }
             all = GetComponentsInChildren<PlayerTeamSignalUI>();
             int id = 1;
             foreach (PlayerTeamSignalUI p in all)

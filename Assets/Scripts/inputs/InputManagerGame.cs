@@ -78,45 +78,51 @@ namespace Fulbo.Input
 
 
             PlayerInput playerInput;
-#if UNITY_STANDALONE || UNITY_WEBGL
-            int playerID = 1;
-            foreach (int plays in Data.Instance.matchData.players)
+            if(Data.Instance.isMobile)
             {
-                playerInput = GetInputByPlayer(playerID-1);
-                if (plays > 0)
+                 playerInput = GetInputByPlayer(0);
+                if (playerInput.lastButtonIDPressed == 3 && timerButton3Down + delayForLujito < Time.time)
                 {
-                    Vector2 movement = InputManager.Instance.GetMovement(playerID);
-                    _x = movement.x;
-                    _y = movement.y;
-
-                    if (charactersManager != null)
-                    {
-
-                        float offset = 0.6f;
-                        if (_x < -offset) _x = -1; else if (_x > offset) _x = 1; else if (_x < 0.1f && _x > -0.1f) _x = 0;
-                        if (_y < -offset) _y = -1; else if (_y > offset) _y = 1; else if (_y < 0.1f && _y > -0.1f) _y = 0;
-                        charactersManager.SetPosition(playerID, _x, _y);
-                    }
-                    if (playerInput.lastButtonIDPressed == 3 && timerButton3Down + delayForLujito < Time.time)
-                    {
-                        //if (game.powerupsManager != null && game.powerupsManager.IsCharging()) return;
-                        playerInput.lastButtonIDPressed = 0;
-                        charactersManager.Lujito(playerID);
-                    }
+                    //if (game.powerupsManager != null && game.powerupsManager.IsCharging()) return;
+                    playerInput.lastButtonIDPressed = 0;
+                    charactersManager.Lujito(1);
+                    return;
                 }
-                playerID++;
+                MobileVersion();
             }
+            else{
+#if UNITY_STANDALONE || UNITY_WEBGL
+                int playerID = 1;
+                foreach (int plays in Data.Instance.matchData.players)
+                {
+                    playerInput = GetInputByPlayer(playerID-1);
+                    if (plays > 0)
+                    {
+                        Vector2 movement = InputManager.Instance.GetMovement(playerID);
+                        _x = movement.x;
+                        _y = movement.y;
+
+                        if (charactersManager != null)
+                        {
+
+                            float offset = 0.6f;
+                            if (_x < -offset) _x = -1; else if (_x > offset) _x = 1; else if (_x < 0.1f && _x > -0.1f) _x = 0;
+                            if (_y < -offset) _y = -1; else if (_y > offset) _y = 1; else if (_y < 0.1f && _y > -0.1f) _y = 0;
+                            charactersManager.SetPosition(playerID, _x, _y);
+                        }
+                        if (playerInput.lastButtonIDPressed == 3 && timerButton3Down + delayForLujito < Time.time)
+                        {
+                            //if (game.powerupsManager != null && game.powerupsManager.IsCharging()) return;
+                            playerInput.lastButtonIDPressed = 0;
+                            charactersManager.Lujito(playerID);
+                        }
+                    }
+                    playerID++;
+                }
 #else
-            playerInput = GetInputByPlayer(0);
-            if (playerInput.lastButtonIDPressed == 3 && timerButton3Down + delayForLujito < Time.time)
-            {
-                //if (game.powerupsManager != null && game.powerupsManager.IsCharging()) return;
-                playerInput.lastButtonIDPressed = 0;
-                charactersManager.Lujito(1);
-                return;
-            }
-            MobileVersion();
+           
 #endif
+            }
         }
         void MobileVersion()
         {

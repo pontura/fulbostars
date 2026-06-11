@@ -52,6 +52,11 @@ namespace Fulbo.UI
             Events.OnButtonClick -= OnButtonClick;
             GotoGame();
         }
+        public void OnClicked(int a)
+        {
+            var = a;
+            GotoGame();
+        }
         void GotoGame()
         {
             //RESET Ohers:           

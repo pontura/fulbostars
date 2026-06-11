@@ -8,13 +8,13 @@ using Fulbo.UI.Pvp;
 using Fulbo.Tournamets;
 using Fulbo.Stadiums;
 using Fulbo.Fixture;
-using UnityEngine.PlayerLoop;
 using System.Collections.Generic;
 
 namespace Fulbo
 {
     public class Data : MonoBehaviour
     {
+       // public bool isMobileWEBGL;
         public bool hasTorneo = true;
         static Data mInstance = null;
         string storeURL = "https://play.google.com/store/apps/details?id=com.aconcaguagames.FulboGalaxy";
@@ -145,7 +145,7 @@ namespace Fulbo
 #if UNITY_WEBGL
         // if (!isMobile)
         // Cursor.visible = false; 
-        isMobile = true;
+        // isMobile = true;
         //  if (!settings.mainSettings.isArcade && !isMobile)
         //  Screen.fullScreen = true;
         loadType = loadTypes.SERVER;
@@ -190,6 +190,8 @@ namespace Fulbo
         }
         void Start()
         {
+            isMobile = SystemInfo.deviceType == DeviceType.Handheld;
+            //isMobile = true; //hardcoded
             langsManager.Init();
             dataLoaderManager = GetComponent<DataLoaderManager>();
             dataLoaderManager.Load(LoadReady);
@@ -284,7 +286,11 @@ namespace Fulbo
         public void OnSummaryOver()
         {
             print("OnSummaryOver");
-            if( Data.Instance.fixtureManager.isFixtureHappening)
+            if(isMobile)
+            {
+                InitTournament();
+            }
+            else if( Data.Instance.fixtureManager.isFixtureHappening)
             {
                 Data.Instance.fixtureManager.GameOver();
                 Data.Instance.LoadLevel("Fixture");
@@ -308,7 +314,9 @@ namespace Fulbo
         public void Back()
         {   
             Reset();
-            if(Data.Instance.settings.mainSettings.isArcade)
+            if(isMobile)
+                InitTournament();
+            else if(Data.Instance.settings.mainSettings.isArcade)
                 Data.Instance.LoadLevel("Splash");
             else
                 Data.Instance.LoadLevel("SplashOptions");

@@ -4,6 +4,7 @@ using Fulbo.UI;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TerrainUtils;
 using UnityEngine.UI;
 
 namespace Fulbo.Tournamets
@@ -107,7 +108,12 @@ if(tournamentButtons.Length>0)
             else
                 Data.Instance.matchData.players[0] = 1;
         }
-        public void OnButtonClick(int a, int b)// si no es standalone lo managerea el control, si es standalone lo maneja el input
+        public void OnClicked(int teamID)
+        {
+            this.teamID = teamID;
+            OnButtonClick(0,0);
+        }
+        void OnButtonClick(int a, int b)// si no es standalone lo managerea el control, si es standalone lo maneja el input
         {
             if (teamID == 0)
                 return;
@@ -119,11 +125,15 @@ if(tournamentButtons.Length>0)
             
             Data.Instance.matchData.SetTotalPlayers(8, 8);
             CharactersData.Instance.SetRandomReferi();
+            if(Data.Instance.isMobile)
+                Data.Instance.LoadLevel("GameIntro");
+            else{
 #if UNITY_STANDALONE
             Data.Instance.LoadLevel("PlayersTeamSelector");
 #else
             Data.Instance.LoadLevel("Controls");
 #endif
+                }
         }
     }
 }

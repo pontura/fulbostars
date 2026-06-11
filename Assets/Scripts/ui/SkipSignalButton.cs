@@ -14,10 +14,10 @@ namespace Fulbo.UI
         void Start()
         {     
             panel.SetActive(false);
-    #if UNITY_MOBILE
-            Events.OnSkipOn += OnSkipOn;
-            Events.OnSkipOff += OnSkipOff;
-    #endif
+            if(Data.Instance.isMobile){
+                Events.OnSkipOn += OnSkipOn;
+                Events.OnSkipOff += OnSkipOff;
+            }
         }
         void OnSkipOff()
         {
@@ -25,9 +25,6 @@ namespace Fulbo.UI
         }
         void OnSkipOn(System.Action OnReady, string text = "skip")
         {
-            if (Data.Instance.settings.mainSettings.isArcade)
-                return;
-
             print("SKIP " + OnReady + " text: " + text);
             this.OnReady = OnReady;
             panel.SetActive(true);
