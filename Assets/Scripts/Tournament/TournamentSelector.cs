@@ -108,8 +108,9 @@ if(tournamentButtons.Length>0)
             else
                 Data.Instance.matchData.players[0] = 1;
         }
-        public void OnClicked(int teamID)
+        public void OnClicked(int teamID) // from ui
         {
+            SelectTeam(teamID);
             this.teamID = teamID;
             OnButtonClick(0,0);
         }
@@ -117,6 +118,7 @@ if(tournamentButtons.Length>0)
         {
             if (teamID == 0)
                 return;
+            Events.OnSkipOff();
 
             AudioManager.Instance.FadeVolume("music", 0.3f);
             AudioManager.Instance.PlaySoundOneShot("ui", "ui/ui_play_now");

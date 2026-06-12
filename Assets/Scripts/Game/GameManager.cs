@@ -122,12 +122,12 @@ namespace Fulbo.Game
             param["tier"] = Data.Instance.matchData.levelData.tier;
             param["teamPower"] = Data.Instance.matchData.dataOnInit.myTeamPower;
 
-            if (DBManager.Instance.DbUserData.type == DBUserData.types.GUEST)
-                param["userMail"] = "GuestMode";
-            else
-                param["userMail"] = DBManager.Instance.Email;
+            // if (DBManager.Instance.DbUserData.type == DBUserData.types.GUEST)
+            //     param["userMail"] = "GuestMode";
+            // else
+            //     param["userMail"] = DBManager.Instance.Email;
 
-            Events.OnTrack("MatchStarted", param);
+            Events.OnTrack("match_started", param);
 
             #endregion
 
@@ -225,6 +225,22 @@ namespace Fulbo.Game
         }
         public void GameOver()
         {
+             #region ANALYTICS
+            Dictionary<string, object> param = new Dictionary<string, object>();
+            param["stadium"] = Data.Instance.matchData.levelData.stadium_id;
+            param["level"] = Data.Instance.matchData.levelData.id;
+            // param["cup"] = Data.Instance.matchData.levelData.cupID;
+            // param["tier"] = Data.Instance.matchData.levelData.tier;
+            // param["teamPower"] = Data.Instance.matchData.dataOnInit.myTeamPower;
+
+            // if (DBManager.Instance.DbUserData.type == DBUserData.types.GUEST)
+            //     param["userMail"] = "GuestMode";
+            // else
+            //     param["userMail"] = DBManager.Instance.Email;
+            Events.OnTrack("match_ended", param);
+
+            #endregion
+
             state = states.GAMEOVER;
             Events.GameOver();
            // Events.TurnPersonalCamera(Game.GameManager.Instance.charactersManager.referi.gameObject, true);

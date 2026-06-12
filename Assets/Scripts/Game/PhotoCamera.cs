@@ -12,8 +12,8 @@ namespace Fulbo.Game
         void Start()
         {
             cam = GetComponent<Camera>();
-            Events.CharacterCatchBall += CharacterCatchBall;
-            Events.TakePhoto += TakePhoto;
+          //  Events.CharacterCatchBall += CharacterCatchBall;
+          //  Events.TakePhoto += TakePhoto;
            // gameObject.SetActive(false);
         }
         void OnDestroy()

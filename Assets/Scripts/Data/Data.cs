@@ -10,11 +10,21 @@ using Fulbo.Stadiums;
 using Fulbo.Fixture;
 using System.Collections.Generic;
 
+#if UNITY_WEBGL
+using System.Runtime.InteropServices;
+#endif
+
 namespace Fulbo
 {
     public class Data : MonoBehaviour
     {
+
+#if UNITY_WEBGL
        // public bool isMobileWEBGL;
+        [DllImport("__Internal")]
+        private static extern int IsMobileDevice();
+#endif
+
         public bool hasTorneo = true;
         static Data mInstance = null;
         string storeURL = "https://play.google.com/store/apps/details?id=com.aconcaguagames.FulboGalaxy";
@@ -47,7 +57,9 @@ namespace Fulbo
 
         public string newScene;
 
-        public bool isMobile;
+        public bool isMobile { get { return _isMobile; } }
+        
+        bool _isMobile;
 
         public UICanvas ui;
 
@@ -190,8 +202,16 @@ namespace Fulbo
         }
         void Start()
         {
-            isMobile = SystemInfo.deviceType == DeviceType.Handheld;
+            _isMobile = false;
+#if UNITY_WEBGL && !UNITY_EDITOR
+        _isMobile = IsMobileDevice() == 1;
+#else
+        _isMobile = false;
+#endif
+            Debug.Log(" SystemInfo.deviceType isMobile: " + isMobile);
+           // isMobile = SystemInfo.deviceType == DeviceType.Handheld;
             //isMobile = true; //hardcoded
+            print("SystemInfo.deviceType: " +SystemInfo.deviceType);
             langsManager.Init();
             dataLoaderManager = GetComponent<DataLoaderManager>();
             dataLoaderManager.Load(LoadReady);
@@ -314,6 +334,7 @@ namespace Fulbo
         public void Back()
         {   
             Reset();
+    
             if(isMobile)
                 InitTournament();
             else if(Data.Instance.settings.mainSettings.isArcade)
@@ -323,6 +344,12 @@ namespace Fulbo
         }
         public void InitAll()//cuando termina el intro
         {
+
+#if UNITY_WEBGL
+            Reset();
+            InitTournament();
+            return;
+#endif
             Back();
             //InitTournament();
         }

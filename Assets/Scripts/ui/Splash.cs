@@ -52,13 +52,15 @@ namespace Fulbo.UI
             Events.OnButtonClick -= OnButtonClick;
             GotoGame();
         }
-        public void OnClicked(int a)
+        public void OnClicked(int a) // for mobile
         {
+            if(!Data.Instance.isMobile) return;
             var = a;
             GotoGame();
         }
         void GotoGame()
         {
+            print(var);
             //RESET Ohers:           
             Data.Instance.tournamentsData.SetTournament(false);
             Data.Instance.fixtureManager.Reset();

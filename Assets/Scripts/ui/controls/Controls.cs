@@ -21,7 +21,7 @@ namespace Fulbo.UI
             OnSkip();
         }
 
-        void OnSkip()
+        public void OnSkip()
         {
             Events.OnButtonClick -= OnButtonClick;
             if(Data.Instance.tournamentsData.IsTournament())

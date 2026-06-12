@@ -8,7 +8,6 @@ namespace Fulbo.UI
     public class IngameMenu : MonoBehaviour
     {
         bool isOn;
-        bool isMobile;
         [SerializeField] GameObject[] mobilePanels;
         [SerializeField] GameObject[] arcadePanels;
 
@@ -18,10 +17,6 @@ namespace Fulbo.UI
 
         void Start()
         {
-            isMobile = true;
-#if UNITY_STANDALONE || UNITY_WEBGL
-            isMobile = false;
-#endif
             foreach (GameObject go in arcadePanels)
                 go.SetActive(false);
             if(!Data.Instance.isMobile)
@@ -46,19 +41,18 @@ namespace Fulbo.UI
         void OnGoal(int a, Game.Character ch)
         {
             if (Game.GameManager.Instance.isTutorial) return;
-            if (!isMobile)
+            if (!Data.Instance.isMobile)
                 SetOn(false);
         }
         void SetOn(bool on)
         {
-#if UNITY_ANDROID
-            if (isMobile)
+            if(Data.Instance.isMobile) 
                 foreach (GameObject go in mobilePanels)
                     go.SetActive(on);
             else if(Data.Instance.mode != Data.modes.PARTYMODE)
                 foreach (GameObject go in arcadePanels)
                     go.SetActive(on);
-#endif
+
         }
 
 
