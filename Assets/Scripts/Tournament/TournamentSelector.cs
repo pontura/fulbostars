@@ -103,10 +103,7 @@ if(tournamentButtons.Length>0)
 
             Data.Instance.matchData.team1Controlled = teamID == 2;
             Data.Instance.matchData.team2Controlled = teamID == 1;
-            if(teamID == 1)
-                Data.Instance.matchData.players[0] = 2;
-            else
-                Data.Instance.matchData.players[0] = 1;
+         
         }
         public void OnClicked(int teamID) // from ui
         {
@@ -118,6 +115,17 @@ if(tournamentButtons.Length>0)
         {
             if (teamID == 0)
                 return;
+			
+			if(teamID == 1)
+                Data.Instance.matchData.players[0] = 2;
+            else
+                Data.Instance.matchData.players[0] = 1;
+
+            Dictionary<string, object> param = new Dictionary<string, object>();
+            param["teamID"] = teamID.ToString();
+            Events.OnTrack("tournament_select", param);
+
+			
             Events.OnSkipOff();
 
             AudioManager.Instance.FadeVolume("music", 0.3f);
