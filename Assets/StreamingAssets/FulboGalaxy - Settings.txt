@@ -4,21 +4,21 @@ stadium_medium_x	5100	Tamaño en X del estadio Medium
 stadium_medium_y	3050	Tamaño en Y del estadio Medium
 stadium_big_x	6100	Tamaño en X del estadio Big
 stadium_big_y	3050	Tamaño en Y del estadio Big
-timeScale	85	Tiempo de velocidad del juego.
+timeScale	90	Tiempo de velocidad del juego.
 referiSpeed	140	Velocidad del referi - REVISAR No parece funcionar
 dialoguesDuration	400	Duración de los dialogos de los jugadores en la cancha
-forceBarSpeed	130	Velocidad para completar la la barra de fuerza (para pase y patear al arco)
+forceBarSpeed	150	Velocidad para completar la la barra de fuerza (para pase y patear al arco)
 startingUIForceBar	15	Desde donde empieza la flecha a representarse desde UI
 timeToSwapCharactersAutomatically	70	Repite de GameplaySettings - REVISAR
 input_x_sensibilitty	400	Sensibilidad del Mobile?
 input_y_sensibilitty	500	Sensibilidad del Mobile?
 scaleFactor	60	Escala de jugadores
-gk_speed	110	Velocidad del arquero
-gkSpeed_sale_x	500	Distancia en X que sale el arquero
-gkSpeed_sale_z	500	Distancia en Z que sale el arquero
-gk_distance_to_alert	320	Distancia en la que se pone en alerta el arquero
+gk_speed	70	Velocidad del arquero
+gkSpeed_sale_x	450	Distancia en X que sale el arquero
+gkSpeed_sale_z	480	Distancia en Z que sale el arquero
+gk_distance_to_alert	300	Distancia en la que se pone en alerta el arquero
 gk_catch_on_air	10	Probabilidad de 0 a 100 de GK agarra en el aire
-gkSpeed_speed_flying_multiply	130	velocidad en Z multiplicada a su velocidad en Z el momento de volar /100 (120 = vel*1.2)
+gkSpeed_speed_flying_multiply	100	velocidad en Z multiplicada a su velocidad en Z el momento de volar /100 (120 = vel*1.2)
 distanceToForceCentro	70	
 distanceToChilena	60	
 ball_offsetForward	10	
@@ -34,8 +34,8 @@ penalty_force	20000
 penalty_goalkeeperSpeed	600	
 penalty_sensibilitty	500	
 penalty_goalkeeper_reaction	1000	
-stats_for_guestmode_myteam	17	Stats del equipo del usuario en Guest
-stats_for_guestmode_opponents	17	Stats del equipo de la PC en Guest
+stats_for_guestmode_myteam	50	Stats del equipo del usuario en Guest
+stats_for_guestmode_opponents	25	Stats del equipo de la PC en Guest
 percent_draw_score	30	Porcentaje empate
 percent_lose_score	5	Porcentaje derrota
 first_victory_level_multiply	200	Premio por primera victoria (/100)
@@ -54,10 +54,10 @@ delayForLujito	23	/100 tiempo con el boton (RUN) apretado para hacer el lujito
 energyInitial	1000	/100 la energía inicial
 energy_price	250000	/100 precio de la energía inicial
 energy_multiplier_price	150	/100 multiplicador de precio
-gk_timeOnFloor_max	100	1 stamina = 1 segundos tirado (100=1)
-gk_timeOnFloor_min	20	100 stamina = 0.1 segundos tirado
-gk_fatigue	1100	15% resta cada vez que actúa
-gk_fatigue_timtToReset	1100	10 segundos para resetear los debuf
+gk_timeOnFloor_max	200	1 stamina = 1 segundos tirado (100=1)
+gk_timeOnFloor_min	50	100 stamina = 0.1 segundos tirado
+gk_fatigue	1500	15% resta cada vez que actúa
+gk_fatigue_timtToReset	1500	10 segundos para resetear los debuf
 PlusrewardPercent_tier1	1000	(value/100) porcent increase to total-score by level per tier
 PlusrewardPercent_tier2	1500	(value/100) porcent increase to total-score by level per tier
 PlusrewardPercent_tier3	2000	(value/100) porcent increase to total-score by level per tier
