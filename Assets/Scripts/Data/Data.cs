@@ -10,20 +10,20 @@ using Fulbo.Stadiums;
 using Fulbo.Fixture;
 using System.Collections.Generic;
 
-#if UNITY_WEBGL
-using System.Runtime.InteropServices;
-#endif
+// #if UNITY_WEBGL
+// using System.Runtime.InteropServices;
+// #endif
 
 namespace Fulbo
 {
     public class Data : MonoBehaviour
     {
 
-#if UNITY_WEBGL
-       // public bool isMobileWEBGL;
-        [DllImport("__Internal")]
-        private static extern int IsMobileDevice();
-#endif
+// #if UNITY_WEBGL
+//        // public bool isMobileWEBGL;
+//         [DllImport("__Internal")]
+//         private static extern int IsMobileDevice();
+// #endif
 
         public bool hasTorneo = true;
         static Data mInstance = null;
@@ -203,15 +203,15 @@ namespace Fulbo
         void Start()
         {
             _isMobile = false;
-#if UNITY_WEBGL && !UNITY_EDITOR
-        _isMobile = IsMobileDevice() == 1;
-#else
+// #if UNITY_WEBGL && !UNITY_EDITOR
+//         _isMobile = IsMobileDevice() == 1;
+// #else
         _isMobile = false;
-#endif
-            Debug.Log(" SystemInfo.deviceType isMobile: " + isMobile);
+//#endif
+           // Debug.Log(" SystemInfo.deviceType isMobile: " + isMobile);
            // isMobile = SystemInfo.deviceType == DeviceType.Handheld;
             //isMobile = true; //hardcoded
-            print("SystemInfo.deviceType: " +SystemInfo.deviceType);
+           // print("SystemInfo.deviceType: " +SystemInfo.deviceType);
             langsManager.Init();
             dataLoaderManager = GetComponent<DataLoaderManager>();
             dataLoaderManager.Load(LoadReady);
