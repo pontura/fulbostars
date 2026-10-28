@@ -117,6 +117,42 @@ namespace Fulbo.Game
         public void Reset()
         {
             currentState.Unfreeze();
+            ResetJumpHeight();
+        }
+
+        // Altura extra del salto (arco sobre el characterContainer, suma a la animación):
+        float containerBaseY;
+        Coroutine jumpHeightC;
+        public void JumpHeight(float height, float duration)
+        {
+            ResetJumpHeight();
+            if (character.gameObject.activeInHierarchy)
+                jumpHeightC = StartCoroutine(JumpHeightC(height, duration));
+        }
+        void ResetJumpHeight()
+        {
+            if (jumpHeightC != null) StopCoroutine(jumpHeightC);
+            jumpHeightC = null;
+            SetContainerY(containerBaseY);
+        }
+        IEnumerator JumpHeightC(float height, float duration)
+        {
+            float t = 0;
+            while (t < duration)
+            {
+                t += Time.deltaTime;
+                SetContainerY(containerBaseY + height * Mathf.Sin(Mathf.PI * Mathf.Clamp01(t / duration)));
+                yield return null;
+            }
+            SetContainerY(containerBaseY);
+            jumpHeightC = null;
+        }
+        void SetContainerY(float y)
+        {
+            if (character == null || character.characterContainer == null) return;
+            Vector3 pos = character.characterContainer.localPosition;
+            pos.y = y;
+            character.characterContainer.localPosition = pos;
         }
         void OnGoal(int i, Character ch)
         {
@@ -132,6 +168,8 @@ namespace Fulbo.Game
             _game = GameManager.Instance;
             _data = Data.Instance;
             character = GetComponent<Character>();
+            if (character.characterContainer != null)
+                containerBaseY = character.characterContainer.localPosition.y;
             string sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
             if (GameManager.Instance != null)
             {

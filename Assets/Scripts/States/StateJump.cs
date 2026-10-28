@@ -5,6 +5,7 @@ namespace Fulbo.Game.States
     public class StateJump : StateCharacter
     {
         bool isGoalkeeper;
+        const float gkExtraJumpHeight = 1f; // altura extra del arquero al tirarse/saltar
         public override void Init(CharacterStates states)
         {
             base.Init(states);
@@ -27,8 +28,12 @@ namespace Fulbo.Game.States
                     animName = "jump"; // SALTA PARA ARRIBA
                 else
                     animName = "jump2"; // SALTA DIAGONAL
-                offsetColliders_y = 0.9f;
                 duration = 0.7f;
+                // salta más alto: arco visual + collider estirado hacia arriba
+                offsetColliders_y = 0.9f + gkExtraJumpHeight / 2;
+                if (character.characterColliders != null)
+                    character.characterColliders.StretchUp(gkExtraJumpHeight, 0.5f);
+                states.JumpHeight(gkExtraJumpHeight, duration);
             }
             else
             {

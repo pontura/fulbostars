@@ -222,6 +222,15 @@ namespace Fulbo.Game.AIs
                 else
                     currentState = aiIdleGK;
             }
+            // el arquero chequea si se tira en todos los frames, sin depender de los timers de cada estado:
+            if (character.type == Character.types.GOALKEEPER
+                && (currentState == aiIdleGK || currentState == aiPositionGK || currentState == aiAlertGK)
+                && _game.state == GameManager.states.PLAYING
+                && currentState.ShouldFly())
+            {
+                currentState.SetState(aiFlyingGK);
+                return;
+            }
             currentState.UpdatedByAI();
         }
         public void SetNewDebugColor(Color color)
@@ -385,6 +394,25 @@ namespace Fulbo.Game.AIs
         public float GetDistanceToBall()
         {
             return Vector3.Distance(transform.position, ball.transform.position);
+        }
+        // Arqueros: hacia donde miran normalmente (el equipo 1 arranca flipeado, ver Character.Init)
+        public int GetGKDefaultLookDirection()
+        {
+            return character.teamID == 1 ? -1 : 1;
+        }
+        // Arqueros: z hacia donde ir = punto donde la pelota pasaría por la x del arquero
+        // (no la línea del arco: como está adelantado, en tiros cruzados habría desfasaje).
+        public float GetGKTargetZ(float max_z)
+        {
+            float to_z;
+            if (!ball.GetProjectedZOnGoalLine(transform.position.x, out to_z))
+            {
+                // no viene al arco: sigue la z de la pelota, tendiendo al centro si está lejos.
+                float dist_x = Mathf.Abs(ball.transform.position.x - transform.position.x);
+                if (dist_x > 2)
+                    to_z /= 1 + (dist_x / 25);
+            }
+            return Mathf.Clamp(to_z, -max_z, max_z);
         }
         public float GetDistanceToBallInX()
         {

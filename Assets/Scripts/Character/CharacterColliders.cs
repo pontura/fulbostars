@@ -13,6 +13,7 @@ namespace Fulbo.Game
         [SerializeField] float collider_radius_air;
         [SerializeField] Rigidbody rb;
         float realColliderRadius;
+        float realColliderHeight;
 
         public void Init(Character character)
         {
@@ -25,13 +26,14 @@ namespace Fulbo.Game
                 radiusAmmountByDuel = -0.15f + (CupsData.Instance.GetActualLevel().duelStatsGK / 400);
 
             realCollider.radius = realColliderRadius = (collider_radius / 10) + radiusAmmountByDuel;
-            realCollider.height = collider_height / 10;
+            realCollider.height = realColliderHeight = collider_height / 10;
             airCollider.radius = collider_radius_air / 10;
         }
         public void Reset()
         {
             ResetSetCollidersOff();
             ResetRadius();
+            ResetHeight();
             ResetPosition();
             ResetRigidBody();
         }
@@ -92,6 +94,21 @@ namespace Fulbo.Game
             realCollider.radius = realColliderRadius * factor;
             yield return new WaitForSeconds(timer);
             ResetRadius();
+        }
+        // Agranda el collider hacia arriba (para saltos), usar junto con MoveCollidersTo(extra/2):
+        public void StretchUp(float extra, float timer)
+        {
+            StartCoroutine(SetHeight(extra, timer));
+        }
+        void ResetHeight()
+        {
+            realCollider.height = realColliderHeight;
+        }
+        IEnumerator SetHeight(float extra, float timer)
+        {
+            realCollider.height = realColliderHeight + extra;
+            yield return new WaitForSeconds(timer);
+            ResetHeight();
         }
     }
 }

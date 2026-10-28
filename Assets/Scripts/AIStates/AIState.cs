@@ -133,6 +133,25 @@ namespace Fulbo.Game.AIs
             }
 
         }
+        // Arqueros: solo se tiran si la pelota viene rápido al arco, si no caminan.
+        // (misma medida de fuerza que usa Ball al chocar: > 11 es golpe fuerte)
+        protected const float minBallSpeedToFly = 11;
+        public bool BallIsFast()
+        {
+            Vector3 vel = ai.ball.rb.velocity;
+            return Mathf.Abs(vel.x) + Mathf.Abs(vel.z) > minBallSpeedToFly;
+        }
+        // se tira cuando a la pelota le falta menos que esto para llegar (el vuelo dura ~0.5s):
+        protected const float timeToFly = 0.4f;
+        public bool ShouldFly()
+        {
+            if (ai.ball.character != null) return false;
+            if (!BallIsFast()) return false;
+            float vel_x = ai.ball.rb.velocity.x;
+            float dist_x = _transform.position.x - _ballTransform.position.x;
+            if (Mathf.Sign(vel_x) != Mathf.Sign(dist_x)) return false; // se aleja
+            return Mathf.Abs(dist_x) < Mathf.Abs(vel_x) * timeToFly;
+        }
         public bool BallIsOnAirAndNear() // si está cerca vuela pase lo que pase:
         {
             Rigidbody rb = ai.ball.rb;

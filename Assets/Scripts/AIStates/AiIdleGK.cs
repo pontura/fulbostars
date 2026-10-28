@@ -4,8 +4,10 @@ namespace Fulbo.Game.AIs
     public class AiIdleGK : AIState
     {
         float gk_distance_to_alert;
+        float gkSpeed_sale_z;
         public override void Init(AI ai)
         {
+            gkSpeed_sale_z = Data.Instance.settings.GetSetting("gkSpeed_sale_z");
             timeToReact = ai.character.stats.TimeGKStayIdle(ai.character);
             type = types.IDLE;
             timer = 0;
@@ -18,24 +20,24 @@ namespace Fulbo.Game.AIs
             timer = 0;
             base.SetActive();
             ai.character.states.Stopped();
+            ai.character.states.LookDirection(ai.GetGKDefaultLookDirection()); // por si quedó flipeado al tirarse
         }
         public override AIState UpdatedByAI()
         {
             timer += Time.deltaTime;
 
-            float distToBallX = ai.GetDistanceToBallInX();
-            if (distToBallX > 20) return State();
             if (gameManager.state == Fulbo.Game.GameManager.states.GOAL) return State();
+            float distToBallX = ai.GetDistanceToBallInX();
+            if (distToBallX > 20)
+            {
+                CheckTarget();
+                return State();
+            }
 
             if (timer > 0.1f)
             {
                 if (ai.ball.character == null)
                 {
-                    if (ai.ball.IsComingToGoal(ai.character.teamID, ai.GetDistanceToBallInX(), 3) || BallIsOnAirAndNear())
-                    {
-                        Fly();
-                        return State();
-                    }
                     if (ai.ball.IsDeadAndInArea(ai.character.teamID))
                     {
                         SetState(ai.aiAlertGK);
@@ -57,12 +59,20 @@ namespace Fulbo.Game.AIs
                     timer = 0;
                     SetState(ai.aiPositionGK);
                 }
-            }            
+                else
+                    CheckTarget();
+            }
             return State();
         }
-        void Fly()
+        // si el punto donde entraría la pelota se movió, vuelve a acomodarse sin esperar:
+        void CheckTarget()
         {
-            SetState(ai.aiFlyingGK);
+            if (timer < timeToReact) return;
+            if (Mathf.Abs(ai.GetGKTargetZ(gkSpeed_sale_z) - _transform.position.z) > 0.5f)
+            {
+                timer = 0;
+                SetState(ai.aiPositionGK);
+            }
         }
         bool CheckAlert(float distToBallX, float distToBall, Ball ball)
         {
@@ -81,6 +91,7 @@ namespace Fulbo.Game.AIs
         public override void OnBallNearOnAir()
         {
             //if (ai.character.duelChecker.GKCanFly())
+            if (BallIsFast())
                 ai.character.states.Jump();
         }
         public override void GotoBall()

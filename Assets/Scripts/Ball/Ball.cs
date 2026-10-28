@@ -738,6 +738,33 @@ namespace Fulbo.Game
             Vector3 destPos = ballRaycast.GetRayCast();
             return destPos;
         }
+        // Z donde la pelota cruzaría la línea x = goalX si sigue su dirección actual
+        // (goalX puede ser la línea del arco o la x del arquero).
+        // Si nadie la tiene usa la velocidad; si la tiene alguien, hacia dónde apunta/corre.
+        // Devuelve false si no va hacia ese arco (to_z queda con la z de la pelota).
+        public bool GetProjectedZOnGoalLine(float goalX, out float to_z)
+        {
+            Vector3 pos = transform.position;
+            to_z = pos.z;
+
+            Vector3 dir;
+            if (character == null)
+                dir = rb.velocity;
+            else if (character.isBeingControlled)
+                dir = character.GetForward();
+            else
+            {
+                Vector2 d = character.GetDirection();
+                dir = new Vector3(d.x, 0, d.y);
+            }
+
+            float dist_x = goalX - pos.x;
+            if (Mathf.Abs(dir.x) < 0.1f || Mathf.Sign(dir.x) != Mathf.Sign(dist_x))
+                return false;
+
+            to_z = pos.z + dir.z * (dist_x / dir.x);
+            return true;
+        }
         public void ResetKick()
         {
             kickType = CharacterStates.kickTypes.HARD;

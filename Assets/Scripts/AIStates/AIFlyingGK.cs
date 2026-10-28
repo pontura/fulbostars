@@ -61,7 +61,7 @@ namespace Fulbo.Game.AIs
             else if (timer < _flyingDuration && !cancelJumpDirection)
             {
                 float _x = 0; float _z = 0;
-                Vector3 dest = new Vector3(_ballTransform.position.x, 0, ai.ball.GetRaycastPos().z);
+                Vector3 dest = new Vector3(_ballTransform.position.x, 0, ai.GetGKTargetZ(sale_z));
                 dest = GetPositionInsideArea(dest);
                 
                 if (Vector2.Distance(new Vector2(_transform.position.x, _transform.position.z), new Vector2(dest.x, dest.z)) > 0.7f)
@@ -76,6 +76,12 @@ namespace Fulbo.Game.AIs
                     if (Mathf.Abs(_transform.position.z - dest.z) < 0.3f) _x = 0;
                     else if (_transform.position.z > dest.z) _z = -1;
                     else if (_transform.position.z < dest.z) _z = 1;
+
+                    // si se tira hacia z negativo se flipea (como al caminar), si no mira normal:
+                    if (_z < 0)
+                        ai.character.states.LookDirection(-ai.GetGKDefaultLookDirection());
+                    else if (_z > 0)
+                        ai.character.states.LookDirection(ai.GetGKDefaultLookDirection());
 
                     if (_x != 0) _x /= 6; //para que no avance muy rápido:
 

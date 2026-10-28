@@ -48,6 +48,7 @@ namespace Fulbo.Game.AIs
             {
                 state = states.WALKING;
                 ai.character.states.Stopped();
+                ai.character.states.LookDirection(ai.GetGKDefaultLookDirection()); // por si atajó tirándose flipeado
             }
             else if (state == states.WALKING)
                 UpdateWalking();
