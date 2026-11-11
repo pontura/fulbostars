@@ -8,6 +8,7 @@ namespace Fulbo.Game
     {
         public Sprite[] sprites;
         public Image image;
+        public Image imageBG;
         public int control_id;
         public Character character;
         public GameObject all;
@@ -17,6 +18,12 @@ namespace Fulbo.Game
             this.control_id = control_id;
             image.sprite = sprites[control_id - 1];
             image.color = color;
+            imageBG.color = color;            
+        }
+        public void SetColor(Color color)
+        {
+            image.color = color;
+            imageBG.color = color;
         }
         public void SetOn(bool isOn)
         {

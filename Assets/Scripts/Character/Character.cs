@@ -124,13 +124,7 @@ namespace Fulbo.Game
             this.teamID = _temaID;
 
             if (floorSignal != null)
-            {
-                ClubData team2Data = Data.Instance.clubsData.GetData(2);
-                if (teamID == 1)
-                    floorSignal.Init(Data.Instance.clubsData.GetData(teamID).GetAnotherColor(team2Data.clubColor1));
-                else
-                    floorSignal.Init(team2Data.GetColor(1));
-            }
+                floorSignal.Init(Data.Instance.clubsData.GetTeamColor(teamID));
 
             data = Data.Instance.textsData.GetCharactersData(characterID, type == Character.types.GOALKEEPER);
             dataSources = CharactersData.Instance.GetCharacterData(data.id, type == Character.types.GOALKEEPER);

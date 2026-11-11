@@ -17,6 +17,9 @@ namespace Fulbo.Game
         bool isDone;
         Character character_made_goal;
         List<Character> winners;
+        // Offset de cada compañero respecto del goleador: se sortea una sola vez por gol para que el destino no salte frame a frame.
+        Dictionary<Character, Vector3> celebrationOffsets = new Dictionary<Character, Vector3>();
+        const float arriveThreshold = 0.5f;
         GameState gameState;
 
         public IEnumerator Init(GameState gameState, int teamID, Character character)
@@ -59,6 +62,17 @@ namespace Fulbo.Game
                 winners = charactersManager.team1;
             else
                 winners = charactersManager.team2;
+
+            celebrationOffsets.Clear();
+            int id = 0;
+            foreach (Character ch in winners)
+            {
+                id++;
+                if (id % 2 == 0)
+                    celebrationOffsets[ch] = new Vector3(-id / 2, 0, Random.Range(0.5f, 3));
+                else
+                    celebrationOffsets[ch] = new Vector3(Random.Range(-0.5f, -2), 0, -id / 2);
+            }
 
             AudioManager.Instance.ChangeVolume("crowd", 1);
             Events.OnGoal(teamID, character);
@@ -125,21 +139,15 @@ namespace Fulbo.Game
         void Updated()
         {
             if (state == states.IDLE) return;
-            int id = 0;
             foreach (Character character in winners)
             {
-                id++;
                 Vector3 targetPos;
                 if (character.data.id == character_made_goal.data.id)
                     targetPos = new Vector3(character.transform.position.x, 0, 10);
                 else
                 {
-                    Vector3 offset = new Vector3(0, 0, 0);
-                    if(id %2 == 0)
-                        offset = new Vector3(-id/2, 0, Random.Range(0.5f,3));
-                    else
-                        offset = new Vector3(Random.Range(-0.5f, -2), 0, -id / 2);
-
+                    Vector3 offset;
+                    celebrationOffsets.TryGetValue(character, out offset);
                     targetPos = character_made_goal.transform.position + offset;
                 }
 
@@ -148,13 +156,10 @@ namespace Fulbo.Game
                     int _x = 0;
                     int _z = 0;
                     Vector3 pos = character.transform.position;
-                    if (Mathf.Abs(pos.x - targetPos.x) > 0.25f)
-                    {
-                        if (pos.x < targetPos.x) _x = 1;
-                        else if (pos.x > targetPos.x) _x = -1;
-                    }
-                    if (pos.z < targetPos.z) _z = 1;
-                    else if (pos.z > targetPos.z) _z = -1;
+                    if (Mathf.Abs(pos.x - targetPos.x) > arriveThreshold)
+                        _x = pos.x < targetPos.x ? 1 : -1;
+                    if (Mathf.Abs(pos.z - targetPos.z) > arriveThreshold)
+                        _z = pos.z < targetPos.z ? 1 : -1;
                     if (_x == 0 && _z == 0)
                         character.states.Goal();
                     else

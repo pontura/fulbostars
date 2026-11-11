@@ -10,12 +10,16 @@ namespace Fulbo.Game
         public List<SidePlayerSignalPlayer> all;
         CameraInGame cameraInGame;
         public float offsetZ = 2;
+        // Apagados hasta el saque inicial; se vuelven a apagar en cada gol hasta el saque del medio.
+        bool isActive;
 
         void Start()
         {
             cameraInGame = GameManager.Instance.cameraInGame;
             Events.CharacterCatchBall += CharacterCatchBall;
             Events.OnGoal += OnGoal;
+            Events.OnGameStatusChanged += OnGameStatusChanged;
+            Events.OnBallKicked += OnBallKicked;
             Events.SwapCharacter += SwapCharacter;
             Loop();
             for (int a = 0; a < Data.Instance.matchData.players.Length; a++)
@@ -25,8 +29,8 @@ namespace Fulbo.Game
                 {
                     SidePlayerSignalPlayer sp = Instantiate(sidePlayerSignalPlayer, transform);
                     sp.transform.localScale = Vector3.one;
-                    // Color c = Data.Instance.settings.GetTeamSettings(teamID).color;
                     sp.Init(a + 1, Color.white);
+                    sp.SetOn(false);
                     all.Add(sp);
                 }
             }
@@ -36,10 +40,27 @@ namespace Fulbo.Game
         {
             Events.CharacterCatchBall -= CharacterCatchBall;
             Events.OnGoal -= OnGoal;
+            Events.OnGameStatusChanged -= OnGameStatusChanged;
+            Events.OnBallKicked -= OnBallKicked;
             Events.SwapCharacter -= SwapCharacter;
         }
         void OnGoal(int id, Character ch)
         {
+            TurnAllOff();
+        }
+        void OnGameStatusChanged(GameManager.states state)
+        {
+            if (state == GameManager.states.GOAL || state == GameManager.states.GAMEOVER)
+                TurnAllOff();
+        }
+        void OnBallKicked(CharacterStates.kickTypes kickType, float force, Character character)
+        {
+            if (GameManager.Instance.state == GameManager.states.PLAYING)
+                isActive = true;
+        }
+        void TurnAllOff()
+        {
+            isActive = false;
             foreach (SidePlayerSignalPlayer sp in all)
                 sp.SetOn(false);
         }
@@ -58,12 +79,16 @@ namespace Fulbo.Game
             foreach (SidePlayerSignalPlayer sp in all)
             {
                 if (sp.control_id == character.control_id)
+                {
                     sp.character = character;
+                    sp.SetColor(Data.Instance.clubsData.GetTeamColor(character.teamID));
+                }
             }
         }
         void Loop()
         {
             Invoke("Loop", 0.05f);
+            if (!isActive) return;
             int dir = 1;
             foreach (SidePlayerSignalPlayer sp in all)
             {

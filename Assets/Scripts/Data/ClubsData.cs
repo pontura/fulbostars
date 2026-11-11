@@ -48,6 +48,14 @@ namespace Fulbo
                 return clubData;
             }
         }
+        // Color de cada equipo en el partido: el team 1 usa un color de su club que no choque con el principal del team 2.
+        public Color GetTeamColor(int teamID)
+        {
+            ClubData team2Data = GetData(2);
+            if (teamID == 1)
+                return GetData(1).GetAnotherColor(team2Data.clubColor1);
+            return team2Data.GetColor(1);
+        }
     }
 
 }

@@ -12,7 +12,7 @@ namespace Fulbo.Game
         {
             CharacterSignal s = Instantiate(signal_to_add);
             character.SetSignal(s);
-            s.Init(Data.Instance.clubsData.GetData(character.teamID).GetColor(1), character.control_id);
+            s.Init(Data.Instance.clubsData.GetTeamColor(character.teamID), character.control_id);
             all.Add(s);
         }
 
