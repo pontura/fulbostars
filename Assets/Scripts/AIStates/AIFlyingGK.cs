@@ -3,8 +3,12 @@ namespace Fulbo.Game.AIs
 {
     public class AIFlyingGK : AIState
     {
-        float flyingDuration = 0.7f;
+        float flyingDuration = 0.4f; // tiempo que avanza en la estirada (el estado igual termina a los timeToChange)
         float timeToChange = 0.5f;
+        // baja la velocidad lateral de la estirada (1 = sin cambios, menos = ataja menos):
+        const float flyingSpeedFactor = 0.45f;
+        // cuánto se agranda el collider del arquero al tirarse (antes 2):
+        const float flyingColliderFactor = 1.35f;
         int totalStats;
 
         float gkSpeed_speed_flying_multiply;
@@ -44,7 +48,7 @@ namespace Fulbo.Game.AIs
         }
         void SetSuperFly(bool isOn)
         {
-            ai.character.characterColliders.ChangeRadius(2, 0.7f);
+            ai.character.characterColliders.ChangeRadius(flyingColliderFactor, 0.7f);
             superFly = isOn;
         }
         public override AIState UpdatedByAI()
@@ -86,16 +90,16 @@ namespace Fulbo.Game.AIs
                     if (_x != 0) _x /= 6; //para que no avance muy rápido:
 
                     if (superFly)
-                        ai.character.MoveTo(_x, _z);
+                        ai.character.MoveTo(_x, _z * flyingSpeedFactor);
                     else
                     {
                         if (!wonDuel)
                             _z =  _z * (gkSpeed_speed_flying_multiply / 6);
                         else
                             _z = _z * gkSpeed_speed_flying_multiply;
-                        if (_z > 1) _z = 1;
+                        _z = Mathf.Clamp(_z, -1, 1);
 
-                        ai.character.MoveTo(_x / 5, _z);
+                        ai.character.MoveTo(_x / 5, _z * flyingSpeedFactor);
                     }
                 }
             }

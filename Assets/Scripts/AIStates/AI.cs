@@ -414,6 +414,17 @@ namespace Fulbo.Game.AIs
             }
             return Mathf.Clamp(to_z, -max_z, max_z);
         }
+        // Arqueros: medio ancho del arco en z (de palo a palo: -5 a 5, igual que GamePlay.AimGoal)
+        const float goalHalfWidth = 5;
+        // true si la pelota, siguiendo su dirección, cruza la línea del arco entre los dos palos:
+        public bool IsBallGoingInsideGoal()
+        {
+            // el arco propio está del lado donde arranca el arquero:
+            float goalX = Mathf.Sign(originalPosition.x) * StadiumsData.Instance.active.GetAssetBySelectedSize().size_x / 2;
+            float to_z;
+            if (!ball.GetProjectedZOnGoalLine(goalX, out to_z)) return false;
+            return Mathf.Abs(to_z) <= goalHalfWidth;
+        }
         public float GetDistanceToBallInX()
         {
             Vector3 pos = transform.position; pos.z = 0;

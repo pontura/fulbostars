@@ -142,7 +142,7 @@ namespace Fulbo.Game.AIs
             return Mathf.Abs(vel.x) + Mathf.Abs(vel.z) > minBallSpeedToFly;
         }
         // se tira cuando a la pelota le falta menos que esto para llegar (el vuelo dura ~0.5s):
-        protected const float timeToFly = 0.4f;
+        protected const float timeToFly = 0.3f; // más bajo = reacciona más tarde = ataja menos
         public bool ShouldFly()
         {
             if (ai.ball.character != null) return false;
@@ -150,7 +150,8 @@ namespace Fulbo.Game.AIs
             float vel_x = ai.ball.rb.velocity.x;
             float dist_x = _transform.position.x - _ballTransform.position.x;
             if (Mathf.Sign(vel_x) != Mathf.Sign(dist_x)) return false; // se aleja
-            return Mathf.Abs(dist_x) < Mathf.Abs(vel_x) * timeToFly;
+            if (Mathf.Abs(dist_x) >= Mathf.Abs(vel_x) * timeToFly) return false;
+            return ai.IsBallGoingInsideGoal(); // si va afuera (fuera de los palos) no se tira
         }
         public bool BallIsOnAirAndNear() // si está cerca vuela pase lo que pase:
         {

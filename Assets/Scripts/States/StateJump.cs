@@ -5,7 +5,7 @@ namespace Fulbo.Game.States
     public class StateJump : StateCharacter
     {
         bool isGoalkeeper;
-        const float gkExtraJumpHeight = 1f; // altura extra del arquero al tirarse/saltar
+        const float gkExtraJumpHeight = 0.5f; // altura extra del arquero al tirarse/saltar
         public override void Init(CharacterStates states)
         {
             base.Init(states);

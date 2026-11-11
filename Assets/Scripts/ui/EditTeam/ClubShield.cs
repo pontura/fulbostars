@@ -69,6 +69,7 @@ namespace Fulbo.UI.EditTeam
                     else
                     {
                         logo.enabled = true;
+                        print("logoID " + logoID);
                         logo.sprite = Data.Instance.clubsData.logos[logoID - 1];
                         float scale = 0.5f;
                         logo.transform.localScale = new Vector2(scale, scale);
